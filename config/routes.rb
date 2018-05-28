@@ -12,9 +12,6 @@ Rails.application.routes.draw do
     resources :prescriptions, only: [:new, :create]
   end
   resources :appointments, except: [:new, :create]
-  resources :prescriptions, except: [:new, :create] do
-    resources :treatments, only: [:new, :create]
-  end
-  resources :treatments, except: [:new, :create]
+  resources :prescriptions, except: [:new, :create]
   resources :calendar, only: [:index, :show]
 end
