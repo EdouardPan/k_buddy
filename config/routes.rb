@@ -7,7 +7,14 @@ Rails.application.routes.draw do
 
   resources :medical_records
   resources :symptoms
-  resources :appointments
-  resources :prescriptions
+  resources :medical_professionals do
+    resources :appointments, only: [:new, :create]
+    resources :prescriptions, only: [:new, :create]
+  end
+  resources :appointments, except: [:new, :create]
+  resources :prescriptions, except: [:new, :create] do
+    resources :treatments, only: [:new, :create]
+  end
+  resources :treatments, except: [:new, :create]
   resources :calendar, only: [:index, :show]
 end
