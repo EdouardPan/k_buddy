@@ -10,10 +10,91 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_28_121107) do
+ActiveRecord::Schema.define(version: 2018_05_28_125844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "type"
+    t.text "description"
+    t.string "photos"
+    t.bigint "medical_professional_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medical_professional_id"], name: "index_appointments_on_medical_professional_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "drugs", force: :cascade do |t|
+    t.string "name"
+    t.string "type"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "medical_professionals", force: :cascade do |t|
+    t.string "location_name"
+    t.string "address"
+    t.string "phone"
+    t.string "specialty"
+    t.string "doctor"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "medical_records", force: :cascade do |t|
+    t.date "record_date"
+    t.string "title"
+    t.string "photos"
+    t.string "type"
+    t.text "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_medical_records_on_user_id"
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.string "photos"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "medical_professional_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medical_professional_id"], name: "index_prescriptions_on_medical_professional_id"
+  end
+
+  create_table "symptoms", force: :cascade do |t|
+    t.string "name"
+    t.integer "intensity"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_symptoms_on_user_id"
+  end
+
+  create_table "treatments", force: :cascade do |t|
+    t.boolean "taken"
+    t.date "take_time"
+    t.string "quantity"
+    t.bigint "prescription_id"
+    t.bigint "drug_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["drug_id"], name: "index_treatments_on_drug_id"
+    t.index ["prescription_id"], name: "index_treatments_on_prescription_id"
+    t.index ["user_id"], name: "index_treatments_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +113,12 @@ ActiveRecord::Schema.define(version: 2018_05_28_121107) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "appointments", "medical_professionals"
+  add_foreign_key "appointments", "users"
+  add_foreign_key "medical_records", "users"
+  add_foreign_key "prescriptions", "medical_professionals"
+  add_foreign_key "symptoms", "users"
+  add_foreign_key "treatments", "drugs"
+  add_foreign_key "treatments", "prescriptions"
+  add_foreign_key "treatments", "users"
 end
