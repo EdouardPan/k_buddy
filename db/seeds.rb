@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Seeds for MedicalRecord
+
+puts 'Creating medical records...'
+  medical_record_1 = MedicalRecord.new(
+    record_date: DateTime.new(2017,9,14,8),
+    title: "record 1",
+    type: "CR",
+    user_id: "1"
+  )
+  medical_record_1.save!
+puts 'Finished!'
+
