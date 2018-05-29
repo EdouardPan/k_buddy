@@ -14,8 +14,8 @@
 <div class="list-box">
   <% @medical_records.reverse.each do |mr| %>
     <div class="list-item">
-      <%= link_to medical_record_path(mr) do %>
-        <%= render 'shared/icons', object: mr %> <%= mr.record_date %> | <%= mr.title %>
+      <%= link_to(medical_record_path(mr), class: "link") do %>
+        <%= render 'shared/icons', object: mr %> <%= mr.record_date %> | <%= mr.title.capitalize %>
       <% end %>
     </div>
   <% end %>

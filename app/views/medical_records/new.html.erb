@@ -1,0 +1,25 @@
+<h2>Ajouter un fichier</h2>
+
+<%= form_for(@medical_record) do |f| %>
+
+  <div class="form-inputs">
+    <%= f.label "Date du document" %>
+    <%= f.date_field :record_date %>
+
+    <%= f.label "Titre du document" %>
+    <%= f.text_field :title %>
+
+    <%= f.label "Type de document" %>
+    <%= f.text_field :category %>
+
+    <%= f.label "Notes" %>
+    <%= f.text_field :description %>
+
+    <%= f.label "Ajouter les pièces jointes" %>
+    <%= f.file_field :photos, multiple: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Ajouter le fichier", class: "submit-button" %>
+  </div>
+<% end %>

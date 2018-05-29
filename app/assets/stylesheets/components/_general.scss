@@ -1,3 +1,5 @@
+// Sizes
+
 h1 {
   font-size: 43px;
   margin: 0;
@@ -36,4 +38,13 @@ strong {
 
 em {
 
+}
+
+// Links
+
+.link {
+  &:link, &:visited, &:hover, &:active {
+    text-decoration: none;
+    color: $gray;
+  }
 }
