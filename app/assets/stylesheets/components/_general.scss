@@ -1,0 +1,50 @@
+// Sizes
+
+h1 {
+  font-size: 43px;
+  margin: 0;
+  color: $dark-blue;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 25px;
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+h6 {
+
+}
+
+p {
+  font-size: 18px;
+  font-weight: regular;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+
+}
+
+// Links
+
+.link {
+  &:link, &:visited, &:hover, &:active {
+    text-decoration: none;
+    color: $gray;
+  }
+}

@@ -1,10 +1,22 @@
 .center-box {
   height: 100vh;
   //height: calc(100vh-70px); ne marche pas, a retravailler ?
-  margin: 15px;
+  margin: 20px;
 }
 
-.last-items-box {
-  border: 2px solid black;
-  margin-top: 10px;
+.section-box {
+  margin-top: 20px;
 }
+
+.list-box {
+  margin: 20px 10px;
+}
+
+.list-item {
+  margin-top: 8px;
+}
+
+.show-title {
+  margin-top: 30px;
+}
+
