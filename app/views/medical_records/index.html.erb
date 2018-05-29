@@ -1,16 +1,23 @@
-<%= form_tag medical_records_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control searchbar",
-    placeholder: "Search bar"
-  %>
-<% end %>
+<h1>Mes ajouts</h1>
 
 <div class="section-box">
-  <h1>Mes derniers ajouts</h1>
-  <div class="list-box">
-    <% @medical_records.each do |mrl| %>
-      <br> <%= render 'shared/icons', object: mrl %><%= mrl.title %> - <%= mrl.category %>
-    <% end %>
-  </div>
+  <%= form_tag medical_records_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control searchbar",
+      placeholder: "Search bar"
+    %>
+  <% end %>
 </div>
+
+
+<div class="list-box">
+  <% @medical_records.reverse.each do |mr| %>
+    <div class="list-item">
+      <%= link_to medical_record_path(mr) do %>
+        <%= render 'shared/icons', object: mr %> <%= mr.record_date %> | <%= mr.title %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
