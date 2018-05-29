@@ -4,8 +4,11 @@
   border: solid;
   justify-content: center;
   z-index: 10;
-  margin: 10px;
   visibility: hidden;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+
   a {
   text-decoration: none;
   }
