@@ -1,6 +1,7 @@
-class CalendarsController < ApplicationController
+class CalendarController < ApplicationController
 
   def index
+    @appointments = policy_scope(Appointment)
   end
 
   def show

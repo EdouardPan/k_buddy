@@ -4,3 +4,9 @@
   color: white;
   padding: 10px 20px;
 }
+
+.submit-button:hover {
+  text-decoration: none;
+  color: white;
+  background-color: $light-green;
+}
