@@ -1,4 +1,4 @@
-class MedicalRecordsController < ApplicationController
+class PrescriptionsController < ApplicationController
 
   def index
   end
