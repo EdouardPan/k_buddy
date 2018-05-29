@@ -1,32 +1,29 @@
-/* Main navbar */
-.navbar-wagon {
+/* Navbar box */
+.navbar-kbuddy {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
-  transition: all 0.3s ease;
+  background: $light-blue;
   height: 70px;
-  padding: 0px 30px;
+  width: 100%;
+  padding: 0px 5px;
+  position: fixed;
+  bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
-/* Logo */
-.navbar-wagon-brand img {
-  height: 50px;
+/* Navbar icons */
+.navbar-icons {
+  height: 53px;
+  width: 53px;
+  // border: 2px solid $red;
+  // border-radius: 50%;
 }
 
-/* User Avatar */
-.navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-}
-
-/* Right section */
-.navbar-wagon-right {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+#navbar-plus-icon {
+  height: 85px;
+  width: 85px;
+  margin-bottom: 50px;
 }
 
 /* Basic navbar item */

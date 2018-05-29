@@ -1,0 +1,2 @@
+class AppointmentPolicy < DefaultPolicy
+end
