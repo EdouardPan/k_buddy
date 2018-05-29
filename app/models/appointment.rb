@@ -5,4 +5,6 @@ class Appointment < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :type, presence: true
+
+  mount_uploaders :photos, PhotoUploader
 end
