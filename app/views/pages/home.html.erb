@@ -14,3 +14,9 @@
 <h6>hehohiha</h6>
 
 <p>hehohiha <strong>hehohiha</strong></p>
+
+<%= simple_form_for @medical_record do |f| %>
+  <%= f.input :photos %>
+  <%= f.input :photos_cache, as: :hidden %>
+<% end %>
+

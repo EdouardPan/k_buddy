@@ -14,6 +14,10 @@ gem 'redis'
 # Other gems
 gem 'pundit'
 
+# Files management
+gem 'cloudinary'
+gem 'carrierwave'
+
 # Assets
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
