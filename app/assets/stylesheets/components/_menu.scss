@@ -6,14 +6,22 @@
   z-index: 10;
   visibility: hidden;
   position: absolute;
-  top: 25%;
+  top: 0;
   width: 100%;
+  height: 100%;
+  background-color: $light-gray;
 
   a {
   text-decoration: none;
   }
   .submit-button {
     margin: 15px;
+  }
+
+  .quiting-x {
+    position: absolute;
+    top: 5px;
+    right: 5px;
   }
 }
 
