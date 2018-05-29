@@ -1,7 +1,8 @@
 class MedicalRecordsController < ApplicationController
 
   def index
-    @medical_record = policy_scope(MedicalRecord)
+    @medical_records = policy_scope(MedicalRecord)
+    @medical_records = MedicalRecord.all
   end
 
   def show
