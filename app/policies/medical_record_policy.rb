@@ -1,0 +1,2 @@
+class MedicalRecordPolicy < DefaultPolicy
+end

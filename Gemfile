@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+# Default
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'figaro'
@@ -10,6 +11,10 @@ gem 'puma'
 gem 'rails', '5.2.0'
 gem 'redis'
 
+# Other gems
+gem 'pundit'
+
+# Assets
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'

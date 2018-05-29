@@ -1,0 +1,2 @@
+class MedicalProfessionalPolicy < DefaultPolicy
+end

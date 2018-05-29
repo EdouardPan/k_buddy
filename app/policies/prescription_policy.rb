@@ -1,0 +1,2 @@
+class PrescriptionPolicy < DefaultPolicy
+end
