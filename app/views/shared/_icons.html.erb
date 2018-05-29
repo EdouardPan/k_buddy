@@ -1,0 +1,6 @@
+<% if object.category == "Compte Rendu" %>
+  <%= image_tag ("medical-record-icon"), class: "list-icon" %>
+  <% elsif object.category == "Imagerie"%>
+  <%= image_tag ("eye") %>
+  <% else %>
+<% end %>

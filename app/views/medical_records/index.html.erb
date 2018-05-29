@@ -6,7 +6,11 @@
   %>
 <% end %>
 
-<div class="last-items-box">
-  <h1>hello</h1>
-
+<div class="section-box">
+  <h1>Mes derniers ajouts</h1>
+  <div class="list-box">
+    <% @medical_records.each do |mrl| %>
+      <br> <%= render 'shared/icons', object: mrl %><%= mrl.title %> - <%= mrl.category %>
+    <% end %>
+  </div>
 </div>

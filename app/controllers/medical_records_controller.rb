@@ -5,6 +5,11 @@ class MedicalRecordsController < ApplicationController
     @medical_records = MedicalRecord.all
   end
 
+  def top
+    authorize @medical_record
+    @medical_records_last = @medical_records.last(5)
+  end
+
   def show
     authorize @medical_record
   end
