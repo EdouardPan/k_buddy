@@ -13,6 +13,7 @@
 
       <%= render 'shared/header' %>
 
+      <div <%= "class=center-box" unless current_page?(root_path) %>>
         <%= yield %>
       </div>
 
