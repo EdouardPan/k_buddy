@@ -1,0 +1,15 @@
+#menu-box {
+  display: flex;
+  flex-direction: column;
+  border: solid;
+  justify-content: center;
+  z-index: 10;
+  margin: 10px;
+  a {
+  text-decoration: none;
+  }
+  .submit-button {
+    margin: 15px;
+  }
+}
+
