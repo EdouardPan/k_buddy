@@ -19,30 +19,26 @@ export function showCalendar() {
       center: '',
       right:  'prev,next'
     },
-    eventSources: [
-
-        // your event source
-        {
-        events: [
-          {
-            title  : 'event1',
-            start  : '2018-05-30'
-          },
-          {
-            title  : 'event2',
-            start  : '2018-05-20',
-            end    : '2018-05-21'
-          },
-          {
-            title  : 'event3',
-            start  : '2018-06-01T12:30:00',
-            allDay : false // will make the time show
-          }
-        ],
-        color: 'black',     // an option!
-        textColor: 'yellow' // an option!
+    events: [
+      {
+        title  : '',
+        start  : '2018-05-30'
+      },
+      {
+        title  : 'event2',
+        start  : '2018-05-20',
+        end    : '2018-05-21'
+      },
+      {
+        title  : 'event3',
+        start  : '2018-06-01T12:30:00',
+        allDay : false // will make the time show
       }
-    ]
+    ],
+    eventRender: function(event, element) {
+      element.find(".fc-title").prepend("<i class='fas fa-pills'></i><i class='fas fa-user-md'></i>");
+    }
+
   })
 
 }
