@@ -13,7 +13,7 @@ puts 'Creating medical records...'
   medical_record_1 = MedicalRecord.new(
     record_date: DateTime.new(2017,9,14,8),
     title: "record 1",
-    category: "Compte Rendu",
+    category: "Opération",
     user_id: "1"
   )
   medical_record_1.save!
@@ -21,7 +21,7 @@ puts 'Creating medical records...'
   medical_record_2 = MedicalRecord.new(
     record_date: DateTime.new(2017,10,14,8),
     title: "record 2",
-    category: "Imagerie",
+    category: "Antécédent Familial",
     user_id: "1"
   )
   medical_record_2.save!
@@ -37,12 +37,11 @@ puts 'Creating medical records...'
   medical_record_4 = MedicalRecord.new(
     record_date: DateTime.new(2017,12,14,8),
     title: "record 4",
-    category: "Compte Rendu",
+    category: "Autre",
     user_id: "1"
   )
   medical_record_4.save!
 puts 'Finished!'
-
 
 # Seeds for Medical Professionals
 
@@ -179,7 +178,7 @@ puts 'Creating Appointments...'
   Appointment.create!(
     start_date: DateTime.new(2018,month,day, start_time),
     end_date: DateTime.new(2018,month,day, end_time),
-    category: ["Imagerie", "Radiologie", "Médecin spécialiste"].sample,
+    category: ["Imagerie", "Médecin", "Kinésithérapie"].sample,
     description: "Important",
     user_id: 1,
     medical_professional_id: MedicalProfessional.ids.sample
@@ -189,7 +188,7 @@ end
 puts 'Finished!'
 
 
-# Seeds for Prescription
+# Seeds for Prescription and treatment
 
 puts "Creating Prescription and Treatments"
 20.times do
@@ -206,7 +205,8 @@ puts "Creating Prescription and Treatments"
     end_date: DateTime.new(2018,m2,rand(1..28)),
     medical_professional_id: MedicalProfessional.ids.sample
 )
-
+  puts new_prescription.end_date
+  puts new_prescription.start_date
   puts days_number = (new_prescription.end_date - new_prescription.start_date).to_i
   days_number.times do |i|
     Treatment.create!(
@@ -221,8 +221,6 @@ puts "Creating Prescription and Treatments"
 end
 
 puts "Finished!"
-
-
 
 
 

@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_132649) do
+ActiveRecord::Schema.define(version: 2018_05_30_163937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.string "category"
     t.text "description"
     t.bigint "medical_professional_id"
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 2018_05_30_132649) do
   end
 
   create_table "prescriptions", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.bigint "medical_professional_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 2018_05_30_132649) do
   create_table "symptoms", force: :cascade do |t|
     t.string "name"
     t.integer "intensity"
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.text "description"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_132649) do
 
   create_table "treatments", force: :cascade do |t|
     t.boolean "taken"
-    t.date "take_time"
+    t.datetime "take_time"
     t.string "quantity"
     t.bigint "prescription_id"
     t.bigint "drug_id"
