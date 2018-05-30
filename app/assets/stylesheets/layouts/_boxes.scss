@@ -1,7 +1,12 @@
 .center-box {
-  height: 100vh;
-  //height: calc(100vh-70px); ne marche pas, a retravailler ?
-  margin: 20px;
+  // height: 100vh;
+  // margin: 20px;
+  height:100%;
+  padding-top:20px;
+  padding-bottom:100px;
+  padding-left:20px;
+  padding-right:20px;
+
 }
 
 .section-box {
@@ -19,4 +24,9 @@
 .show-title {
   margin-top: 30px;
 }
+
+.show-gallery {
+  margin-top: 30px;
+}
+
 
