@@ -34,3 +34,7 @@ puts 'Creating medical records...'
   medical_record_4.save!
 puts 'Finished!'
 
+# Seeds for MedicalRecord
+
+
+# Seeds for MedicalRecord
