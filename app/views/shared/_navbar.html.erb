@@ -1,18 +1,20 @@
 
 
 <div class="menu" id="menu-box">
-  <i class="far fa-times-circle quiting-x"></i>
+  <div style="font-size:3em;">
+    <i class="far fa-times-circle quiting-x"></i>
+  </div>
   <br>
-  <%= link_to root_path, class: "submit-button" do %>
+  <%= link_to new_medical_record_path, class: "submit-button" do %>
     <i class="fas fa-plus"></i> dossier médical
   <% end %>
-  <%= link_to root_path, class: "submit-button" do %>
+  <%= link_to calendar_index_path, class: "submit-button" do %>
     <i class="fas fa-plus"></i> traitement
   <% end %>
-  <%= link_to root_path, class: "submit-button" do %>
-    <i class="fas fa-plus"></i> syptôme
+  <%= link_to new_symptom_path, class: "submit-button" do %>
+    <i class="fas fa-plus"></i> symptôme
   <% end %>
-  <%= link_to root_path, class: "submit-button" do %>
+  <%= link_to new_medical_professional_path, class: "submit-button" do %>
     <i class="fas fa-plus"></i> rendez-vous
   <% end %>
 </div>
