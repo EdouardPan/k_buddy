@@ -1,15 +1,14 @@
-#menu-box {
+.menu {
   display: flex;
   flex-direction: column;
   border: solid;
   justify-content: center;
   z-index: 10;
   transform: translateY(110%);
-  position: absolute;
-  top: 0;
   width: 100%;
-  height: calc(100% - 70px);
+  height: calc(100vh - 70px);
   background-color: $light-gray;
+  transition: transform .3s linear;
 
   a {
   text-decoration: none;
@@ -25,6 +24,15 @@
   }
 }
 
-.menu-hide {
+.menu-appear {
+  transform: translateY(-70px);
+  position: relative;
+
+
+
+  /* transform: translateY(110%); */
+  /* position: absolute; */
+  /* top: 0; */
 
 }
+

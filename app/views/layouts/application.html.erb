@@ -10,17 +10,21 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
+    <div class="mobile-wrapper">
+      <div class="mobile-screen-container">
 
-      <%= render 'shared/header' %>
+        <%= render 'shared/header' %>
 
-      <div <%= "class=center-box" unless current_page?(root_path) %>>
-        <%= yield %>
+        <div <%= "class=center-box" unless current_page?(root_path) %>>
+          <%= yield %>
+        </div>
       </div>
-
-    <% unless current_page?(root_path) %>
-      <%= render 'shared/navbar' %>
-    <% end %>
-
+      <% unless current_page?(root_path) %>
+        <div class="mobile-screen-navbar">
+         <%= render 'shared/navbar' %>
+        </div>
+      <% end %>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>

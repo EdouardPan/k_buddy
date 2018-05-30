@@ -3,7 +3,8 @@ const addMenu = document.getElementById("menu-box");
 
 function menuInvisible() {
   quit.addEventListener("click", function() {
-    addMenu.style.visibility = "hidden";
+    console.log("click on button")
+    addMenu.className = "menu";
   });
 }
 
