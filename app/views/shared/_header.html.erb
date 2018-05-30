@@ -1,4 +1,11 @@
 <!-- Le logo sera un dropdown avec back to home or log out -->
-<%= link_to image_tag("logo.png", id: "logo"), root_path %>
-<%= link_to "sign-out", destroy_user_session_path, method: :delete %>
+  <div class="dropdown back-to-home">
+    <%= image_tag("logo.png", id: "logo", class: "dropdown-toggle", data: { toggle: "dropdown" }) %>
+    <% if user_signed_in? %>
+      <ul class="dropdown-menu dropdown-menu-right">
+        <li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+        <li> <%= link_to "Page d'accueil", todaytasks_path, class: "dropdown-item" %></li>
+      </ul>
+    <% end %>
+  </div>
 
