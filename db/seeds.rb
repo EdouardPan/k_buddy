@@ -43,6 +43,7 @@ puts 'Creating medical records...'
   medical_record_4.save!
 puts 'Finished!'
 
+
 # Seeds for Medical Professionals
 
 puts 'Creating Medical Professionals...'
@@ -220,6 +221,8 @@ puts "Creating Prescription and Treatments"
 end
 
 puts "Finished!"
+
+
 
 
 

@@ -1,9 +1,31 @@
+
+
+<div class="menu" id="menu-box">
+  <div style="font-size:3em;">
+    <i class="far fa-times-circle quiting-x"></i>
+  </div>
+  <br>
+  <%= link_to new_medical_record_path, class: "submit-button" do %>
+    <i class="fas fa-plus"></i> dossier médical
+  <% end %>
+  <%= link_to calendar_index_path, class: "submit-button" do %>
+    <i class="fas fa-plus"></i> traitement
+  <% end %>
+  <%= link_to new_symptom_path, class: "submit-button" do %>
+    <i class="fas fa-plus"></i> symptôme
+  <% end %>
+  <%= link_to new_medical_professional_path, class: "submit-button" do %>
+    <i class="fas fa-plus"></i> rendez-vous
+  <% end %>
+</div>
 <div class="navbar-kbuddy">
-  <%= link_to image_tag("medical-record-icon", class: "navbar-icons"), root_path %>
-  <%= link_to image_tag("treatment-icon", class: "navbar-icons"), root_path %>
+  <%= link_to image_tag("medical-record-icon", class: "navbar-icons"), medical_records_path %>
+  <%= link_to image_tag("treatment-icon", class: "navbar-icons"), calendar_index_path %>
   <!-- Add dropdown menu on the plus button -->
-  <%= link_to image_tag("plus", id: "navbar-plus-icon"), root_path %>
-  <%= link_to image_tag("symptoms-icon", class: "navbar-icons"), root_path %>
+  <%= image_tag("plus", id: "navbar-plus-icon" )%>
+
+
+  <%= link_to image_tag("symptoms-icon", class: "navbar-icons"), symptoms_path %>
   <%= link_to image_tag("recommendation-icon", class: "navbar-icons"), root_path %>
 </div>
 
