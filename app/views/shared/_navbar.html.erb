@@ -1,9 +1,29 @@
+
+
+<div class="menu" id="menu-box">
+  <i class="far fa-times-circle quiting-x"></i>
+  <br>
+  <%= link_to root_path, class: "submit-button" do %>
+    <i class="fas fa-plus"></i> dossier médical
+  <% end %>
+  <%= link_to root_path, class: "submit-button" do %>
+    <i class="fas fa-plus"></i> traitement
+  <% end %>
+  <%= link_to root_path, class: "submit-button" do %>
+    <i class="fas fa-plus"></i> syptôme
+  <% end %>
+  <%= link_to root_path, class: "submit-button" do %>
+    <i class="fas fa-plus"></i> rendez-vous
+  <% end %>
+</div>
 <div class="navbar-kbuddy">
-  <%= link_to image_tag("medical-record-icon.png", class: "navbar-icons"), root_path %>
-  <%= link_to image_tag("treatment-icon.png", class: "navbar-icons"), root_path %>
+  <%= link_to image_tag("medical-record-icon", class: "navbar-icons"), medical_records_path %>
+  <%= link_to image_tag("treatment-icon", class: "navbar-icons"), calendar_index_path %>
   <!-- Add dropdown menu on the plus button -->
-  <%= link_to image_tag("plus.png", id: "navbar-plus-icon"), root_path %>
-  <%= link_to image_tag("symptoms-icon.png", class: "navbar-icons"), root_path %>
-  <%= link_to image_tag("recommendation-icon.png", class: "navbar-icons"), root_path %>
+  <%= image_tag("plus", id: "navbar-plus-icon" )%>
+
+
+  <%= link_to image_tag("symptoms-icon", class: "navbar-icons"), symptoms_path %>
+  <%= link_to image_tag("recommendation-icon", class: "navbar-icons"), root_path %>
 </div>
 
