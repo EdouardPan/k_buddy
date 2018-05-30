@@ -12,12 +12,8 @@
   <body>
     <div class="mobile-wrapper">
       <div class="mobile-screen-container">
-
         <%= render 'shared/header' %>
-
-        <div <%= "class=center-box" unless current_page?(root_path) %>>
-          <%= yield %>
-        </div>
+        <%= yield %>
       </div>
       <% unless current_page?(root_path) %>
         <div class="mobile-screen-navbar">
