@@ -24,7 +24,7 @@
 }
 
 .menu-appear {
-  transform: translateY(-70px);
+  transform: translateY(calc(-100vh + 70px));
   position: relative;
 
 
