@@ -1,0 +1,14 @@
+<%= link_to(medical_records_path, class: "link") do %>
+  <i class="fa fa-caret-left" aria-hidden="true"></i> Retour à la liste des ajouts
+<% end %>
+
+
+<div class="show-title">
+  <h1><%= @medical_record.title.capitalize %></h1>
+</div>
+
+<div class="show-gallery">
+  <% @medical_record.photos.each do |p| %>
+    <%= cl_image_tag(p.url, class: "photos-resize") %>
+  <% end %>
+</div>

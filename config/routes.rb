@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get '/dashboard', to: "dashboard#today_tasks"
+  get '/todaytasks', to: "dashboard#today_tasks"
   resources :medical_records
   resources :symptoms
   resources :medical_professionals do

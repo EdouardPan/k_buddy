@@ -1,0 +1,17 @@
+.banner {
+  background-image: linear-gradient(-225deg, rgba(0,101,168,0.4) 0%, rgba(0,36,61,0.45) 50%), asset-url('signin.jpg');
+  background-size: cover;
+  color: white;
+  text-align: center;
+  height: 100vh;
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-title {
+  margin-bottom: 80px;
+}
+
+
