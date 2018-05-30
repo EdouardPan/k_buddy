@@ -1,2 +1,23 @@
 <h2>Avec qui avez-vous rendez-vous ?</h2>
 
+
+
+<div class="text-center">
+  <%= form_for(@medical_professional, url: medical_professionals_path(event_type: @event_type))  do |f| %>
+
+
+
+    <h4>Choisir parmi une liste existante</h4>
+
+    <h4>Créer un nouvel agent médical</h4>
+
+
+    <div class="form-inputs">
+
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "Ajouter un RDV", class: "submit-button" %>
+    </div>
+  <% end %>
+</div>
