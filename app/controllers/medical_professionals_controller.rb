@@ -9,6 +9,7 @@ class MedicalProfessionalsController < ApplicationController
   end
 
   def new
+    @medical_professional = MedicalProfessional.new
     authorize @medical_professional
   end
 

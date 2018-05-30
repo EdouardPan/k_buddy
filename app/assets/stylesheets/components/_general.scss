@@ -48,3 +48,22 @@ em {
     color: $gray;
   }
 }
+
+//mobile layout
+
+.mobile-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.mobile-screen-container {
+  flex-grow: 1;
+  overflow: scroll;
+}
+
+.mobile-screen-navbar {
+  height: 70px;
+  z-index: 1;
+}

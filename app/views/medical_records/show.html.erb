@@ -6,3 +6,9 @@
 <div class="show-title">
   <h1><%= @medical_record.title.capitalize %></h1>
 </div>
+
+<div class="show-gallery">
+  <% @medical_record.photos.each do |p| %>
+    <%= cl_image_tag(p.url, class: "photos-resize") %>
+  <% end %>
+</div>

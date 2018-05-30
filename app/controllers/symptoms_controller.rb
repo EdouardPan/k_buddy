@@ -9,6 +9,7 @@ class SymptomsController < ApplicationController
   end
 
   def new
+    @symptom = Symptom.new
     authorize @symptom
   end
 
