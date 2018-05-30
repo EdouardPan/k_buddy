@@ -1,6 +1,10 @@
-<h1>Mes ajouts</h1>
+<div class="title-box">
+  <h1>Mon historique médical</h1>
+</div>
 
 <div class="section-box">
+  <hr>
+  <h6>Cherchez un élément de votre historique médical pré-diagnostique en tappant:</h6>
   <%= form_tag medical_records_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
@@ -10,15 +14,18 @@
   <% end %>
 </div>
 
-
-<div class="list-box">
-  <% @medical_records.reverse.each do |mr| %>
-    <hr>
-    <div class="list-item">
-      <%= link_to(medical_record_path(mr), class: "link") do %>
-        <%= render 'shared/icons', object: mr %> <%= mr.record_date %> | <%= mr.title.capitalize %>
-      <% end %>
-    </div>
-  <% end %>
+<div class="section-box">
+  <hr>
+  <h6>Cherchez un élément de votre historique médical pré-diagnostique en cliquant sur:</h6>
+  <div class="category-box">
+    <h4 class="category category-button text-center">Consultations Médicales</h4>
+    <h4 class="category category-button text-center">Opérations Chirurgicales</h4>
+    <h4 class="category category-button text-center">Vaccins</h4>
+    <h4 class="category category-button text-center">Maladies Infantiles</h4>
+    <h4 class="category category-button text-center">Antécédents Familiales</h4>
+    <h4 class="category category-button text-center">Prises de Sang</h4>
+    <h4 class="category category-button text-center">Autres</h4>
+  </div>
 </div>
+
 

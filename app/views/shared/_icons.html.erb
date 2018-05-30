@@ -4,21 +4,21 @@
   <%= image_tag ("imagery.png"), class: "list-icon" %>
 <% elsif object.category == "Prise de Sang"%>
   <%= image_tag ("blood.png"), class: "list-icon" %>
-<%= elsif object.category == "Médicament" %>
+<% elsif object.category == "Médicament" %>
   <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
-<%= elsif object.category == "Chimiothérapie" %>
+<% elsif object.category == "Chimiothérapie" %>
   <%= image_tag ("chimio.png"), class: "list-icon" %>
-<%= elsif object.category == "Radiothérapie" %>
+<% elsif object.category == "Radiothérapie" %>
   <%= image_tag ("radio.png"), class: "list-icon" %>
-<%= elsif object.category == "Opération" %>
+<% elsif object.category == "Opération" %>
   <%= image_tag ("surgery.png"), class: "list-icon" %>
-<%= elsif object.category == "Kinésithérapie" %>
+<% elsif object.category == "Kinésithérapie" %>
   <%= image_tag ("recommendation-icon.png"), class: "list-icon" %>
-<%= elsif object.category == "Vaccin" %>
+<% elsif object.category == "Vaccin" %>
   <%= image_tag ("syringe.png"), class: "list-icon" %>
-<%= elsif object.category == "Maladie Infantile" %>
+<% elsif object.category == "Maladie Infantile" %>
   <%= image_tag ("baby.png"), class: "list-icon" %>
-<%= elsif object.category == "Antécédent Familial" %>
+<% elsif object.category == "Antécédent Familial" %>
   <%= image_tag ("dna.png"), class: "list-icon" %>
 <% else %>
   <%= image_tag ("autre.png"), class: "list-icon" %>
