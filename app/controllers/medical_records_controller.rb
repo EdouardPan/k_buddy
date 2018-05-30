@@ -39,6 +39,10 @@ class MedicalRecordsController < ApplicationController
     authorize @medical_record
   end
 
+  def search
+
+  end
+
   private
 
   def set_medical_records

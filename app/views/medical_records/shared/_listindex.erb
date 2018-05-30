@@ -1,0 +1,15 @@
+
+
+
+
+
+<div class="list-box">
+  <% medical_event.reverse.each do |e| %>
+    <hr>
+    <div class="list-item">
+      <%= link_to (medical_record_path(e), class: "link") do %>
+        <%= render 'shared/icons', object: e %> <%= e.record_date %> | <%= e.title.capitalize %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
