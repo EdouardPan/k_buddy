@@ -15,16 +15,21 @@ class PrescriptionsController < ApplicationController
   end
 
   def create
-    raise
-    @prescription = Prescription.new(medical_professional_id: params[:medical_professional_id],
+    prescription = Prescription.new(
+      medical_professional_id: params[:medical_professional_id],
+      start_date: params[:prescription][:start_date],
+      end_date: params[:prescription][:end_date]
       )
-    authorize @prescription
+    authorize prescription
 
-    @medical_professional = MedicalProfessional.find(params[:medical_professional_id])
-    @prescription.medical_professional = @medical_professional
 
-    if @prescription.save
-      redirect_to new_drug_path
+    if prescription.save
+      # Create the instances of treatement with the info we have.
+      raise
+
+      # treatement = Treatement.new
+        # individual_treatement = prescription.end_date - prescription.start_date * the length of the take array
+        # individual_treatement.times do treatement put this in an array that can be passed into the view
     else
       render '/prescriptions/new'
     end
