@@ -1,7 +1,11 @@
 class SymptomsController < ApplicationController
+  before_action :set_symptom, only: [:show, :edit, :update, :destroy]
 
   def index
     @symptoms = policy_scope(Symptom)
+    if params[:query].present?
+      @symptoms = @symptoms.search_symptom(params[:query])
+    end
   end
 
   def show
@@ -17,7 +21,7 @@ class SymptomsController < ApplicationController
     @symptom = Symptom.new(symptom_params)
     authorize @symptom
     @symptom.user = current_user
-    if @symptom.user.save
+    if @symptom.save
       redirect_to symptom_path(@symptom)
     else
       render :new
@@ -36,10 +40,18 @@ class SymptomsController < ApplicationController
     authorize @symptom
   end
 
+  def search
+
+  end
+
 private
 
+  def set_symptom
+    @symptom = Symptom.find(params[:id])
+  end
+
   def symptom_params
-    params.require(:symptom).permit(:name, :intensity, :start_date, :end_date, :description)
+    params.require(:symptom).permit(:start_date, :end_date, :name, :intensity, :description)
   end
 end
 
