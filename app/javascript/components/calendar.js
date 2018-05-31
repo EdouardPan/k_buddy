@@ -5,7 +5,9 @@ export function showCalendar() {
 
   // page is now ready, initialize the calendar...
 
-  const listEvents = document.getElementById('calendar').getAttribute('data-event')
+  const listEventsDay = document.getElementById('calendar').getAttribute('data-event-day')
+  const listEventsWeek = document.getElementById('calendar').getAttribute('data-event-week')
+  const listEventsMonth = document.getElementById('calendar').getAttribute('data-event-month')
 
   $('#calendar').fullCalendar({
     // put your options and callbacks here
@@ -22,7 +24,7 @@ export function showCalendar() {
       center: '',
       right:  'prev,next'
     },
-    events: JSON.parse(listEvents),
+    events: JSON.parse(listEventsDay),
     // events:
     // [
     //   {

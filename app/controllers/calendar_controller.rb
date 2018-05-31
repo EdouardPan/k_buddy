@@ -6,8 +6,9 @@ class CalendarController < ApplicationController
 
     @events = @appointments + @treatments
 
+    # Day
     @events_js = []
-    @events.first(100).each do |event|
+    @events.each do |event|
       data = nil
       if event.is_a?(Appointment)
         data = {
@@ -28,7 +29,14 @@ class CalendarController < ApplicationController
       end
     end
 
-    @events_js = @events_js.to_json
+    @events_day = @events_js.to_json
+
+    # Week
+    @events_week = ['test1', 'test2'].to_json
+
+    # Day
+    @events_month = ['test3', 'test4'].to_json
+
   end
 
   def show

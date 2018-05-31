@@ -4,7 +4,10 @@ import { menuInvisible } from '../components/menuinvisible';
 import $ from 'jquery';
 import { showCalendar } from '../components/calendar';
 
-$(document).ready(showCalendar());
+
+if (document.getElementById('calendar')){
+  $(document).ready(showCalendar());
+}
 menuVisible();
 menuInvisible();
 
