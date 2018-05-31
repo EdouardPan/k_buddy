@@ -14,7 +14,14 @@ class SymptomsController < ApplicationController
   end
 
   def create
+    @symptom = Symptom.new(symptom_params)
     authorize @symptom
+    @symptom.user = current_user
+    if @symptom.user.save
+      redirect_to symptom_path(@symptom)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -28,4 +35,15 @@ class SymptomsController < ApplicationController
   def destroy
     authorize @symptom
   end
+
+private
+
+  def symptom_params
+    params.require(:symptom).permit(:name, :intensity, :start_date, :end_date, :description)
+  end
 end
+
+
+
+
+

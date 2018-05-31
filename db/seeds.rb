@@ -208,12 +208,14 @@ puts "Creating Prescription and Treatments"
 
   puts days_number = (new_prescription.end_date.to_date.mjd - new_prescription.start_date.to_date.mjd)
 
+  drug = Drug.ids.sample
+
   days_number.times do |i|
     Treatment.create!(
       prescription_id: new_prescription.id,
-      drug_id: Drug.ids.sample,
+      drug_id: drug,
       taken: false,
-      take_time: new_prescription.start_date + i - 1 + poso[:take_time].to_f / 24,
+      take_time: new_prescription.start_date + i.day - 1.day + poso[:take_time].hour,
       quantity: poso[:quantity],
       user_id: 1
       )

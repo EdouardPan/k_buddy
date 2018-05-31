@@ -1,6 +1,6 @@
 <h1><%= Date.today.to_s(:long) %></h1>
 
-
+<h2>Your appointments today</h2>
 <div class="section-box list-box">
   <div class="row">
     <div id="medical-records list-box">
@@ -8,12 +8,14 @@
         <hr>
         <%= link_to(appointment_path(mr), class: "link") do %>
           <%= render 'shared/icons', object: mr %>
+          <%= mr.category%> <%= mr.start_date.strftime("%I:%M%p")%> - <%= mr.end_date.strftime("%I:%M%p")%>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
 
+<h2>Your treatments today</h2>
 <div class="section-box list-box">
   <div class="row">
     <div id="medical-records list-box">
@@ -21,6 +23,7 @@
         <hr>
         <%= link_to(medical_record_path(mr), class: "link") do %>
           <%= image_tag ("treatment-icon"), class: "list-icon" %>
+          <%= mr.drug.name%> <%= mr.take_time.strftime("%I:%M%p")%>
         <% end %>
       <% end %>
     </div>
