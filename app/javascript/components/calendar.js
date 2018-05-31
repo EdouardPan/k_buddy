@@ -5,26 +5,26 @@ export function showCalendar() {
 
   // page is now ready, initialize the calendar...
 
-  const listEventsDay = document.getElementById('calendar').getAttribute('data-event-day');
-  const listEventsWeek = document.getElementById('calendar').getAttribute('data-event-week');
-  const listEventsMonth = document.getElementById('calendar').getAttribute('data-event-month');
+  const listEventsDay = JSON.parse(document.getElementById('calendar').dataset.eventDay);
+  const listEventsWeek = JSON.parse(document.getElementById('calendar').dataset.eventWeek);
+  const listEventsMonth = JSON.parse(document.getElementById('calendar').dataset.eventMonth);
 
   $('#calendar').fullCalendar({
     // put your options and callbacks here
     themeSystem: 'bootstrap4',
     defaultView: 'month',
     locale: 'fr',
-    weekends: false, // will hide Saturdays and Sundays
+    weekends: true, // will hide Saturdays and Sundays
     height: 540,
     dayClick: function() {
       alert('To be customed to add info');
     },
     header: {
-      left:   'month, agendaWeek, agendaDay',
+      left:   'month, agendaDay',
       center: '',
       right:  'prev,next'
     },
-    events: JSON.parse(listEventsMonth),
+    events: listEventsMonth,
     eventRender: function(event, element) {
       if (event.iconA){
         element.find(".fc-title").prepend("<i class='fas fa-user-md'></i>");
@@ -32,11 +32,22 @@ export function showCalendar() {
       if (event.iconT){
         element.find(".fc-title").prepend("<i class='fas fa-pills'></i>");
       }
+    },
+    viewRender: function(view, element) {
+      console.log(view.type);
+      if (view.type === 'agendaDay'){
+        $('#calendar').fullCalendar('removeEvents');
+        $('#calendar').fullCalendar('renderEvents', listEventsDay);
+      }
+      if (view.type === 'agendaWeek'){
+        $('#calendar').fullCalendar('removeEvents');
+        $('#calendar').fullCalendar('renderEvents', listEventsWeek);
+      }
+      if (view.type === 'month'){
+        $('#calendar').fullCalendar('removeEvents');
+        $('#calendar').fullCalendar('renderEvents', listEventsMonth);
+      }
     }
-    // viewRender: function(view, element) {
-    //   $('#calendar').fullCalendar( ‘removeEvents’ [, idOrFilter ] )
-    //   $('#calendar').fullCalendar( ‘renderEvents’, events [, stick ] )
-    // }
 });
 
 }

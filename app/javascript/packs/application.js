@@ -8,6 +8,7 @@ import { showCalendar } from '../components/calendar';
 if (document.getElementById('calendar')){
   $(document).ready(showCalendar());
 }
+
 menuVisible();
 menuInvisible();
 
