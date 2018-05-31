@@ -4,21 +4,22 @@
 
 <div class="text-center">
   <%= form_for(@medical_professional, url: medical_professionals_path(event_type: @event_type))  do |f| %>
-
-
-
     <div class="form-inputs">
       <h4>Choisir parmi une liste existante</h4>
 
       <%= f.select(:location_name) do %>
-        <% MedicalProfessional.all.each do |mp| -%>
+        <% current_user.medical_professionals.each do |mp| %>
           <%= content_tag(:option, mp.location_name + " / " + mp.doctor, value: mp.id) %>
         <% end %>
       <% end %>
+      <%= f.submit "J'ai choisi", class: "submit-button" %>
     </div>
+  <% end %>
 
 
 
+
+    <%= form_for(@medical_professional, url: medical_professionals_path(event_type: @event_type))  do |f| %>
     <div class="form-inputs">
       <h4>Créer un nouvel agent médical</h4>
       <div class="form-group">
