@@ -4,6 +4,8 @@ import { menuInvisible } from '../components/menuinvisible';
 import $ from 'jquery';
 import { showCalendar } from '../components/calendar';
 
+import { modal } from '../components/modal';
+
 
 if (document.getElementById('calendar')){
   $(document).ready(showCalendar());
@@ -11,3 +13,6 @@ if (document.getElementById('calendar')){
 menuVisible();
 menuInvisible();
 
+if (document.querySelector('.photo-box')){
+  modal();
+}
