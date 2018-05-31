@@ -1,4 +1,4 @@
-<h2>Avec qui avez-vous rendez-vous ?</h2>
+<h2>Qui est votre médecin?</h2>
 
 
 
@@ -7,17 +7,48 @@
 
 
 
-    <h4>Choisir parmi une liste existante</h4>
+    <div class="form-inputs">
+      <h4>Choisir parmi une liste existante</h4>
 
-    <h4>Créer un nouvel agent médical</h4>
+      <%= f.select(:location_name) do %>
+        <% MedicalProfessional.all.each do |mp| -%>
+          <%= content_tag(:option, mp.location_name + " / " + mp.doctor, value: mp.id) %>
+        <% end %>
+      <% end %>
+    </div>
+
 
 
     <div class="form-inputs">
+      <h4>Créer un nouvel agent médical</h4>
+      <div class="form-group">
+      <%= f.label "Nom de l'établissement" %>
+      <%= f.text_field :location_name %>
+      </div>
 
+
+      <%= f.label "Addresse" %>
+      <%= f.text_field :address %>
+
+      <%= f.label "Phone" %>
+      <%= f.text_field :phone %>
+
+      <%= f.label "Spécialité" %>
+      <%= f.text_field :specialty %>
+
+      <%= f.label "Nom du docteur" %>
+      <%= f.text_field :doctor %>
+
+      <%= f.label "Email" %>
+      <%= f.text_field :email %>
     </div>
+
+
+
 
     <div class="form-actions">
       <%= f.submit "Ajouter un RDV", class: "submit-button" %>
     </div>
   <% end %>
+
 </div>
