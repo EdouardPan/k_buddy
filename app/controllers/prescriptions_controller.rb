@@ -22,7 +22,7 @@ class PrescriptionsController < ApplicationController
     @prescription.medical_professional = @medical_professional
 
     if @prescription.save
-      # We want to go to a drug picker.
+      redirect_to new_drug_path
     else
       render '/prescriptions/new'
     end
