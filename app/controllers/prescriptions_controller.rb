@@ -10,19 +10,45 @@ class PrescriptionsController < ApplicationController
 
   def new
     @prescription = Prescription.new
+    @drugs = Drug.all
     @medical_professional = MedicalProfessional.find(params[:medical_professional_id])
     authorize @prescription
   end
 
   def create
-    @prescription = Prescription.new(prescription_params)
-    authorize @prescription
+    prescription = Prescription.new(
+      medical_professional_id: params[:medical_professional_id],
+      start_date: params[:prescription][:start_date],
+      end_date: params[:prescription][:end_date]
+      )
+    authorize prescription
 
-    @medical_professional = MedicalProfessional.find(params[:medical_professional_id])
-    @prescription.medical_professional = @medical_professional
+    if prescription.save
+      # Create the instances of treatement with the info we have.
+      this_date = prescription.start_date
+      duration = (prescription.end_date.to_date - this_date.to_date).to_i
+      duration.times do
+        # each treatement is in a hash iterate
+        counter = 1
+        params[:traitement_take_time].each do |k, v|
+          treatment = Treatment.new(
+            prescription_id: prescription.id,
+            drug_id: params[:drug],
+            take_time: DateTime.new(this_date.year, this_date.month, this_date.day, Time.parse(v).hour, Time.parse(v).min),
+            quantity: params[:traitement_quantity]["quantity#{counter}"],
+            user_id: current_user.id)
+          unless treatment.save
+            render '/prescriptions/new'
+          end
+          counter += 1
+        end
+        this_date += 1.day
+      end
+      redirect_to root_path
 
-    if @prescription.save
-      # We want to go to a drug picker.
+      # treatement = Treatement.new
+        # individual_treatement = prescription.end_date - prescription.start_date * the length of the take array
+        # individual_treatement.times do treatement put this in an array that can be passed into the view
     else
       render '/prescriptions/new'
     end
@@ -45,5 +71,6 @@ class PrescriptionsController < ApplicationController
 
   def prescription_params
     params.require(:prescription).permit(:start_date, :end_date, :photos)
+    # how to add multiple params?
   end
 end

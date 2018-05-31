@@ -1,11 +1,25 @@
 <h2>Créer une nouvelle ordonnance</h2>
 
-<%= simple_form_for [@medical_professional, @prescription] do |f| %>
+<%#= simple_form_for [@medical_professional, @prescription] do |f| %>
   <!-- Needs a space for this nesting to work-->
-  <%= f.label "Date du début" %>
-  <%= f.input_field :start_date, as: :date, html5: true %>
+  <%#= f.label "Date du début" %>
+  <%#= f.input_field :start_date, as: :date, html5: true %>
   <!-- Need to say that it is a date -->
-  <%= f.label "Date de fin" %>
-  <%= f.input_field :end_date, as: :date, html5: true %>
-  <%= f.submit "Valider", class: "submit-button" %>
+  <%#= f.label "Date de fin" %>
+  <%#= f.input_field :end_date, as: :date, html5: true %>
+  <%#= f.submit "Valider", class: "submit-button" %>
+<%# end %>
+
+<%= form_tag medical_professional_prescriptions_path do %>
+<%#= select_tag  %>
+
+<%= date_field(:prescription, :start_date) %>
+<%= date_field(:prescription, :end_date) %>
+<%= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }) %>
+<%= time_field(:traitement_take_time, "take_time1") %>
+<%= number_field(:traitement_quantity, "quantity1") %>
+<%= time_field(:traitement_take_time, "take_time2") %>
+<%= number_field(:traitement_quantity, "quantity2") %>
+
+<%= submit_tag "Valider", class: "submit-button" %>
 <% end %>
