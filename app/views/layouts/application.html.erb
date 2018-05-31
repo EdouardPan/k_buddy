@@ -15,7 +15,7 @@
         <%= render 'shared/header' %>
         <%= yield %>
       </div>
-      <% unless current_page?(root_path) %>
+      <% unless current_page?(root_path) || !user_signed_in? %>
         <div class="mobile-screen-navbar">
          <%= render 'shared/navbar' %>
         </div>
