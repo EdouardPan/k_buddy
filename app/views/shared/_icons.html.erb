@@ -1,7 +1,7 @@
-<% if object.category == "Médecin" %>
-  <%= image_tag ("doctor"), class: "list-icon" %>
+<% if object.category == "Consultation Médicale" %>
+  <%= image_tag ("doctor.png"), class: "list-icon" %>
 <% elsif object.category == "Imagerie"%>
-  <%= image_tag ("imagery"), class: "list-icon" %>
+  <%= image_tag ("imagery.png"), class: "list-icon" %>
 <% elsif object.category == "Prise de Sang"%>
   <%= image_tag ("blood"), class: "list-icon" %>
 <% elsif object.category == "Médicament" %>
@@ -21,5 +21,5 @@
 <% elsif object.category == "Antécédents Familiales" %>
   <%= image_tag ("dna"), class: "list-icon" %>
 <% else %>
-  <%= image_tag ("autre"), class: "list-icon" %>
+  <%= image_tag ("autre.png"), class: "list-icon" %>
 <% end %>

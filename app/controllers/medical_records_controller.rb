@@ -3,7 +3,10 @@ class MedicalRecordsController < ApplicationController
 
   def index
     @medical_records = policy_scope(MedicalRecord)
-    @medical_records = MedicalRecord.all
+
+    if params[:query].present?
+      @medical_records = @medical_records.search(params[:query])
+    end
   end
 
   def show
@@ -38,6 +41,8 @@ class MedicalRecordsController < ApplicationController
   def destroy
     authorize @medical_record
   end
+
+
 
   private
 
