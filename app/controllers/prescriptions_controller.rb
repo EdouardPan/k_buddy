@@ -10,6 +10,7 @@ class PrescriptionsController < ApplicationController
 
   def new
     @prescription = Prescription.new
+    @medical_professional = MedicalProfessional.find(params[:medical_professional_id])
     authorize @prescription
   end
 
@@ -18,12 +19,9 @@ class PrescriptionsController < ApplicationController
     authorize @prescription
 
     @medical_professional = MedicalProfessional.find(params[:medical_professional_id])
-    authorize medical_professional
-
     @prescription.medical_professional = @medical_professional
 
-    if @Prescription.save
-      raise
+    if @prescription.save
       # We want to go to a drug picker.
     else
       render '/prescriptions/new'
