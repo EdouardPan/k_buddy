@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :symptoms, dependent: :destroy
   has_many :treatments, dependent: :destroy
   has_many :appointments, dependent: :destroy
+  has_many :medical_professionals, through: :appointments
+  # There is no belongs_to through. Must be a has_many through.
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

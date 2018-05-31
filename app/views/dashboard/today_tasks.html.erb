@@ -1,1 +1,33 @@
-<h1>HEY</h1>
+<h1><%= Date.today.to_s(:long) %></h1>
+
+
+<div class="section-box list-box">
+  <div class="row">
+    <div id="medical-records list-box">
+      <% @appointments.each do |mr| %>
+        <hr>
+        <%= link_to(appointment_path(mr), class: "link") do %>
+          <%= render 'shared/icons', object: mr %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="section-box list-box">
+  <div class="row">
+    <div id="medical-records list-box">
+      <% @treatments.each do |mr| %>
+        <hr>
+        <%= link_to(medical_record_path(mr), class: "link") do %>
+          <%= image_tag ("treatment-icon"), class: "list-icon" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
