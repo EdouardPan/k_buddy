@@ -1,30 +1,39 @@
 // Sizes
 
 h1 {
-  font-size: 43px;
-  margin: 0;
+  font-size: 38px;
   color: $dark-blue;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 h2 {
   font-size: 30px;
+  margin: 0;
 }
+
+
 
 h3 {
   font-size: 25px;
+  margin: 0;
+
 }
 
 h4 {
-
+  font-size: 18px;
+  margin: 0;
 }
 
 h5 {
+  margin: 0;
 
 }
 
 h6 {
-
+  font-size: 15px;
+  font-weight: regular;
+  margin: 0;
 }
 
 p {
@@ -61,6 +70,7 @@ em {
 .mobile-screen-container {
   flex-grow: 1;
   overflow: scroll;
+  position: relative;
 }
 
 .mobile-screen-navbar {

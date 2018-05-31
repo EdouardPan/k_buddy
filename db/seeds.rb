@@ -11,38 +11,37 @@ MedicalProfessional.destroy_all
 
 puts 'Creating medical records...'
   medical_record_1 = MedicalRecord.new(
-    record_date: DateTime.new(2017,9,14,8),
-    title: "record 1",
-    category: "Compte Rendu",
+    record_date: DateTime.new(2012,9,14,8),
+    title: "Pneumothorax",
+    category: "Opération",
     user_id: "1"
   )
   medical_record_1.save!
 
   medical_record_2 = MedicalRecord.new(
-    record_date: DateTime.new(2017,10,14,8),
-    title: "record 2",
-    category: "Imagerie",
+    record_date: DateTime.new(2009,10,14,8),
+    title: "Eczéma",
+    category: "Antécédent Familial",
     user_id: "1"
   )
   medical_record_2.save!
 
   medical_record_3 = MedicalRecord.new(
-    record_date: DateTime.new(2017,11,14,8),
-    title: "record 3",
+    record_date: DateTime.new(2012,11,14,8),
+    title: "Examen Prise de Sang 2012",
     category: "Prise de Sang",
     user_id: "1"
   )
   medical_record_3.save!
 
   medical_record_4 = MedicalRecord.new(
-    record_date: DateTime.new(2017,12,14,8),
-    title: "record 4",
-    category: "Compte Rendu",
+    record_date: DateTime.new(2010,12,14,8),
+    title: "Consultation ORL",
+    category: "Autre",
     user_id: "1"
   )
   medical_record_4.save!
 puts 'Finished!'
-
 
 # Seeds for Medical Professionals
 
@@ -179,7 +178,7 @@ puts 'Creating Appointments...'
   Appointment.create!(
     start_date: DateTime.new(2018,month,day, start_time),
     end_date: DateTime.new(2018,month,day, end_time),
-    category: ["Imagerie", "Radiologie", "Médecin spécialiste"].sample,
+    category: ["Imagerie", "Médecin", "Kinésithérapie"].sample,
     description: "Important",
     user_id: 1,
     medical_professional_id: MedicalProfessional.ids.sample
@@ -189,7 +188,7 @@ end
 puts 'Finished!'
 
 
-# Seeds for Prescription
+# Seeds for Prescription and treatment
 
 puts "Creating Prescription and Treatments"
 20.times do
@@ -207,13 +206,16 @@ puts "Creating Prescription and Treatments"
     medical_professional_id: MedicalProfessional.ids.sample
 )
 
-  puts days_number = (new_prescription.end_date - new_prescription.start_date).to_i
+  puts days_number = (new_prescription.end_date.to_date.mjd - new_prescription.start_date.to_date.mjd)
+
+  drug = Drug.ids.sample
+
   days_number.times do |i|
     Treatment.create!(
       prescription_id: new_prescription.id,
-      drug_id: Drug.ids.sample,
+      drug_id: drug,
       taken: false,
-      take_time: new_prescription.start_date + i - 1 + poso[:take_time].to_f / 24,
+      take_time: new_prescription.start_date + i.day - 1.day + poso[:take_time].hour,
       quantity: poso[:quantity],
       user_id: 1
       )
@@ -221,8 +223,6 @@ puts "Creating Prescription and Treatments"
 end
 
 puts "Finished!"
-
-
 
 
 

@@ -8,13 +8,13 @@
   <%= link_to new_medical_record_path, class: "submit-button" do %>
     <i class="fas fa-plus"></i> dossier médical
   <% end %>
-  <%= link_to calendar_index_path, class: "submit-button" do %>
+  <%= link_to    new_medical_professional_path(event_type: 'treatment'), class: "submit-button" do %>
     <i class="fas fa-plus"></i> traitement
   <% end %>
   <%= link_to new_symptom_path, class: "submit-button" do %>
     <i class="fas fa-plus"></i> symptôme
   <% end %>
-  <%= link_to new_medical_professional_path, class: "submit-button" do %>
+  <%= link_to new_medical_professional_path(event_type: 'appointment'), class: "submit-button" do %>
     <i class="fas fa-plus"></i> rendez-vous
   <% end %>
 </div>
