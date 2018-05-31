@@ -15,7 +15,7 @@
 
 <%= date_field(:prescription, :start_date) %>
 <%= date_field(:prescription, :end_date) %>
-<%= select_tag(:drug, options_for_select([["Doliprane", 1], ["Opium", 2]], 1)) %>
+<%= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }) %>
 <%= time_field(:traitement_take_time, "take_time1") %>
 <%= number_field(:traitement_quantity, "quantity1") %>
 <%= time_field(:traitement_take_time, "take_time2") %>
