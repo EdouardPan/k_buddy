@@ -10,12 +10,13 @@ class MedicalProfessionalsController < ApplicationController
 
   def new
     @event_type = params[:event_type]
+    @medical_professionals = policy_scope(MedicalProfessional)
     @medical_professional = MedicalProfessional.new
     authorize @medical_professional
   end
 
   def create
-    @medical_professional = MedicalProfessional.new
+    @medical_professional = MedicalProfessional.new(medical_professional_params)
     authorize @medical_professional
     if @medical_professional.save
       if params[:event_type] == "appointment"
@@ -38,5 +39,11 @@ class MedicalProfessionalsController < ApplicationController
 
   def destroy
     authorize @medical_professional
+  end
+
+  private
+
+  def medical_professional_params
+    params.require(:medical_professional).permit(:location_name, :address, :phone, :specialty, :doctor, :email)
   end
 end
