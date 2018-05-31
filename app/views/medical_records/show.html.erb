@@ -1,14 +1,42 @@
-<%= link_to(medical_records_path, class: "link") do %>
-  <i class="fa fa-caret-left" aria-hidden="true"></i> Retour
-<% end %>
-
-
-<div class="show-title">
-  <h1><%= @medical_record.title.capitalize %></h1>
+<div class="title-show">
+  <h3 class="text-center">Historique Médical</h3>
+  <h2 class="text-center category-show"><%= @medical_record.category.upcase %></h2>
 </div>
 
-<div class="show-gallery">
+<div class="show-icon text-center">
+  <%= render 'shared/icons', object: @medical_record %>
+</div>
+
+<div class="separation-box text-center">
+  <p>Date de l'évènement:</p>
+  <h4><%= @medical_record.record_date.to_s(:long) %></h4>
+  <br>
+  <p>Description:</p>
+  <h6>
+    <% if @medical_record.description.nil? %>
+      "Pas de description"
+    <% else %>
+      <%= @medical_record.description %>
+    <% end %>
+  </h6>
+</div>
+
+<div class="photo-box text-center">
   <% @medical_record.photos.each do |p| %>
-    <%= cl_image_tag(p.url, class: "photos-resize") %>
+    <a href="#" class="pop">
+      <%= cl_image_tag p.url, width: 150 %>
+    </a>
   <% end %>
+
+  <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>

@@ -45,3 +45,36 @@
   display: flex;
   justify-content: space-between;
 }
+
+// Shows
+
+.title-show {
+  height: 180px;
+}
+
+.category-show {
+  margin-top: 50px;
+}
+
+.subtitle-show {
+  margin-top: 20px;
+  color: $dark-blue;
+}
+
+.separation-box {
+  padding: 20px 0;
+  margin-top: 20px;
+  background: rgba(120, 210, 213, 0.2);
+  box-shadow: 0px 2px 6px rgba(53, 129, 175, 0.7);
+  p {
+    margin: 0;
+  }
+  h4 {
+    margin: 0;
+  }
+}
+
+.photo-box {
+  margin-top: 30px;
+
+}
