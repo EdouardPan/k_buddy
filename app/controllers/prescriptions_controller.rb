@@ -15,7 +15,9 @@ class PrescriptionsController < ApplicationController
   end
 
   def create
-    @prescription = Prescription.new(prescription_params)
+    raise
+    @prescription = Prescription.new(medical_professional_id: params[:medical_professional_id],
+      )
     authorize @prescription
 
     @medical_professional = MedicalProfessional.find(params[:medical_professional_id])
