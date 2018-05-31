@@ -23,6 +23,11 @@ class MedicalRecordsController < ApplicationController
     authorize @medical_record
     @medical_record.user = current_user
     if @medical_record.save
+      params[:medical_record][:url].each do |u|
+        new_photo = Photo.new(url: u)
+        new_photo.medical_record = @medical_record
+        new_photo.save
+      end
       redirect_to medical_record_path(@medical_record)
     else
       render :new

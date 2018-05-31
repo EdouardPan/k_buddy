@@ -1,0 +1,12 @@
+<h2>Ajouter un RDV</h2>
+
+<%= simple_form_for [@medical_professional, @appointment] do |f| %>
+    <%= f.input :start_date, as: :datetime, html5: true %>
+    <%= f.input :end_date, as: :datetime, html5: true %>
+    <%= f.input :category %>
+    <%= f.input :description %>
+
+    <%= f.submit "Ajouter le RDV", class: "form-actions submit-button" %>
+<% end %>
+
+
