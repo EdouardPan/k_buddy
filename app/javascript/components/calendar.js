@@ -5,81 +5,50 @@ export function showCalendar() {
 
   // page is now ready, initialize the calendar...
 
-  const listEventsDay = document.getElementById('calendar').getAttribute('data-event-day')
-  const listEventsWeek = document.getElementById('calendar').getAttribute('data-event-week')
-  const listEventsMonth = document.getElementById('calendar').getAttribute('data-event-month')
+  const listEventsDay = JSON.parse(document.getElementById('calendar').dataset.eventDay);
+  const listEventsWeek = JSON.parse(document.getElementById('calendar').dataset.eventWeek);
+  const listEventsMonth = JSON.parse(document.getElementById('calendar').dataset.eventMonth);
 
   $('#calendar').fullCalendar({
     // put your options and callbacks here
     themeSystem: 'bootstrap4',
     defaultView: 'month',
     locale: 'fr',
-    weekends: false, // will hide Saturdays and Sundays
+    weekends: true, // will hide Saturdays and Sundays
     height: 540,
     dayClick: function() {
-     alert('To be customed to add info');
+      alert('To be customed to add info');
     },
     header: {
-      left:   'month, agendaWeek, agendaDay',
+      left:   'month, agendaDay',
       center: '',
       right:  'prev,next'
     },
-    events: JSON.parse(listEventsDay),
-    // events:
-    // [
-    //   {
-    //     title  : '',
-    //     start  : '2018-05-30',
-    //     icon : 'fas_fa-user-md'
-    //   },
-    //   {
-    //     title  : '',
-    //     start  : '2018-05-30T12:00:00',
-    //     end    : '2018-05-30T12:30:00',
-    //     icon : 'fas_fa-user-md'
-    //   },
-    //   {
-    //     title  : '',
-    //     start  : '2018-05-30T08:00:00',
-    //     end    : '2018-05-30T08:30:00',
-    //     icon : 'fas_fa-user-md'
-    //   },      {
-    //     title  : '',
-    //     start  : '2018-05-30T14:00:00',
-    //     end    : '2018-05-30T14:30:00',
-    //     icon : 'fas_fa-user-md'
-    //   },
-    //   {
-    //     title  : '',
-    //     start  : '2018-05-30T16:00:00',
-    //     end    : '2018-05-30T16:30:00',
-    //     icon : 'fas_fa-capsules'
-    //   },
-    //   {
-    //     title  : 'event2',
-    //     start  : '2018-05-24T12:00:00',
-    //     end    : '2018-05-24T12:30:00',
-    //     icon : 'fas_fa-user-md'
-    //   },
-    //   {
-    //     title  : 'event3',
-    //     start  : '2018-06-01T12:30:00',
-    //     allDay : false, // will make the time show
-    //     icon : 'fas_fa-capsules'
-    //   }
-    // ],
+    events: listEventsMonth,
     eventRender: function(event, element) {
-      if (event.icon) {
-        const icon = event.icon.replace('_', ' ');
-        element.find(".fc-title").prepend(`<i class='${icon}'></i>`);
+      if (event.iconA){
+        element.find(".fc-title").prepend("<i class='fas fa-user-md'></i>");
+      }
+      if (event.iconT){
+        element.find(".fc-title").prepend("<i class='fas fa-pills'></i>");
       }
     },
-    // viewRender: function(view, element) {
-    //   $('#calendar').fullCalendar( ‘removeEvents’ [, idOrFilter ] )
-    //   $('#calendar').fullCalendar( ‘renderEvents’, events [, stick ] )
-    // }
-
-  })
+    viewRender: function(view, element) {
+      console.log(view.type);
+      if (view.type === 'agendaDay'){
+        $('#calendar').fullCalendar('removeEvents');
+        $('#calendar').fullCalendar('renderEvents', listEventsDay);
+      }
+      if (view.type === 'agendaWeek'){
+        $('#calendar').fullCalendar('removeEvents');
+        $('#calendar').fullCalendar('renderEvents', listEventsWeek);
+      }
+      if (view.type === 'month'){
+        $('#calendar').fullCalendar('removeEvents');
+        $('#calendar').fullCalendar('renderEvents', listEventsMonth);
+      }
+    }
+});
 
 }
 

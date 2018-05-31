@@ -6,36 +6,76 @@ class CalendarController < ApplicationController
 
     @events = @appointments + @treatments
 
+
+    # Month
+    @events_grouped = @events.group_by do |event|
+      event.is_a?(Appointment) ? event.start_date.to_date : event.take_time.to_date
+    end
+
+    @events_js = []
+    @events_grouped.each do |date_event|
+      a = date_event[1].any? { |obj| obj.is_a?(Appointment) }
+      t = date_event[1].any? { |obj| obj.is_a?(Treatment) }
+      data = {
+        title: '',
+        start: date_event[0].to_date,
+        iconA: a,
+        iconT: t
+      }
+      @events_js << data
+    end
+
+    @events_month = @events_js
+
+    # Week
+    @events_js = []
+    @events.each do |event|
+      data = nil
+      if event.is_a?(Appointment)
+        data = {
+          title: event.category,
+          start: event.start_date.strftime("%Y-%m-%dT%H:%M:%S"),
+          end: event.end_date.strftime("%Y-%m-%dT%H:%M:%S"),
+          iconA: true
+        }
+        @events_js << data
+      else
+        data = {
+          title: event.drug.name,
+          start: event.take_time.strftime("%Y-%m-%dT%H:%M:%S"),
+          end: (event.take_time + 0.5 / 24).strftime("%Y-%m-%dT%H:%M:%S"),
+          iconT: true
+        }
+        @events_js << data
+      end
+    end
+
+    @events_week = @events_js
+
     # Day
     @events_js = []
     @events.each do |event|
       data = nil
       if event.is_a?(Appointment)
         data = {
-          title: "A",
+          title: "#{event.category} at #{event.medical_professional.location_name}",
           start: event.start_date.strftime("%Y-%m-%dT%H:%M:%S"),
           end: event.end_date.strftime("%Y-%m-%dT%H:%M:%S"),
-          icon: "fas_fa-user-md"
+          iconA: true
         }
         @events_js << data
       else
         data = {
-          title: "T",
+          title: "#{event.drug.name} - #{event.quantity}",
           start: event.take_time.strftime("%Y-%m-%dT%H:%M:%S"),
           end: (event.take_time + 0.5 / 24).strftime("%Y-%m-%dT%H:%M:%S"),
-          icon: "fas_fa-capsules"
+          iconT: true
         }
         @events_js << data
       end
     end
 
-    @events_day = @events_js.to_json
-
-    # Week
-    @events_week = ['test1', 'test2'].to_json
-
-    # Day
-    @events_month = ['test3', 'test4'].to_json
+    @events_day = @events_js
 
   end
 
