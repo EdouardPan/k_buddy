@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_163937) do
+ActiveRecord::Schema.define(version: 2018_05_31_121819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2018_05_30_163937) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "photos"
     t.index ["medical_professional_id"], name: "index_appointments_on_medical_professional_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
@@ -56,8 +55,19 @@ ActiveRecord::Schema.define(version: 2018_05_30_163937) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "photos"
     t.index ["user_id"], name: "index_medical_records_on_user_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "url"
+    t.bigint "appointment_id"
+    t.bigint "medical_record_id"
+    t.bigint "prescription_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_id"], name: "index_photos_on_appointment_id"
+    t.index ["medical_record_id"], name: "index_photos_on_medical_record_id"
+    t.index ["prescription_id"], name: "index_photos_on_prescription_id"
   end
 
   create_table "prescriptions", force: :cascade do |t|
@@ -66,7 +76,6 @@ ActiveRecord::Schema.define(version: 2018_05_30_163937) do
     t.bigint "medical_professional_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "photos"
     t.index ["medical_professional_id"], name: "index_prescriptions_on_medical_professional_id"
   end
 
@@ -121,6 +130,9 @@ ActiveRecord::Schema.define(version: 2018_05_30_163937) do
   add_foreign_key "appointments", "medical_professionals"
   add_foreign_key "appointments", "users"
   add_foreign_key "medical_records", "users"
+  add_foreign_key "photos", "appointments"
+  add_foreign_key "photos", "medical_records"
+  add_foreign_key "photos", "prescriptions"
   add_foreign_key "prescriptions", "medical_professionals"
   add_foreign_key "symptoms", "users"
   add_foreign_key "treatments", "drugs"

@@ -1,5 +1,6 @@
 class MedicalRecord < ApplicationRecord
   belongs_to :user
+  has_many :photos
   include PgSearch
 
   pg_search_scope :search,
