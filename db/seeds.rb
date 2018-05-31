@@ -205,9 +205,9 @@ puts "Creating Prescription and Treatments"
     end_date: DateTime.new(2018,m2,rand(1..28)),
     medical_professional_id: MedicalProfessional.ids.sample
 )
-  puts new_prescription.end_date
-  puts new_prescription.start_date
-  puts days_number = (new_prescription.end_date - new_prescription.start_date).to_i
+
+  puts days_number = (new_prescription.end_date.to_date.mjd - new_prescription.start_date.to_date.mjd)
+
   days_number.times do |i|
     Treatment.create!(
       prescription_id: new_prescription.id,
