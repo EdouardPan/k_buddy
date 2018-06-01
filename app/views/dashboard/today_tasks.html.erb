@@ -1,35 +1,28 @@
 <h1><%= Date.today.to_s(:long) %></h1>
 
 
-<h2>Consultations du jour</h2>
+<h2>Consultations et traitements du jour</h2>
 <div class="section-box list-box">
   <div class="row">
     <div id="medical-records list-box">
-      <% @appointments.each do |mr| %>
+      <% @events_grouped.each do |mr| %>
         <hr>
-        <%= link_to(appointment_path(mr), class: "link") do %>
-          <%= render 'shared/icons', object: mr %>
-          <%= mr.category%> <%= mr.start_date.strftime("%I:%M%p")%> - <%= mr.end_date.strftime("%I:%M%p")%>
+        <% if mr.is_a?(Appointment) %>
+          <%= link_to(appointment_path(mr), class: "link") do %>
+            <%= render 'shared/icons', object: mr %>
+            <%= mr.category%> <%= mr.sorting_date.strftime("%I:%M%p")%> - <%= mr.end_date.strftime("%I:%M%p")%>
+          <% end %>
+        <% else %>
+          <%= link_to(prescription_path(mr.prescription), class: "link") do %>
+            <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
+            <%= mr.drug.name%> <%= mr.take_time.strftime("%I:%M%p")%>
+          <% end %>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
 
-<h2>Médicaments du jour</h2>
-<div class="section-box list-box">
-  <div class="row">
-    <div id="medical-records list-box">
-      <% @treatments.each do |mr| %>
-        <hr>
-        <%= link_to(medical_record_path(mr), class: "link") do %>
-          <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
-          <%= mr.drug.name%> <%= mr.take_time.strftime("%I:%M%p")%>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
 
 
 

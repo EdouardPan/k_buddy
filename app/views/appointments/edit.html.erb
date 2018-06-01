@@ -1,0 +1,16 @@
+<h2>Modifier votre RDV</h2>
+
+<%= simple_form_for [@medical_professional, @appointment] do |f| %>
+    <%= f.input :start_date, as: :datetime, html5: true %>
+    <%= f.input :end_date, as: :datetime, html5: true %>
+    <%= f.input :category %>
+    <%= f.input :description %>
+
+    <%= f.label "Ajouter les pièces jointes" %>
+    <%= f.file_field :url, multiple: true %>
+
+
+    <%= f.submit "Modifier", class: "form-actions submit-button" %>
+<% end %>
+
+

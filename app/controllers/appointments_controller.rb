@@ -16,10 +16,11 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+    @medical_professional = MedicalProfessional.find(params[:medical_professional_id])
     @appointment = Appointment.new(appointment_params)
     authorize @appointment
+    @appointment.medical_professional = @medical_professional
     @appointment.user = current_user
-    @appointment.medical_professional = MedicalProfessional.find(params[:medical_professional_id])
     if @appointment.save
       redirect_to calendar_index_path
     else
@@ -27,16 +28,34 @@ class AppointmentsController < ApplicationController
     end
   end
 
+
+
+
   def edit
+    @appointment = Appointment.find(params[:id])
     authorize @appointment
   end
 
   def update
+    @appointment = Appointment.find(params[:id])
     authorize @appointment
+    if @appointment.update(appointment_params)
+      params[:appointment][:url].each do |u|
+        new_photo = Photo.new(url: u)
+        new_photo.appointment = @appointment
+        new_photo.save
+      end
+      redirect_to appointment_path(@appointment)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @appointment = Appointment.find(params[:id])
     authorize @appointment
+    @appointment.destroy
+    redirect_to calendar_index_path
   end
 
   private

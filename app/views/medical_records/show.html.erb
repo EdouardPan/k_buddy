@@ -13,7 +13,7 @@
   <br>
   <p>Description:</p>
   <h6>
-    <% if @medical_record.description.nil? %>
+    <% if @medical_record.description == "" %>
       "Pas de description"
     <% else %>
       <%= @medical_record.description %>

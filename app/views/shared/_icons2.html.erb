@@ -1,0 +1,25 @@
+<% if object == "Consultation Médicale" %>
+  <%= image_tag ("doctor.png"), class: "list-icon" %>
+<% elsif object == "Imagerie"%>
+  <%= image_tag ("imagery.png"), class: "list-icon" %>
+<% elsif object == "Prise de Sang"%>
+  <%= image_tag ("blood.png"), class: "list-icon" %>
+<% elsif object == "Médicament" %>
+  <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
+<% elsif object == "Chimiothérapie" %>
+  <%= image_tag ("chimio.png"), class: "list-icon" %>
+<% elsif object == "Radiothérapie" %>
+  <%= image_tag ("radio.png"), class: "list-icon" %>
+<% elsif object == "Opération" %>
+  <%= image_tag ("surgery.png"), class: "list-icon" %>
+<% elsif object == "Kinésithérapie" %>
+  <%= image_tag ("recommendation-icon.png"), class: "list-icon" %>
+<% elsif object == "Vaccin" %>
+  <%= image_tag ("syringe.png"), class: "list-icon" %>
+<% elsif object == "Maladie Infantile" %>
+  <%= image_tag ("baby.png"), class: "list-icon" %>
+<% elsif object == "Antécédents Familiales" %>
+  <%= image_tag ("dna.png"), class: "list-icon" %>
+<% else %>
+  <%= image_tag ("autre.png"), class: "list-icon" %>
+<% end %>

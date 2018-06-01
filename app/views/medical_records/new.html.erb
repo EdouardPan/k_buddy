@@ -16,7 +16,7 @@
 
     <div class="form-group ">
       <%= f.label "Type de document" %>
-      <%= f.text_field :category %>
+      <%= f.select :category, options_for_select(["Consultation Médicale", "Opération", "Vaccin", "Maladie Infantile", "Antécédent Familial", "Prise de Sang", "Autre"]) %>
     </div>
 
     <div class="form-group ">
