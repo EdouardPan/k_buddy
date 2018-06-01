@@ -5,6 +5,7 @@ class MedicalProfessionalsController < ApplicationController
   end
 
   def show
+    @medical_professional = MedicalProfessional.find(params[:id])
     authorize @medical_professional
   end
 
@@ -30,15 +31,25 @@ class MedicalProfessionalsController < ApplicationController
   end
 
   def edit
+    @medical_professional = MedicalProfessional.find(params[:id])
     authorize @medical_professional
   end
 
   def update
+    @medical_professional = MedicalProfessional.find(params[:id])
     authorize @medical_professional
+    if @medical_professional.update(medical_professional_params)
+      redirect_to medical_professional_path(@medical_professional)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @medical_professional = MedicalProfessional.find(params[:id])
     authorize @medical_professional
+    @medical_professional.destroy
+    redirect_to medical_professionals_path
   end
 
   private

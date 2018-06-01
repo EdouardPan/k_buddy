@@ -1,0 +1,9 @@
+<h1>Ma liste d'agents médicaux</h1>
+
+
+<% @medical_professionals.each do |mp| %>
+  <%= link_to(medical_professional_path(mp), class: "link") do %>
+    <hr>
+    <%= mp.location_name %> • <%= mp.doctor %>
+  <% end %>
+<% end %>
