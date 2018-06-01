@@ -16,8 +16,8 @@ export function showCalendar() {
     locale: 'fr',
     weekends: true, // will hide Saturdays and Sundays
     height: 540,
-    dayClick: function() {
-      alert('To be customed to add info');
+    dayClick: function(date) {
+      $('#calendar').fullCalendar('changeView', 'agendaDay', date);
     },
     header: {
       left:   'month, agendaDay',
@@ -37,7 +37,6 @@ export function showCalendar() {
       }
     },
     viewRender: function(view, element) {
-      console.log(view.type);
       if (view.type === 'agendaDay'){
         $('#calendar').fullCalendar('removeEvents');
         $('#calendar').fullCalendar('renderEvents', listEventsDay);
