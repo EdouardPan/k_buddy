@@ -21,7 +21,7 @@ export function showCalendar() {
     },
     header: {
       left:   'month, agendaDay',
-      center: '',
+      center: 'title',
       right:  'prev,next'
     },
     events: listEventsMonth,
@@ -31,6 +31,9 @@ export function showCalendar() {
       }
       if (event.iconT){
         element.find(".fc-title").prepend("<i class='fas fa-pills'></i>");
+      }
+      if (event.iconS){
+        element.find(".fc-title").prepend("<i class='fas fa-cloud'></i>");
       }
     },
     viewRender: function(view, element) {
