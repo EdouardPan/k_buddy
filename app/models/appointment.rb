@@ -7,4 +7,8 @@ class Appointment < ApplicationRecord
   validates :end_date, presence: true
   validates :category, presence: true
 
+  def sorting_date
+    start_date
+  end
+
 end

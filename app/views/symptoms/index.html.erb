@@ -15,11 +15,15 @@
     <div id="list-box">
       <% @symptoms.reverse.each do |mr| %>
         <hr>
-        <p><%= mr.start_date.to_s(:long) %> - <%= mr.end_date.to_s(:long)%></p>
-        <p><%= mr.name%></p>
-        <p>intensité : <%= mr.intensity%></p>
-        <p><%= mr.description %></p>
+        <%= link_to(symptom_path(mr), class: "link") do %>
+          <p class="bleu"><%= mr.name%></p>
+          <p><%= mr.start_date.to_s(:long) %> - <%= mr.end_date.to_s(:long)%></p>
+          <p>intensité : <%= mr.intensity%></p>
+          <p><%= mr.description %></p>
+        <%end%>
       <% end %>
     </div>
   </div>
 </div>
+
+

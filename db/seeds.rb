@@ -94,41 +94,41 @@ puts "Finished!"
 puts 'Creating Symptoms'
   symptom_1 = Symptom.new(
   name: "Migraine",
-  intensity: "4",
+  intensity: 4,
   start_date: DateTime.new(2018,5,12,9),
   end_date: DateTime.new(2018,5,12,16),
   description: "Douleur pontuelle",
-  user_id: "1"
+  user: User.first
   )
 symptom_1.save!
 
   symptom_2 = Symptom.new(
   name: "Migraine",
-  intensity: "4",
+  intensity: 4,
   start_date: DateTime.new(2018,5,17,12),
   end_date: DateTime.new(2018,5,17,14),
   description: "Douleur pontuelle",
-  user_id: "1"
+  user: User.first
   )
 symptom_2.save!
 
  symptom_3 = Symptom.new(
   name: "Migraine",
-  intensity: "4",
+  intensity: 4,
   start_date: DateTime.new(2018,5,20,12),
   end_date: DateTime.new(2018,5,20,14),
   description: "Douleur pontuelle",
-  user_id: "1"
+  user: User.first
   )
 symptom_3.save!
 
 symptom_4 = Symptom.new(
   name: "Migraine",
-  intensity: "4",
+  intensity: 4,
   start_date: DateTime.new(2018,5,24,5),
   end_date: DateTime.new(2018,5,24,9),
   description: "Douleur pontuelle",
-  user_id: "1"
+  user: User.first
   )
 symptom_4.save!
 
@@ -171,8 +171,8 @@ puts 'Finished!'
 puts 'Creating Appointments...'
 
 20.times do
-  month = rand(1..12)
-  day = rand(1..28)
+  month = 6#rand(6..12)
+  day = 1#rand(1..28)
   start_time = rand(8..17)
   end_time = start_time + rand(1..3)
   Appointment.create!(
@@ -180,7 +180,7 @@ puts 'Creating Appointments...'
     end_date: DateTime.new(2018,month,day, end_time),
     category: ["Imagerie", "Médecin", "Kinésithérapie"].sample,
     description: "Important",
-    user_id: 1,
+    user: User.first,
     medical_professional_id: MedicalProfessional.ids.sample
   )
 end
