@@ -23,7 +23,7 @@
       <% @treatments.each do |mr| %>
         <hr>
         <%= link_to(medical_record_path(mr), class: "link") do %>
-          <%= image_tag ("treatment-icon"), class: "list-icon" %>
+          <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
           <%= mr.drug.name%> <%= mr.take_time.strftime("%I:%M%p")%>
         <% end %>
       <% end %>

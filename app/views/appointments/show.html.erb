@@ -17,7 +17,7 @@
   <br>
   <p>Description:</p>
   <h6>
-    <% if @appointment.description.nil? %>
+    <% if @appointment.description == "" %>
       "Pas de description"
     <% else %>
       <%= @appointment.description %>
