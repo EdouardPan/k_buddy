@@ -5,7 +5,9 @@ class PrescriptionsController < ApplicationController
   end
 
   def show
+    @prescription = Prescription.find(params[:id])
     authorize @prescription
+    @treatements = Treatment.all
   end
 
   def new

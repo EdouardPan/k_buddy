@@ -10,20 +10,15 @@
         <% if mr.is_a?(Appointment) %>
           <%= link_to(appointment_path(mr), class: "link") do %>
             <%= render 'shared/icons', object: mr %>
-            <%= mr.category%> <%= mr.sorting_date.strftime("%I:%M%p")%> <%= mr.end_date.strftime("%I:%M%p")%>
-            <%= raise %>
+            <%= mr.category%> <%= mr.sorting_date.strftime("%I:%M%p")%> - <%= mr.end_date.strftime("%I:%M%p")%>
           <% end %>
         <% else %>
-
+          <%= link_to(prescription_path(mr.prescription), class: "link") do %>
+            <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
+            <%= mr.drug.name%> <%= mr.take_time.strftime("%I:%M%p")%>
+          <% end %>
         <% end %>
       <% end %>
-      <%# @treatments.each do |mr| %>
-
-        <%#= link_to(medical_record_path(mr), class: "link") do %>
-          <%#= image_tag ("treatment-icon.png"), class: "list-icon" %>
-          <%#= mr.drug.name%> <%#= mr.take_time.strftime("%I:%M%p")%>
-        <%# end %>
-      <%# end %>
     </div>
   </div>
 </div>
