@@ -142,10 +142,11 @@ pattern = /[^\d^\s].+,/
 
 File.open('db/list_of_medications.txt', "r:ISO-8859-1").each do |line|
   match_data = line.match(pattern)
+  match_data = match_data.to_s.chop
   Drug.create(name: match_data)
 end
 
-Puts "Loaded drugs database"
+puts "Loaded drugs database"
 
 # puts 'Creating Drugs ...'
 #   drug_1 = Drug.new(
