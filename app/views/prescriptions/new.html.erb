@@ -17,6 +17,7 @@
 <%= date_field(:prescription, :start_date) %>
 <%= label_tag 'Date de fin' %>
 <%= date_field(:prescription, :end_date) %>
+<br>
 <%= label_tag 'Médicament' %>
 <%= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }) %>
 <br>

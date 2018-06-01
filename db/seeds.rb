@@ -7,7 +7,23 @@ Symptom.destroy_all
 Drug.destroy_all
 MedicalProfessional.destroy_all
 
-# Seeds for MedicalRecord
+# Seeds for Drugs
+
+puts "hello"
+drugs = ["Capecitabine", "Loperamide", "Smecta", "Vogalene", "Bicarbonate de Na", "Kytril", "Prednisone", "Emend", "Zarzio", "Decapeptyl", "Lidocaine", "Levocetirizine"]
+
+puts 'Creating Drugs ...'
+  drugs.each do |dr|
+    d = Drug.new(
+    name: dr,
+    category: "Anti Migraine",
+    description: "Soigne les migraines"
+    )
+    d.save!
+  end
+puts 'Finished!'
+
+#Seeds for MedicalRecord
 
 puts 'Creating medical records...'
   medical_record_1 = MedicalRecord.new(
@@ -134,38 +150,6 @@ symptom_4.save!
 
 puts 'Finished'
 
-# Seeds for Drugs
-
-puts 'Creating Drugs ...'
-  drug_1 = Drug.new(
-  name: "Doliprane",
-  category: "Anti Migraine",
-  description: "Soigne les migraines"
-  )
-drug_1.save!
-
-drug_2 = Drug.new(
-  name: "Smecta",
-  category: "Anti Migraine",
-  description: "Soigne les migraines"
-  )
-drug_2.save!
-
-drug_3 = Drug.new(
-  name: "Ibuprofene",
-  category: "Anti Migraine",
-  description: "Soigne les migraines"
-  )
-drug_3.save!
-
-drug_4 = Drug.new(
-  name: "Immodium",
-  category: "Anti Migraine",
-  description: "Soigne les migraines"
-  )
-drug_4.save!
-puts 'Finished!'
-
 # Seeds for Appointments
 
 puts 'Creating Appointments...'
@@ -223,19 +207,5 @@ puts "Creating Prescription and Treatments"
 end
 
 puts "Finished!"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
