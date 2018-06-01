@@ -19,6 +19,13 @@ export function showCalendar() {
     dayClick: function(date) {
       $('#calendar').fullCalendar('changeView', 'agendaDay', date);
     },
+    eventClick: function(calEvent, jsEvent, view) {
+      console.log(view.type);
+      if (view.type === 'agendaDay'){
+        console.log(event.url);
+        window.open(event.url, "_self");
+      }
+    },
     header: {
       left:   'month, agendaDay',
       center: 'title',
