@@ -1,25 +1,38 @@
-<h2>Ajouter un fichier</h2>
+<div class="simple_form">
+  <h2>Ajouter un fichier</h2>
 
-<%= form_for(@medical_record) do |f| %>
+  <%= form_for(@medical_record) do |f| %>
 
   <div class="form-inputs">
-    <%= f.label "Date du document" %>
-    <%= f.date_field :record_date %>
+    <div class="form-group ">
+      <%= f.label "Date du document" %>
+      <%= f.date_field :record_date %>
+    </div>
 
-    <%= f.label "Titre du document" %>
-    <%= f.text_field :title %>
+    <div class="form-group ">
+      <%= f.label "Titre du document" %>
+      <%= f.text_field :title %>
+    </div>
 
-    <%= f.label "Type de document" %>
-    <%= f.text_field :category %>
+    <div class="form-group ">
+      <%= f.label "Type de document" %>
+      <%= f.text_field :category %>
+    </div>
 
-    <%= f.label "Notes" %>
-    <%= f.text_field :description %>
+    <div class="form-group ">
+      <%= f.label "Notes" %>
+      <br>
+      <%= f.text_field :description %>
+    </div>
 
-    <%= f.label "Ajouter les pièces jointes" %>
-    <%= f.file_field :url, multiple: true %>
+    <div class="form-group ">
+      <%= f.label "Ajouter les pièces jointes" %>
+      <%= f.file_field :url, multiple: true %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit "Ajouter le fichier", class: "submit-button" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.submit "Ajouter le fichier", class: "submit-button" %>
+    </div>
+  <% end %>
+</div>
