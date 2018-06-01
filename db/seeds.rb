@@ -136,35 +136,46 @@ puts 'Finished'
 
 # Seeds for Drugs
 
-puts 'Creating Drugs ...'
-  drug_1 = Drug.new(
-  name: "Doliprane",
-  category: "Anti Migraine",
-  description: "Soigne les migraines"
-  )
-drug_1.save!
+# Seed from drug base here
 
-drug_2 = Drug.new(
-  name: "Smecta",
-  category: "Anti Migraine",
-  description: "Soigne les migraines"
-  )
-drug_2.save!
+pattern = /[^\d^\s].+,/
 
-drug_3 = Drug.new(
-  name: "Ibuprofene",
-  category: "Anti Migraine",
-  description: "Soigne les migraines"
-  )
-drug_3.save!
+File.open('db/list_of_medications.txt', "r:ISO-8859-1").each do |line|
+  match_data = line.match(pattern)
+  Drug.create(name: match_data)
+end
 
-drug_4 = Drug.new(
-  name: "Immodium",
-  category: "Anti Migraine",
-  description: "Soigne les migraines"
-  )
-drug_4.save!
-puts 'Finished!'
+Puts "Loaded drugs database"
+
+# puts 'Creating Drugs ...'
+#   drug_1 = Drug.new(
+#   name: "Doliprane",
+#   category: "Anti Migraine",
+#   description: "Soigne les migraines"
+#   )
+# drug_1.save!
+
+# drug_2 = Drug.new(
+#   name: "Smecta",
+#   category: "Anti Migraine",
+#   description: "Soigne les migraines"
+#   )
+# drug_2.save!
+
+# drug_3 = Drug.new(
+#   name: "Ibuprofene",
+#   category: "Anti Migraine",
+#   description: "Soigne les migraines"
+#   )
+# drug_3.save!
+
+# drug_4 = Drug.new(
+#   name: "Immodium",
+#   category: "Anti Migraine",
+#   description: "Soigne les migraines"
+#   )
+# drug_4.save!
+# puts 'Finished!'
 
 # Seeds for Appointments
 
