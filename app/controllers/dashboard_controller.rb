@@ -1,8 +1,15 @@
 class DashboardController < ApplicationController
+
+
   def today_tasks
-    @appointments = policy_scope(Appointment)
-    @appointments = Appointment.all #where(start_date: Date.today)
     @medical_records = MedicalRecord.all
-    @treatments = Treatment.all #where(take_time: Date.today)
+    @appointments = policy_scope(Appointment)
+    @appointments = Appointment.where(start_date: Date.today.beginning_of_day..Date.today.end_of_day)
+    @treatments = Treatment.where(take_time: Date.today.beginning_of_day..Date.today.end_of_day)
+
+    @events = @appointments + @treatments
+
+    @events_grouped = @events.sort_by { |event| event.sorting_date }
   end
+
 end
