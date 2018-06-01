@@ -22,7 +22,6 @@
 <%= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }) %>
 <br>
 <%= label_tag 'Heure de prise 1' %>
->>>>>>> master
 <%= time_field(:traitement_take_time, "take_time1") %>
 <br>
 <%= label_tag 'Quantité' %>

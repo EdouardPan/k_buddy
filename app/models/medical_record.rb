@@ -1,6 +1,6 @@
 class MedicalRecord < ApplicationRecord
   belongs_to :user
-  has_many :photos
+  has_many :photos, dependent: :destroy
   include PgSearch
 
   pg_search_scope :search,
