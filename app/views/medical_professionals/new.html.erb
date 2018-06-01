@@ -1,26 +1,29 @@
 <h2>Qui est votre médecin?</h2>
 
 
-
 <div class="text-center">
+<% unless current_user.medical_professionals.nil? || current_user.medical_professionals.empty? %>
   <%= form_for(@medical_professional, url: medical_professionals_path(event_type: @event_type))  do |f| %>
     <div class="form-inputs">
       <h4>Choisir parmi une liste existante</h4>
 
-      <div class="form-inputs">
-        <%= f.select(:location_name) do %>
-          <% current_user.medical_professionals.each do |mp| %>
-            <%= content_tag(:option, mp.location_name, value: mp.id) %>
-            <!-- A voir comment coupler avec un doctor nil -->
+
+        <div class="form-inputs">
+          <%= f.select(:location_name) do %>
+            <% current_user.medical_professionals.each do |mp| %>
+              <%= content_tag(:option, mp.location_name, value: mp.id) %>
+              <!-- A voir comment coupler avec un doctor nil -->
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
 
       <div class="form-actions">
         <%= f.submit "J'ai choisi", class: "submit-button" %>
       </div>
     </div>
+
   <% end %>
+<% end %>
 
 
 
