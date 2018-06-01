@@ -1,6 +1,6 @@
 class MedicalRecord < ApplicationRecord
   belongs_to :user
-  has_many :photos
+  has_many :photos, dependent: :destroy
   include PgSearch
 
   pg_search_scope :search,
@@ -10,8 +10,8 @@ class MedicalRecord < ApplicationRecord
     }
 
   CATEGORIES = ["Consultation Médicale", "Opération", "Vaccin", "Maladie Infantile", "Antécédent Familial", "Prise de Sang", "Autre"]
-  # validates :record_date, presence: true
-  # validates :category, inclusion: { in: CATEGORIES }
+  validates :record_date, presence: true
+  validates :category, inclusion: { in: CATEGORIES }
 
 
 

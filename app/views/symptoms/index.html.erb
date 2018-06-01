@@ -2,28 +2,16 @@
   <h1>Mes symptômes</h1>
 </div>
 
-<%= form_tag symptoms_path, method: :get do %>
-  <%= text_field_tag :query,
+<%#= form_tag symptoms_path, method: :get do %>
+  <%#= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Chercher un de mes symptômes"
   %>
-<% end %>
+<%# end %>
 
-<div class="section-box">
-  <div class="row">
-    <div id="list-box">
-      <% @symptoms.reverse.each do |mr| %>
-        <hr>
-        <%= link_to(symptom_path(mr), class: "link") do %>
-          <p class="bleu"><%= mr.name%></p>
-          <p><%= mr.start_date.to_s(:long) %> - <%= mr.end_date.to_s(:long)%></p>
-          <p>intensité : <%= mr.intensity%></p>
-          <p><%= mr.description %></p>
-        <%end%>
-      <% end %>
-    </div>
-  </div>
-</div>
+
+<div id="calendar" style="width:384px; height:600px;" data-event-day="<%= @events_day.to_json %>" data-event-week="<%= @events_week.to_json %>" data-event-month="<%= @events_month.to_json %>"></div>
+
 
 
