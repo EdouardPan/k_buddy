@@ -1,3 +1,5 @@
+//= require algolia/v3/algoliasearch.min
+
 import "bootstrap";
 import { menuVisible } from '../components/addmenu';
 import { menuInvisible } from '../components/menuinvisible';

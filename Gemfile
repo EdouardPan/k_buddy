@@ -14,6 +14,7 @@ gem 'redis'
 
 # Other gems
 gem 'pundit'
+gem "algoliasearch-rails"
 
 # Files management
 gem 'cloudinary'
