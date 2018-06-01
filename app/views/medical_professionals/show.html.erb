@@ -1,0 +1,30 @@
+<div class="title-show">
+  <h3 class="text-center">Agent Médical</h3>
+  <h2 class="text-center category-show"><%= @medical_professional.location_name.upcase %></h2>
+  <h6 class="text-center subtitle-show"><%= @medical_professional.doctor %> (<%= @medical_professional.specialty %>) </h6>
+</div>
+
+<div class="show-icon text-center">
+  <%= render 'shared/icons2', object: @medical_professional.specialty %>
+</div>
+
+<div class="separation-box text-center">
+  <p>Addresse:</p>
+  <h4><%= @medical_professional.address %></h4>
+  <br>
+  <p>Téléphone</p>
+  <h4><%= @medical_professional.phone %></h4>
+  <br>
+  <p>Email:</p>
+  <h4><%= @medical_professional.email %></h4>
+</div>
+
+</div>
+
+
+
+<div class="edit-delete-box text-center">
+  <%= link_to edit_medical_professional_path(@medical_professional) do  %>
+    <%= image_tag ("edit.png"), class: "small-icon" %>
+  <% end %>
+</div>

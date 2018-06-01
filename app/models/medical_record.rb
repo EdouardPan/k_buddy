@@ -10,8 +10,8 @@ class MedicalRecord < ApplicationRecord
     }
 
   CATEGORIES = ["Consultation Médicale", "Opération", "Vaccin", "Maladie Infantile", "Antécédent Familial", "Prise de Sang", "Autre"]
-  # validates :record_date, presence: true
-  # validates :category, inclusion: { in: CATEGORIES }
+  validates :record_date, presence: true
+  validates :category, inclusion: { in: CATEGORIES }
 
 
 
