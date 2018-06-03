@@ -1,0 +1,38 @@
+<div class="simple_form">
+  <h2>Editer votre fichier</h2>
+
+  <%= form_for(@medical_record) do |f| %>
+
+  <div class="form-inputs">
+    <div class="form-group ">
+      <%= f.label "Date du document" %>
+      <%= f.date_field :record_date %>
+    </div>
+
+    <div class="form-group ">
+      <%= f.label "Titre du document" %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="form-group ">
+      <%= f.label "Type de document" %>
+      <%= f.select :category, options_for_select(["Consultation Médicale", "Opération", "Vaccin", "Maladie Infantile", "Antécédent Familial", "Prise de Sang", "Autre"]) %>
+    </div>
+
+    <div class="form-group ">
+      <%= f.label "Notes" %>
+      <br>
+      <%= f.text_field :description %>
+    </div>
+
+    <div class="form-group ">
+      <%= f.label "Ajouter les pièces jointes" %>
+      <%= f.file_field :url, multiple: true %>
+    </div>
+  </div>
+
+    <div class="form-actions">
+      <%= f.submit "Editer le fichier", class: "submit-button" %>
+    </div>
+  <% end %>
+</div>
