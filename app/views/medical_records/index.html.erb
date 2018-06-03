@@ -2,13 +2,15 @@
   <h1>Mon historique médical</h1>
 </div>
 
-<%= form_tag medical_records_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Chercher un évènement médical"
-  %>
-<% end %>
+<div class="box">
+  <%= form_tag medical_records_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Chercher un évènement médical"
+    %>
+  <% end %>
+</div>
 
 <div class="section-box">
   <div class="row">
@@ -16,28 +18,12 @@
       <% @medical_records.reverse.each do |mr| %>
         <hr>
         <%= link_to(medical_record_path(mr), class: "link") do %>
-          <%= render 'shared/icons', object: mr %> <%= mr.record_date %> | <%= mr.title.capitalize %>
+          <%= render 'shared/icons', object: mr %> <strong><%= mr.record_date %></strong> | <em><%= mr.title.capitalize %></em>
         <% end %>
       <% end %>
     </div>
   </div>
 </div>
 
-
-
-
-<!-- getelementbyID
-
-addeventlistener sur tous les boutons
-
-hide -->
-
-<!-- Consultations Médicales
-Opérations Chirurgicales
-Vaccins
-Maladies Infantiles
-Antécédents Familiales
-Prises de Sang
-Autres -->
 
 

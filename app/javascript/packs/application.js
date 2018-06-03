@@ -6,6 +6,8 @@ import { showCalendar } from '../components/calendar';
 
 import { modal } from '../components/modal';
 
+import { openNav } from '../components/temp';
+import { closeNav } from '../components/temp';
 
 if (document.getElementById('calendar')){
   $(document).ready(showCalendar());
@@ -17,3 +19,8 @@ menuInvisible();
 if (document.querySelector('.photo-box')){
   modal();
 }
+
+// temp
+openNav();
+closeNav();
+
