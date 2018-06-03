@@ -24,4 +24,11 @@
   </h6>
 </div>
 
-
+<div class="edit-delete-box text-center">
+  <%= link_to edit_symptom_path(@symptom) do  %>
+    <%= image_tag ("edit.png"), class: "small-icon" %>
+  <% end %>
+  <%= link_to symptom_path(@symptom), method: :delete, data: {confirm: "Are you sure?"} do  %>
+    <%= image_tag ("delete.png"), class: "small-icon" %>
+  <% end %>
+</div>

@@ -1,0 +1,43 @@
+<div class="form-title text-center">
+  <h2>Modifier un symptôme</h2>
+</div>
+
+<div class="form text-center">
+  <%= simple_form_for (@symptom) do |f| %>
+
+    <div class="form-inputs">
+      <%= f.label "Jour & Heure de début" %>
+      <br>
+      <%= f.input :start_date, as: :datetime, html5: true, label: false %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label "Jour & Heure de fin" %>
+      <br>
+      <%= f.input :end_date, as: :datetime, html5: true, label: false %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label "Symptôme" %>
+      <br>
+      <%= f.input :name, label: false %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label "Intensité" %>
+      <br>
+      <%= f.input :intensity, collection: (1..10).to_a, label: false%>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label "Notes" %>
+      <br>
+      <%= f.input :description, label: false %>
+    </div>
+
+    <div class="form-actions">
+      <br>
+    <%= f.submit "Modifier le symptôme", class: "submit-button" %>
+    </div>
+  <% end %>
+</div>
