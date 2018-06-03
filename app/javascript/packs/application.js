@@ -20,11 +20,7 @@ if (document.querySelector('.photo-box')){
   modal();
 }
 
-if (document.getElementById("mySidenav")){
-  openNav();
-}
-
-if (document.getElementById("mySidenav")){
-  closeNav();
-}
+// temp
+openNav();
+closeNav();
 

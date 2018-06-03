@@ -14,7 +14,7 @@
   <p>Description:</p>
   <h6>
     <% if @medical_record.description == "" %>
-      "Pas de description"
+      <p>Pas de description</p>
     <% else %>
       <%= @medical_record.description %>
     <% end %>
@@ -22,10 +22,14 @@
 </div>
 
 <div class="photo-box text-center">
-  <% @medical_record.photos.each do |p| %>
-    <a href="#" class="pop">
-      <%= cl_image_tag p.url, width: 150 %>
-    </a>
+  <% if @medical_record.photos.empty? %>
+    <p>Pas de pièces jointes</p>
+  <% else %>
+    <% @medical_record.photos.each do |p| %>
+      <a href="#" class="pop">
+        <%= cl_image_tag p.url, width: 150 %>
+      </a>
+    <% end %>
   <% end %>
 
   <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
