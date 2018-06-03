@@ -40,17 +40,35 @@ class MedicalRecordsController < ApplicationController
 
 
   def edit
+    @medical_record = MedicalRecord.find(params[:id])
     authorize @medical_record
   end
 
   def update
+    @medical_record = MedicalRecord.find(params[:id])
     authorize @medical_record
+    if @medical_record.update(medical_record_params)
+      if params[:medical_record][:url].nil?
+        redirect_to medical_record_path(@medical_record)
+      else
+        params[:medical_record][:url].each do |u|
+          new_photo = Photo.new(url: u)
+          new_photo.medical_record = @medical_record
+          new_photo.save
+        end
+        redirect_to medical_record_path(@medical_record)
+      end
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @medical_record = MedicalRecord.find(params[:id])
     authorize @medical_record
+    @medical_record.destroy
+    redirect_to medical_records_path
   end
-
 
 
   private
