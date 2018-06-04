@@ -5,6 +5,6 @@ class MedicalProfessional < ApplicationRecord
   validates :location_name, presence: true
 
   def location_with_doctor
-    "#{location_name}: #{doctor}"
+   doctor == "" ? "#{location_name}" : "#{location_name}: #{doctor}"
   end
 end

@@ -16,7 +16,7 @@
 
           <div class="form-inputs">
 
-            <%= select("medical_professional", "id", current_user.medical_professionals.collect {|p| [p.location_with_doctor, p.id]}, {include_blank: 'None'}) %>
+            <%= select("medical_professional", "id", current_user.medical_professionals.collect {|p| [p.location_with_doctor, p.id]}.uniq, {include_blank: 'None'}, class: "soflow") %>
 
           </div>
 
