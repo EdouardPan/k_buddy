@@ -18,7 +18,8 @@ export function showCalendar() {
     height: 540,
     dayClick: function(date) {
       $('#calendar').fullCalendar('changeView', 'agendaDay', date);
-      debugger
+      event.preventDefault();
+      // event.stopPropagation();
     },
     header: {
       left:   'month, agendaDay',
