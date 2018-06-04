@@ -14,7 +14,7 @@ export function showCalendar() {
     themeSystem: 'bootstrap4',
     // defaultView: 'month',
     locale: 'fr',
-    weekends: true, // will hide Saturdays and Sundays
+    weekends: true, // will hide Saturdays and Sundays if false
     height: 540,
     dayClick: function(date) {
       $('#calendar').fullCalendar('changeView', 'agendaDay', date);
@@ -29,13 +29,17 @@ export function showCalendar() {
     events: listEventsMonth,
     eventRender: function(event, element) {
       if (event.iconA){
-        element.find(".fc-title").prepend("<i class='fas fa-user-md'></i>");
+        element.find(".fc-title").prepend("<img src='/assets/doctor.png' class='img-calendar'>");
       }
-      if (event.iconT){
-        element.find(".fc-title").prepend("<i class='fas fa-pills'></i>");
+      if (event.iconT) {
+        if (event.taken) {
+          element.find(".fc-title").prepend("<img src='/assets/pills.png' class='img-calendar light-img'>");
+        } else {
+          element.find(".fc-title").prepend("<img src='/assets/treatment-icon.png' class='img-calendar'>");
+        }
       }
       if (event.iconS){
-        element.find(".fc-title").prepend("<i class='fas fa-cloud'></i>");
+        element.find(".fc-title").prepend("<img src='/assets/symptoms-icon.png' class='img-calendar'>");
       }
     },
     viewRender: function(view, element) {

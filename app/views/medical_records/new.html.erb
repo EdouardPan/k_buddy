@@ -20,7 +20,7 @@
     <div class="form-inputs">
       <%= f.label "Type de document" %>
       <br>
-      <%= f.select :category, options_for_select(["Consultation Médicale", "Opération", "Vaccin", "Maladie Infantile", "Antécédent Familial", "Prise de Sang", "Autre"]) %>
+      <%= f.select(:category, ["Consultation Médicale", "Opération", "Vaccin", "Maladie Infantile", "Antécédent Familial", "Prise de Sang", "Autre"], { :prompt => 'Choisir le type de document' }, { :class => 'form-control soflow' }) %>
     </div>
 
     <div class="form-inputs">
