@@ -12,20 +12,12 @@ export function showCalendar() {
   $('#calendar').fullCalendar({
     // put your options and callbacks here
     themeSystem: 'bootstrap4',
-    defaultView: 'month',
+    // defaultView: 'month',
     locale: 'fr',
     weekends: true, // will hide Saturdays and Sundays
     height: 540,
     dayClick: function(date) {
       $('#calendar').fullCalendar('changeView', 'agendaDay', date);
-    },
-    eventClick: function(calEvent, jsEvent, view) {
-      debugger
-      console.log(view.type);
-      if (view.type === 'agendaDay'){
-        console.log(calEvent.url);
-        window.open(calEvent.url, "_self");
-      }
     },
     header: {
       left:   'month, agendaDay',
@@ -58,7 +50,15 @@ export function showCalendar() {
         $('#calendar').fullCalendar('renderEvents', listEventsMonth);
       }
     }
-});
+  });
 
 }
 
+
+    // eventClick: function(calEvent, jsEvent, view) {
+    //   $('#calendar').fullCalendar('changeView', 'agendaDay', date);
+    //   if (view.type === 'agendaDay'){
+    //     console.log(calEvent.url);
+    //     window.open(calEvent.url, "_self");
+    //   }
+    // },
