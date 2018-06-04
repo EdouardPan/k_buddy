@@ -23,10 +23,16 @@
       <%= f.input :name, label: false %>
     </div>
 
-    <div class="form-inputs">
+  <!--   <div class="form-inputs">
       <%= f.label "Intensité" %>
       <br>
       <%= f.input :intensity, collection: (1..10).to_a, label: false%>
+    </div> -->
+
+    <div class="form-inputs slidecontainer">
+        <%= f.label "Intensité" %>
+        <%= f.input :intensity, input_html: {type: "range", min: "1", max: "10", class: "slider", id: "intensityRange"}, label: false %>
+      <p style="color: $gray;"><span id="intensityDemo"></span></p>
     </div>
 
     <div class="form-inputs">
