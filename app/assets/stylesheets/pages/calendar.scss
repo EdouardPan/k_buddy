@@ -24,8 +24,18 @@
 .fc-month-view .fc-event{
   background-color: transparent !important;
   border:none;
+  .fc-content{
   color: $gray;
-  i{
-    font-size:15px;
   }
+  img{
+    // font-size:21px;
+    &:first-child{
+      margin-right:4px;
+    }
+  }
+}
+
+.img-calendar{
+  width: 22px;
+  height: 22px;
 }

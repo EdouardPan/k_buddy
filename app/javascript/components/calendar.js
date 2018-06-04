@@ -27,10 +27,10 @@ export function showCalendar() {
     events: listEventsMonth,
     eventRender: function(event, element) {
       if (event.iconA){
-        element.find(".fc-title").prepend("<i class='fas fa-user-md'></i>");
+        element.find(".fc-title").prepend("<img src='/assets/doctor.png' class='img-calendar'>");
       }
       if (event.iconT){
-        element.find(".fc-title").prepend("<i class='fas fa-pills'></i>");
+        element.find(".fc-title").prepend("<img src='/assets/treatment-icon.png' class='img-calendar'>");
       }
       if (event.iconS){
         element.find(".fc-title").prepend("<i class='fas fa-cloud'></i>");
