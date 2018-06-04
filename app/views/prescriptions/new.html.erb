@@ -16,14 +16,6 @@
   <%= form_tag medical_professional_prescriptions_path do %>
   <%#= select_tag  %>
 
-
-
-<!--   <%= text_field_tag :query,
-    params[:query],
-    placeholder: "Trouvez votre médicament"
-  %> -->
-
-
   <div class="form-inputs">
     <%= label_tag 'Date de début' %>
     <br>
@@ -40,7 +32,9 @@
     <%= label_tag 'Médicament' %>
     <br>
     <%= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }) %>
+    <input type="text" id="search-input" placeholder="Trouver un médicament" />
   </div>
+
 
   <div class="form-inputs">
     <%= label_tag 'Heure de prise 1' %>
