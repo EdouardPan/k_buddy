@@ -1,6 +1,6 @@
 <div class="title-show">
   <h3 class="text-center">Historique Médical</h3>
-  <h2 class="text-center category-show"><%= @medical_record.category.upcase %></h2>
+  <h1 class="text-center category-show"><%= @medical_record.category.upcase %></h1>
 </div>
 
 <div class="show-icon text-center">
@@ -14,7 +14,7 @@
   <p>Description:</p>
   <h6>
     <% if @medical_record.description == "" %>
-      "Pas de description"
+      <p>Pas de description</p>
     <% else %>
       <%= @medical_record.description %>
     <% end %>
@@ -22,21 +22,33 @@
 </div>
 
 <div class="photo-box text-center">
-  <% @medical_record.photos.each do |p| %>
-    <a href="#" class="pop">
-      <%= cl_image_tag p.url, width: 150 %>
-    </a>
+  <% if @medical_record.photos.empty? %>
+    <p>Pas de pièces jointes</p>
+  <% else %>
+    <% @medical_record.photos.each do |p| %>
+      <a href="#" class="pop">
+        <%= cl_image_tag p.url, width: 150 %>
+      </a>
+    <% end %>
   <% end %>
 
   <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <img src="" class="imagepreview" style="width: 100%;" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <img src="" class="imagepreview" style="width: 100%;" >
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="edit-delete-box text-center">
+  <%= link_to edit_medical_record_path(@medical_record) do  %>
+    <%= image_tag ("edit.png"), class: "small-icon" %>
+  <% end %>
+  <%= link_to medical_record_path(@medical_record), method: :delete, data: {confirm: "Are you sure?"} do  %>
+    <%= image_tag ("delete.png"), class: "small-icon" %>
+  <% end %>
 </div>

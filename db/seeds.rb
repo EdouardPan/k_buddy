@@ -9,19 +9,95 @@ MedicalProfessional.destroy_all
 
 # Seeds for Drugs
 
-puts "hello"
-drugs = ["Capecitabine", "Loperamide", "Smecta", "Vogalene", "Bicarbonate de Na", "Kytril", "Prednisone", "Emend", "Zarzio", "Decapeptyl", "Lidocaine", "Levocetirizine"]
 
-puts 'Creating Drugs ...'
-  drugs.each do |dr|
-    d = Drug.new(
-    name: dr,
-    category: "Anti Migraine",
-    description: "Soigne les migraines"
-    )
-    d.save!
-  end
+# Seed from drug base here
+
+pattern = /[^\d^\s].+,/
+
+File.open('db/list_of_medications.txt', "r:ISO-8859-1").each do |line|
+  match_data = line.match(pattern)
+  match_data = match_data.to_s.chop
+  Drug.create(name: match_data)
+end
+
+puts "Loaded drugs database"
+
+# puts 'Creating Drugs ...'
+#   drug_1 = Drug.new(
+#   name: "Doliprane",
+#   category: "Anti Migraine",
+#   description: "Soigne les migraines"
+#   )
+# drug_1.save!
+
+# drug_2 = Drug.new(
+#   name: "Smecta",
+#   category: "Anti Migraine",
+#   description: "Soigne les migraines"
+#   )
+# drug_2.save!
+
+# drug_3 = Drug.new(
+#   name: "Ibuprofene",
+#   category: "Anti Migraine",
+#   description: "Soigne les migraines"
+#   )
+# drug_3.save!
+
+# drug_4 = Drug.new(
+#   name: "Immodium",
+#   category: "Anti Migraine",
+#   description: "Soigne les migraines"
+#   )
+# drug_4.save!
+# puts 'Finished!'
+
+# Seeds for Appointments
+
+puts 'Creating Appointments...'
+
+20.times do
+  month = rand(1..12)
+  day = rand(1..28)
+  start_time = rand(8..17)
+  end_time = start_time + rand(1..3)
+  Appointment.create!(
+    start_date: DateTime.new(2018,month,day, start_time),
+    end_date: DateTime.new(2018,month,day, end_time),
+    category: ["Imagerie", "Médecin", "Kinésithérapie"].sample,
+    description: "Important",
+    user_id: 1,
+    medical_professional_id: MedicalProfessional.ids.sample
+  )
+end
+
 puts 'Finished!'
+
+
+# Seeds for Prescription and treatment
+
+puts "Creating Prescription and Treatments"
+20.times do
+
+  poso = {
+    take_time: [8, 12, 16, 20].sample,
+    quantity: rand(1..3)
+  }
+
+# puts "hello"
+# drugs = ["Capecitabine", "Loperamide", "Smecta", "Vogalene", "Bicarbonate de Na", "Kytril", "Prednisone", "Emend", "Zarzio", "Decapeptyl", "Lidocaine", "Levocetirizine"]
+
+
+# puts 'Creating Drugs ...'
+#  drugs.each do |dr|
+#    d = Drug.new(
+#    name: dr,
+#    category: "Anti Migraine",
+#    description: "Soigne les migraines"
+#    )
+#    d.save!
+#  end
+# puts 'Finished!'
 
 # #Seeds for MedicalRecord
 

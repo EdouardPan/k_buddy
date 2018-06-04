@@ -5,13 +5,17 @@
   }
   h2 {
   color: $dark-green;
-}
+  }
 }
 
 .form-inputs {
-  margin-top: 50px;
-  margin-right: 20px;
-  width: 100%;
+  margin-bottom: 10px;
+  input {
+    width: 100%;
+  }
+  label {
+    color: $gray;
+  }
 }
 
 .form-control {
@@ -23,7 +27,44 @@
   }
 }
 
+.form-title {
+  margin-top: 60px;
+  h2 {
+    color: $dark-green;
+  }
+}
 
+.form-subtitle {
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: $light-green;
+}
+
+.form {
+  margin-top: 50px;
+}
+
+.form-actions {
+  margin-top: 30px;
+}
+
+.form-links {
+  margin-top: 20px;
+  font-size: 12px;
+  color: black;
+  text-decoration: none;
+  a {
+    color: $gray;
+  }
+  &:link, &:visited, &:hover, &:active {
+   text-decoration: none;
+   color: $gray;
+  }
+}
+
+.form-photo {
+  margin-top: 30px;
+}
 
 
 // Searchbar
