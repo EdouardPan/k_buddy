@@ -3,7 +3,12 @@ function openMenu() {
   const opennm = document.getElementById("opennavmenu");
   if (opennm) {
     opennm.addEventListener("click", (e) => {
-      document.getElementById("myNavMenu").style.height = "100%";
+      const myNavMenu = document.getElementById("myNavMenu")
+      if (myNavMenu.style.height === "100%") {
+        myNavMenu.style.height = "0";
+      }else{
+        myNavMenu.style.height = "100%";
+      }
     });
   }
 }
@@ -20,20 +25,9 @@ function closeMenu() {
 }
 
 
-/* Toggle */
-function navButton(x) {
-  const togglenm = document.getElementById("opennavmenu");
-  if(togglenm.classList.contains("change")){
-     closeMenu();
-     togglenm.classList.remove("change");
-  }else{
-     openMenu();
-     togglenm.classList.add("change");
-  }
-}
 
 
-export { openMenu, closeMenu, navButton };
+export { openMenu, closeMenu };
 
 
 

@@ -11,7 +11,6 @@ import { closeNav } from '../components/sidenav';
 
 import { openMenu } from '../components/navmenu';
 import { closeMenu } from '../components/navmenu';
-import { navButton } from '../components/navmenu';
 
 if (document.getElementById('calendar')){
   $(document).ready(showCalendar());
@@ -32,4 +31,4 @@ closeNav();
 
 openMenu();
 closeMenu();
-navButton();
+
