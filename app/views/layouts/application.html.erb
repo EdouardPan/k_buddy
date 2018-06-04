@@ -12,7 +12,7 @@
   <body>
     <div class="mobile-wrapper">
       <div class="mobile-screen-container <%= 'center-box' unless current_page?(root_path) %>">
-        <%= render 'shared/header' %>
+        <%= render 'shared/sidenav' %>
         <%= yield %>
       </div>
       <% unless current_page?(root_path) || !user_signed_in? %>

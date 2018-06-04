@@ -1,0 +1,15 @@
+<div id="mySidenav" class="sidenav">
+  <a href="#" class="closebtn">&times;</a>
+  <% if user_signed_in? %>
+    <%= link_to "Aujourd'hui", todaytasks_path %>
+    <%= link_to "Mon profil", todaytasks_path %>
+    <%= link_to "Mes agents médicaux", medical_professionals_path %>
+    <%= link_to "Déconnexion", destroy_user_session_path, method: :delete %>
+  <% end %>
+</div>
+
+
+<!-- Use any element to open the sidenav -->
+<span id="opensidenav"><%= image_tag("logo.png", id: "logo", class: "back-to-home") %> </span>
+
+
