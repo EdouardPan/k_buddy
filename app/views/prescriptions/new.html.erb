@@ -31,8 +31,7 @@
   <div class="form-inputs">
     <%= label_tag 'Médicament' %>
     <br>
-    <%= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }) %>
-    <input type="text" id="search-input" placeholder="Trouver un médicament" />
+    <input name="drug_name" type="text" id="search-input" placeholder="Trouver un médicament" />
   </div>
 
 
