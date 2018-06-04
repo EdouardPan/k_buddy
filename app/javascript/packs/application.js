@@ -21,6 +21,6 @@ if (document.querySelector('.photo-box')){
 }
 
 // temp
-openNav();
-closeNav();
+// openNav();
+// closeNav();
 

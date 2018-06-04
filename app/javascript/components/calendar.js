@@ -20,10 +20,11 @@ export function showCalendar() {
       $('#calendar').fullCalendar('changeView', 'agendaDay', date);
     },
     eventClick: function(calEvent, jsEvent, view) {
+      debugger
       console.log(view.type);
       if (view.type === 'agendaDay'){
-        console.log(event.url);
-        window.open(event.url, "_self");
+        console.log(calEvent.url);
+        window.open(calEvent.url, "_self");
       }
     },
     header: {
