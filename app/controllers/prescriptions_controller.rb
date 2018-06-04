@@ -29,18 +29,20 @@ class PrescriptionsController < ApplicationController
       # Create the instances of treatement with the info we have.
       this_date = prescription.start_date
       duration = (prescription.end_date.to_date - this_date.to_date).to_i
+      drug = Drug.find_by(name: params[:drug_name])
       duration.times do
         # each treatement is in a hash iterate
         counter = 1
         params[:traitement_take_time].each do |k, v|
           treatment = Treatment.new(
             prescription_id: prescription.id,
-            drug_id: params[:drug],
+            drug_id: drug.id,
             take_time: DateTime.new(this_date.year, this_date.month, this_date.day, Time.parse(v).hour, Time.parse(v).min),
             quantity: params[:traitement_quantity]["quantity#{counter}"],
             user_id: current_user.id)
           unless treatment.save
             render '/prescriptions/new'
+            # There is still an error here. It does not render if the treatments are not created.
           end
           counter += 1
         end

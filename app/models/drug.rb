@@ -1,8 +1,11 @@
 class Drug < ApplicationRecord
+  include AlgoliaSearch
   has_many :treatments
+  # validates :name, presence: true, uniqueness: true
+  # The seed base validates uniqueness for us.
 
-  DRUGS = ["Capecitabine", "Loperamide", "Smecta", "Vogalene", "Bicarbonate de Na", "Kytril", "Prednisone", "Emend", "Zarzio", "Decapeptyl", "Lidocaine", "Levocetirizine"]
-  validates :name, presence: true, uniqueness: true # inclusion: { in: API medoc}
-  validates :name, inclusion: { in: DRUGS }
-
+  algoliasearch do
+    attribute :name
+  end
 end
+
