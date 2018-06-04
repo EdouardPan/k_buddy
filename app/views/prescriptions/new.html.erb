@@ -1,4 +1,6 @@
-<h2>Créer une nouvelle ordonnance</h2>
+<div class="form-title text-center">
+  <h2>Créer une nouvelle ordonnance</h2>
+</div>
 
 <%#= simple_form_for [@medical_professional, @prescription] do |f| %>
   <!-- Needs a space for this nesting to work-->
@@ -10,22 +12,63 @@
   <%#= f.submit "Valider", class: "submit-button" %>
 <%# end %>
 
-<%= form_tag medical_professional_prescriptions_path do %>
-<%#= select_tag  %>
+<div class="text-center form">
+  <%= form_tag medical_professional_prescriptions_path do %>
+  <%#= select_tag  %>
 
-<%= date_field(:prescription, :start_date) %>
-<%= date_field(:prescription, :end_date) %>
+
 
 <!--   <%= text_field_tag :query,
     params[:query],
     placeholder: "Trouvez votre médicament"
   %> -->
 
-<%= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }) %>
-<%= time_field(:traitement_take_time, "take_time1") %>
-<%= number_field(:traitement_quantity, "quantity1") %>
-<%= time_field(:traitement_take_time, "take_time2") %>
-<%= number_field(:traitement_quantity, "quantity2") %>
 
-<%= submit_tag "Valider", class: "submit-button" %>
-<% end %>
+  <div class="form-inputs">
+    <%= label_tag 'Date de début' %>
+    <br>
+    <%= date_field(:prescription, :start_date) %>
+  </div>
+
+  <div class="form-inputs">
+    <%= label_tag 'Date de fin' %>
+    <br>
+    <%= date_field(:prescription, :end_date) %>
+  </div>
+
+  <div class="form-inputs">
+    <%= label_tag 'Médicament' %>
+    <br>
+    <%= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }) %>
+  </div>
+
+  <div class="form-inputs">
+    <%= label_tag 'Heure de prise 1' %>
+    <br>
+    <%= time_field(:traitement_take_time, "take_time1") %>
+  </div>
+
+  <div class="form-inputs">
+    <%= label_tag 'Quantité' %>
+    <br>
+    <%= text_field(:traitement_quantity, "quantity1") %>
+  </div>
+
+  <div class="form-inputs">
+    <%= label_tag 'Heure de prise 2' %>
+    <br>
+    <%= time_field(:traitement_take_time, "take_time2") %>
+  </div>
+
+  <div class="form-inputs">
+    <%= label_tag 'Quantité' %>
+    <br>
+    <%= text_field(:traitement_quantity, "quantity2") %>
+  </div>
+
+  <div class="form-actions">
+  <%= submit_tag "Valider", class: "submit-button" %>
+  </div>
+
+  <% end %>
+</div>

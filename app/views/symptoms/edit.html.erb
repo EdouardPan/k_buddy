@@ -1,9 +1,9 @@
 <div class="form-title text-center">
-  <h2>Ajouter un RDV</h2>
+  <h2>Modifier un symptôme</h2>
 </div>
 
 <div class="form text-center">
-  <%= simple_form_for [@medical_professional, @appointment] do |f| %>
+  <%= simple_form_for (@symptom) do |f| %>
 
     <div class="form-inputs">
       <%= f.label "Jour & Heure de début" %>
@@ -18,9 +18,15 @@
     </div>
 
     <div class="form-inputs">
-      <%= f.label "Spécialité" %>
+      <%= f.label "Symptôme" %>
       <br>
-      <%= f.input :category, label: false %>
+      <%= f.input :name, label: false %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label "Intensité" %>
+      <br>
+      <%= f.input :intensity, collection: (1..10).to_a, label: false%>
     </div>
 
     <div class="form-inputs">
@@ -30,10 +36,8 @@
     </div>
 
     <div class="form-actions">
-      <%= f.submit "Ajouter le RDV", class: "submit-button" %>
+      <br>
+    <%= f.submit "Modifier le symptôme", class: "submit-button" %>
     </div>
-<% end %>
+  <% end %>
 </div>
-
-
-
