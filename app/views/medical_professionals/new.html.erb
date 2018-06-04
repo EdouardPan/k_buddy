@@ -15,12 +15,9 @@
         </div>
 
           <div class="form-inputs">
-            <%= f.select(:location_name, {}, { :prompt => 'Choisir votre professionel santé' }, { :class => 'form-control soflow' }) do %>
-              <% current_user.medical_professionals.each do |mp| %>
-                <%= content_tag(:option, mp.location_name, value: mp.id) %>
-                <!-- A voir comment coupler avec un doctor nil -->
-              <% end %>
-            <% end %>
+
+            <%= select("medical_professional", "id", current_user.medical_professionals.collect {|p| [p.location_with_doctor, p.id]}, {include_blank: 'None'}) %>
+
           </div>
 
         <div class="form-actions">

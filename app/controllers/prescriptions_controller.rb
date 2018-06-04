@@ -18,6 +18,14 @@ class PrescriptionsController < ApplicationController
   end
 
   def create
+
+    if params[:medical_professional][:id]
+      @medical_professional = MedicalProfessional.find(params[:medical_professional][:id])
+    else
+      @medical_professional = MedicalProfessional.new(medical_professional_params)
+    end
+    authorize @medical_professional
+
     prescription = Prescription.new(
       medical_professional_id: params[:medical_professional_id],
       start_date: params[:prescription][:start_date],

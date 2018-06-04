@@ -31,8 +31,11 @@
   <div class="form-inputs">
     <%= label_tag 'Médicament' %>
     <br>
-    <%= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }), prompt: "Choisir votre médicament", class: "form-control soflow" %>
+    <%#= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }), prompt: "Choisir votre médicament", class: "form-control soflow" %>
+    <input name="drug_name" type="text" id="search-input" class="soflow" placeholder="Trouver un médicament" />
   </div>
+
+
 
   <div class="form-inputs">
     <%= label_tag 'Heure de prise 1' %>
