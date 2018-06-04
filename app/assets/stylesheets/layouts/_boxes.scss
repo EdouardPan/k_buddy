@@ -28,7 +28,7 @@
 // Shared
 
 .title-box {
-  margin-bottom: 35px;
+  margin-top: 0px;
 }
 
 .category-box {
@@ -37,6 +37,10 @@
   flex-direction: column;
   align-items: center;
   font-weight: bold;
+}
+
+.box {
+  margin-top: 40px;
 }
 
 // Search
@@ -49,6 +53,8 @@
 .section-box {
   margin-top: 30px;
 }
+
+
 
 // Shows
 
@@ -81,4 +87,32 @@
 .photo-box {
   margin-top: 30px;
 
+}
+
+.edit-delete-box {
+  margin-top: 30px;
+}
+
+// Mobile layout
+
+.mobile-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.mobile-screen-container {
+  flex-grow: 1;
+  overflow: scroll;
+  position: relative;
+}
+
+.mobile-screen-navbar {
+  height: 70px;
+  z-index: 1;
+}
+
+.bleu {
+  color: $dark-blue;
 }

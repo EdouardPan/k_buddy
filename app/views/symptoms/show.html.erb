@@ -1,5 +1,34 @@
-<%= link_to(symptoms_path, class: "link") do %>
-  <i class="fa fa-caret-left" aria-hidden="true"></i> Liste de mes symptômes
-<% end %>
+<div class="title-show">
+  <h3 class="text-center">Mes Symptômes</h3>
+  <h2 class="text-center category-show"><%= @symptom.name.upcase %></h2>
+</div>
 
-<h1>Hello</h1>
+<div class="show-icon text-center">
+  <%= image_tag ("symptoms-icon.png"), class: "list-icon" %>
+</div>
+
+<div class="separation-box text-center">
+  <p>Date de l'évènement:</p>
+  <h4><%= @symptom.start_date.to_s(:long) %></h4>
+  <br>
+  <p>Intensité:</p>
+  <h4><%= @symptom.intensity %></h4>
+  <br>
+  <p>Description:</p>
+  <h6>
+    <% if @symptom.description.nil? %>
+      "Pas de description"
+    <% else %>
+      <%= @symptom.description %>
+    <% end %>
+  </h6>
+</div>
+
+<div class="edit-delete-box text-center">
+  <%= link_to edit_symptom_path(@symptom) do  %>
+    <%= image_tag ("edit.png"), class: "small-icon" %>
+  <% end %>
+  <%= link_to symptom_path(@symptom), method: :delete, data: {confirm: "Are you sure?"} do  %>
+    <%= image_tag ("delete.png"), class: "small-icon" %>
+  <% end %>
+</div>

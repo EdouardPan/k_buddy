@@ -3,9 +3,41 @@ class SymptomsController < ApplicationController
 
   def index
     @symptoms = policy_scope(Symptom)
-    if params[:query].present?
-      @symptoms = @symptoms.search_symptom(params[:query])
+    # if params[:query].present?
+    #   @symptoms = @symptoms.search_symptom(params[:query])
+    # end
+
+    # Month view
+    @symptoms_grouped = @symptoms.group_by do |symptom|
+      symptom.start_date.to_date
     end
+
+    @symptoms_js = []
+    @symptoms_grouped.each do |date_event|
+      data = {
+        title: '',
+        start: date_event[0].to_date,
+        iconS: true
+      }
+      @symptoms_js << data
+    end
+
+    @events_month = @symptoms_js
+
+    # Day view
+    @symptoms_js = []
+    @symptoms.each do |event|
+      data = nil
+      data = {
+        title: "#{event.name} - #{event.intensity}/10",
+        start: event.start_date.strftime("%Y-%m-%dT%H:%M:%S"),
+        end: event.end_date.strftime("%Y-%m-%dT%H:%M:%S"),
+        iconS: true
+      }
+      @symptoms_js << data
+    end
+
+    @events_day = @symptoms_js
   end
 
   def show

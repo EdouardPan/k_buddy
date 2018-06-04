@@ -5,4 +5,8 @@ class Treatment < ApplicationRecord
 
   validates :take_time, presence: true
   validates :quantity, presence: true
+
+  def sorting_date
+    take_time
+  end
 end

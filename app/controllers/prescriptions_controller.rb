@@ -5,7 +5,9 @@ class PrescriptionsController < ApplicationController
   end
 
   def show
+    @prescription = Prescription.find(params[:id])
     authorize @prescription
+    @treatements = Treatment.all
   end
 
   def new
@@ -44,7 +46,7 @@ class PrescriptionsController < ApplicationController
         end
         this_date += 1.day
       end
-      redirect_to root_path
+      redirect_to calendar_index_path
 
       # treatement = Treatement.new
         # individual_treatement = prescription.end_date - prescription.start_date * the length of the take array

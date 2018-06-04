@@ -1,0 +1,52 @@
+<div class="form-title text-center">
+  <h2>Modifier votre agent médical</h2>
+</div>
+
+<div class="form text-center">
+
+  <%= form_for @medical_professional do |f| %>
+
+    <div class="form-inputs">
+      <%= f.label "Etablissement" %>
+      <br>
+      <%= f.text_field :location_name %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label "Addresse" %>
+      <br>
+      <%= f.text_field :address %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label "Téléphone" %>
+      <br>
+      <%= f.text_field :phone %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label "Spécialité" %>
+      <br>
+      <%= f.text_field :specialty %>
+    </div>
+
+    <div class="form-inputs">
+      <%= f.label "Nom du docteur" %>
+      <br>
+      <%= f.text_field :doctor %>
+    </div>
+
+  <div class="form-inputs">
+    <%= f.label "Email" %>
+    <br>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Modifier", class: "submit-button" %>
+  </div>
+
+  <% end %>
+
+</div>
+
