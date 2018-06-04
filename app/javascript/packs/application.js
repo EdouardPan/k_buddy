@@ -10,7 +10,7 @@ import { algoliaAutocomplete } from '../components/autocomplete';
 import { openNav } from '../components/sidenav';
 import { closeNav } from '../components/sidenav';
 
-import { prettySlider } from '../components/slider';
+import { sliderSymptoms } from '../components/slider';
 
 
 import { openMenu } from '../components/navmenu';
@@ -39,5 +39,6 @@ if (document.querySelector('.navbar-kbuddy')){
 }
 
 // slider
-prettySlider();
-
+if (document.querySelector('.slidecontainer')){
+  sliderSymptoms();
+}
