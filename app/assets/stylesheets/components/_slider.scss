@@ -5,15 +5,12 @@
 
 /* The slider itself */
 .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
+    //-webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100%; /* Full-width */
-    height: 20px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
+    height: 5px; /* Specified height */
+    background: $light-gray; /* Grey background */
     outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
 }
 
 .slider::-webkit-slider-thumb {
@@ -21,6 +18,7 @@
     appearance: none;
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: red;
+    border-radius: 50%;
+    background: $dark-green;
     cursor: pointer; /* Cursor on hover */
 }
