@@ -20,7 +20,7 @@
     <div class="form-inputs">
       <%= f.label "Spécialité" %>
       <br>
-      <%= f.input :category, label: false %>
+      <%= f.input :category, collection: ["Consultation Médicale", "Imagerie", "Prise de Sang", "Chimiothérapie", "Radiothérapie", "Opération", "Kinésithérapie", "Autre"], input_html: { class: 'soflow' }, label: false, prompt: 'Choisir votre type de RDV' %>
     </div>
 
     <div class="form-inputs">

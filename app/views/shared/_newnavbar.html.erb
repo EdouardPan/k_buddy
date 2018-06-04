@@ -1,0 +1,31 @@
+<div class="navbar-kbuddy">
+  <%= link_to image_tag("medical-record-icon.png", class: "navbar-icons"), medical_records_path %>
+  <%= link_to image_tag("treatment-icon.png", class: "navbar-icons"), calendar_index_path %>
+
+  <span id="opennavmenu">
+    <div class="white-circle"></div>
+    <%= image_tag("plus.png", id: "navbar-plus-icon")%>
+  </span>
+
+  <%= link_to image_tag("symptoms-icon.png", class: "navbar-icons"), symptoms_path %>
+  <%= link_to image_tag("recommendation-icon.png", class: "navbar-icons"), root_path %>
+</div>
+
+
+<div id="myNavMenu" class="navmenu">
+  <a href="#" class="closemenu">&times;</a>
+  <div class="menu-box">
+    <%= link_to new_medical_record_path, class: "submit-button" do %>
+      <i class="fas fa-plus"></i> dossier médical
+    <% end %>
+    <%= link_to new_medical_professional_path(event_type: 'treatment'), class: "submit-button" do %>
+      <i class="fas fa-plus"></i> traitement
+    <% end %>
+    <%= link_to new_symptom_path, class: "submit-button" do %>
+      <i class="fas fa-plus"></i> symptôme
+    <% end %>
+    <%= link_to new_medical_professional_path(event_type: 'appointment'), class: "submit-button" do %>
+      <i class="fas fa-plus"></i> rendez-vous
+    <% end %>
+  </div>
+</div>
