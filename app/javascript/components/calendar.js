@@ -14,7 +14,7 @@ export function showCalendar() {
     themeSystem: 'bootstrap4',
     defaultView: 'month',
     locale: 'fr',
-    weekends: true, // will hide Saturdays and Sundays
+    weekends: true, // will hide Saturdays and Sundays if false
     height: 540,
     dayClick: function(date) {
       $('#calendar').fullCalendar('changeView', 'agendaDay', date);

@@ -12,3 +12,20 @@
   font-size: 21px;
   line-height: 1.8;
 }
+
+.fc-today{
+  background-color: $light-blue !important;
+}
+
+.fc-agendaDay-view .fc-today{
+  background:none !important;
+}
+
+.fc-month-view .fc-event{
+  background-color: transparent !important;
+  border:none;
+  color: $gray;
+  i{
+    font-size:15px;
+  }
+}
