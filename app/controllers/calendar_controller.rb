@@ -16,11 +16,13 @@ class CalendarController < ApplicationController
     @events_grouped.each do |date_event|
       a = date_event[1].any? { |obj| obj.is_a?(Appointment) }
       t = date_event[1].any? { |obj| obj.is_a?(Treatment) }
+      puts taken = date_event[1].any? { |obj| obj.is_a?(Treatment) && obj.taken == false }
       data = {
         title: '',
         start: date_event[0].to_date,
         iconA: a,
-        iconT: t
+        iconT: t,
+        taken: !taken
       }
       @events_js << data
     end
@@ -58,10 +60,12 @@ class CalendarController < ApplicationController
       data = nil
       if event.is_a?(Appointment)
         data = {
-          title: "#{event.category} at #{event.medical_professional.location_name}",
+          title: "#{event.category} - #{event.medical_professional.location_name}",
           start: event.start_date.strftime("%Y-%m-%dT%H:%M:%S"),
           end: event.end_date.strftime("%Y-%m-%dT%H:%M:%S"),
-          iconA: true
+          iconA: true,
+          url: appointment_path(event),
+          backgroundColor: '#469AE0'
         }
         @events_js << data
       else
@@ -69,7 +73,11 @@ class CalendarController < ApplicationController
           title: "#{event.drug.name} - #{event.quantity}",
           start: event.take_time.strftime("%Y-%m-%dT%H:%M:%S"),
           end: (event.take_time + 0.5 / 24).strftime("%Y-%m-%dT%H:%M:%S"),
-          iconT: true
+          iconT: true,
+          url: prescription_path(event.prescription),
+          taken: event.taken,
+          backgroundColor: '#32B796',
+          borderColor: '#00A896'
         }
         @events_js << data
       end
