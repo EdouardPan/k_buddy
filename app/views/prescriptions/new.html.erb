@@ -31,7 +31,7 @@
   <div class="form-inputs">
     <%= label_tag 'Médicament' %>
     <br>
-    <%= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }) %>
+    <%= select_tag :drug, options_for_select(@drugs.collect{ |u| [u.name, u.id] }), class: "form-control soflow" %>
   </div>
 
   <div class="form-inputs">
