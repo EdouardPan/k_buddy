@@ -20,5 +20,20 @@ function closeMenu() {
 }
 
 
-export { openMenu, closeMenu };
+/* Toggle */
+function navButton(x) {
+  const togglenm = document.getElementById("opennavmenu");
+  if(togglenm.classList.contains("change")){
+     closeMenu();
+     togglenm.classList.remove("change");
+  }else{
+     openMenu();
+     togglenm.classList.add("change");
+  }
+}
+
+
+export { openMenu, closeMenu, navButton };
+
+
 
