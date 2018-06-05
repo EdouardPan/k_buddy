@@ -9,7 +9,7 @@
 
 <div class="separation-box text-center">
   <p>Date de l'évènement:</p>
-  <h4><%= @medical_record.record_date.to_s(:long) %></h4>
+  <h4><%= l @medical_record.record_date, format: :long_formal %></h4>
   <br>
   <p>Description:</p>
   <h6>
@@ -25,11 +25,20 @@
   <% if @medical_record.photos.empty? %>
     <p>Pas de pièces jointes</p>
   <% else %>
-    <% @medical_record.photos.each do |p| %>
-      <a href="#" class="pop">
-        <%= cl_image_tag p.url, width: 150 %>
-      </a>
-    <% end %>
+
+
+      <% @medical_record.photos.each do |p| %>
+      <div class="picture-box">
+        <a href="#" class="pop">
+          <%= cl_image_tag p.url, width: 150 %>
+        </a>
+        <%= link_to photo_path(p), method: :delete, data: {confirm: "Are you sure?"} do  %>
+          <%= image_tag ("delete.png"), class: "small-icon delete-photo" %>
+        <% end %>
+      </div>
+      <% end %>
+
+
   <% end %>
 
   <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

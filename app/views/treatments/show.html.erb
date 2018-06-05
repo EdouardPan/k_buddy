@@ -10,7 +10,7 @@
 
 <div class="separation-box text-center">
   <p>Heure de prise</p>
-  <h4><%= @treatment.take_time.to_s(:long) %></h4>
+  <h4><%= l @treatment.take_time, format: :short %></h4>
   <% if @treatment.taken == false %>
     <div id="checkbox-container">
     <br>
@@ -28,9 +28,14 @@
     <p>Pas de pièces jointes</p>
   <% else %>
     <% @treatment.prescription.photos.each do |p| %>
-      <a href="#" class="pop">
-        <%= cl_image_tag p.url, width: 150 %>
-      </a>
+      <div class="picture-box">
+        <a href="#" class="pop">
+          <%= cl_image_tag p.url, width: 150 %>
+        </a>
+        <%= link_to photo_path(p), method: :delete, data: {confirm: "Are you sure?"} do %>
+          <%= image_tag ("delete.png"), class: "small-icon delete-photo" %>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 

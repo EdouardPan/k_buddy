@@ -43,3 +43,9 @@ if (document.querySelector('.navbar-kbuddy')){
 if (document.querySelector('.slidecontainer')){
   sliderSymptoms();
 }
+
+// algolia autocomplete
+
+if (document.getElementById('search-input')){
+  algoliaAutocomplete();
+}

@@ -13,8 +13,6 @@ class MedicalRecord < ApplicationRecord
   validates :record_date, presence: true
   validates :category, inclusion: { in: CATEGORIES }
 
-
-
 end
 
 

@@ -1,0 +1,43 @@
+<div class="profile-title text-center">
+  <h1 class="category-show">Bonjour <%= @profile.first_name %> !</h1>
+</div>
+
+<div class="show-icon text-center ">
+  <%= image_tag ("profile.png"), class: "list-icon" %>
+</div>
+
+<div class="profile-box text-center">
+  <h6>Votre email :</h6> <%= @profile.email %>
+  <h6>Votre prénom :</h6> <%= @profile.first_name %>
+  <h6>Votre nom de famille :</h6>
+  <% if @profile.last_name.nil? %>
+    /
+  <% else %>
+    <%= @profile.last_name %>
+  <% end %>
+  <h6>Votre code postal :</h6>
+  <% if @profile.zipcode.nil? %>
+    /
+  <% else %>
+    <%= @profile.zipcode %>
+  <% end %>
+  <h6>Votre date de naissance :</h6>
+  <% if @profile.birthday.nil? %>
+    /
+  <% else %>
+    <%= @profile.birthday %>
+  <% end %>
+  <h6>Votre sexe :</h6>
+  <% if @profile.sex.nil? %>
+    /
+  <% else %>
+    <%= @profile.sex %>
+  <% end %>
+
+</div>
+
+<div class="edit-delete-box text-center">
+  <%= link_to edit_user_registration_path do  %>
+    <%= image_tag ("edit.png"), class: "small-icon" %>
+  <% end %>
+</div>
