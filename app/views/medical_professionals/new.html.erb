@@ -1,7 +1,12 @@
-<div class="form-title text-center">
-  <h2>Qui est votre médecin?</h2>
-</div>
-
+<% if params[:event_type] == "appointment" %>
+  <div class="form-title text-center">
+    <h2>Avec quel médecin avez-vous rendez-vous ?</h2>
+  </div>
+  <% else %>
+  <div class="form-title text-center">
+    <h2>Quel médecin a émis votre nouvelle ordonnance ?</h2>
+  </div>
+<% end %>
 
 <div class="text-center">
 
@@ -21,7 +26,7 @@
           </div>
 
         <div class="form-actions">
-          <%= f.submit "Ajouter un RDV", class: "submit-button" %>
+          <%= f.submit "Choisir le médecin", class: "submit-button" %>
         </div>
       </div>
 
@@ -75,8 +80,9 @@
     </div>
 
     <div class="form-actions">
-      <%= f.submit "Ajouter un RDV", class: "submit-button" %>
+      <%= f.submit "Valider", class: "submit-button" %>
     </div>
+
   <% end %>
 
 </div>

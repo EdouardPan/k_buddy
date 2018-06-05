@@ -49,6 +49,7 @@ class PrescriptionsController < ApplicationController
         counter = 1
         params[:traitement_take_time].each do |k, v|
           treatment = Treatment.new(
+            taken: false,
             prescription_id: prescription.id,
             drug_id: drug.id,
             take_time: DateTime.new(this_date.year, this_date.month, this_date.day, Time.parse(v).hour, Time.parse(v).min),
@@ -74,6 +75,7 @@ class PrescriptionsController < ApplicationController
   end
 
   def edit
+    @prescription = Prescription.find(params[:id])
     authorize @prescription
   end
 
@@ -82,7 +84,10 @@ class PrescriptionsController < ApplicationController
   end
 
   def destroy
-    authorize @prescription
+    prescription = Prescription.find(params[:id])
+    authorize prescription
+    prescription.destroy
+    redirect_to calendar_index_path
   end
 
   private
