@@ -1,6 +1,5 @@
 class DashboardController < ApplicationController
 
-
   def today_tasks
     @medical_records = MedicalRecord.all
     @appointments = policy_scope(Appointment)
@@ -13,3 +12,4 @@ class DashboardController < ApplicationController
   end
 
 end
+
