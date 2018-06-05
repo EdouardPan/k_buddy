@@ -74,7 +74,7 @@ class CalendarController < ApplicationController
           start: event.take_time.strftime("%Y-%m-%dT%H:%M:%S"),
           end: (event.take_time + 0.5 / 24).strftime("%Y-%m-%dT%H:%M:%S"),
           iconT: true,
-          url: prescription_path(event.prescription),
+          url: treatment_path(event),
           taken: event.taken,
           backgroundColor: '#32B796',
           borderColor: '#00A896'
