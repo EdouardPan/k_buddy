@@ -1,0 +1,10 @@
+.banner-articles {
+  background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 0%, rgba(0,36,61,0.3) 50%), asset-url('temoignage.jpg');
+  background-size: cover;
+  color: white;
+  height: 22vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
