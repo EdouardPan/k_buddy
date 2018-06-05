@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   resources :calendar, only: [:index, :show]
   resources :treatments, only: [:show, :update]
   resources :photos, only: [:destroy]
-
+  resources :profile, only: [:show, :edit, :update]
 end
