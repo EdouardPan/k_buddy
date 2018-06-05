@@ -18,7 +18,7 @@
       <% @medical_records.reverse.each do |mr| %>
         <hr>
         <%= link_to(medical_record_path(mr), class: "link") do %>
-          <%= render 'shared/icons', object: mr %> <strong><%= mr.record_date %></strong> | <em><%= mr.title.capitalize %></em>
+          <%= render 'shared/icons', object: mr %> <strong><%= l mr.record_date, format: :long %></strong> | <em><%= mr.title.capitalize %></em>
         <% end %>
       <% end %>
     </div>

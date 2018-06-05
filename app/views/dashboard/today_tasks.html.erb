@@ -1,5 +1,6 @@
 <div class="title-box">
-  <h1><%= Date.today.to_s(:long) %></h1>
+  <h1><%= l Date.today %></h1>
+  <!-- translate into french  -->
 </div>
 
 <div class="box">
@@ -17,7 +18,7 @@
           <% else %>
             <%= link_to(treatment_path(mr), class: "link") do %>
               <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
-              <strong><%= mr.take_time.strftime("%I:%M%p")%></strong> | <em><%= mr.drug.name.split.first.chomp(",")%></em>
+              <strong><%= l mr.take_time %></strong> | <em><%= mr.drug.name.split.first.chomp(",")%></em>
             <% end %>
           <% end %>
         <% end %>

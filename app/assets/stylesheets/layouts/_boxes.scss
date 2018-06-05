@@ -84,10 +84,26 @@
   }
 }
 
+// Picture
+
 .photo-box {
   margin-top: 30px;
-
 }
+
+.picture-box {
+  position: relative;
+  width: 170px;
+  display: inline-block;
+  padding: 20px;
+}
+
+.delete-photo {
+  position: absolute;
+  bottom: 27px;
+  right: 10px;
+}
+
+// Show
 
 .edit-delete-box {
   margin-top: 30px;
@@ -115,4 +131,18 @@
 
 .bleu {
   color: $dark-blue;
+}
+
+// PROFILE
+
+.profile-title {
+  margin-top: 105px;
+  margin-bottom: 40px;
+}
+
+.profile-box {
+  margin-top: 50px;
+  h6 {
+    margin-top: 5px;
+  }
 }

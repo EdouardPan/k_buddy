@@ -4,6 +4,10 @@
 <% @medical_professionals.each do |mp| %>
   <%= link_to(medical_professional_path(mp), class: "link") do %>
     <hr>
-    <%= mp.location_name %> • <%= mp.doctor %>
+    <% if mp.doctor == "" %>
+      <em><%= mp.location_name %></em>
+    <% else %>
+      <em><%= mp.location_name %> • <%= mp.doctor %></em>
+    <% end %>
   <% end %>
 <% end %>
