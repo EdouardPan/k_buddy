@@ -25,6 +25,10 @@ export function showCalendar() {
       center: 'title',
       right:  'prev,next'
     },
+    buttonText: {
+      month: 'Mois',
+      day: 'Jour'
+    },
     events: listEventsMonth,
     eventRender: function(event, element) {
       if (event.iconA){
