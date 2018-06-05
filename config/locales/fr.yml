@@ -39,8 +39,9 @@ fr:
     - samedi
     formats:
       default: "%A, %d %b %Y"
-      short: "%e %b"
+      long_formal: "%e %B %Y"
       long: "%e %b %Y"
+      short: "%e %b"
     month_names:
     -
     - janvier
