@@ -56,7 +56,7 @@ class SymptomsController < ApplicationController
     authorize @symptom
     @symptom.user = current_user
     if @symptom.save
-      redirect_to symptom_path(@symptom)
+      redirect_to symptoms_path
     else
       render :new
     end
@@ -68,14 +68,17 @@ class SymptomsController < ApplicationController
 
   def update
     authorize @symptom
+    if @symptom.update(symptom_params)
+      redirect_to symptom_path(@symptom)
+    else
+      render :edit
+    end
   end
 
   def destroy
     authorize @symptom
-  end
-
-  def search
-
+    @symptom.destroy
+    redirect_to symptoms_path
   end
 
 private

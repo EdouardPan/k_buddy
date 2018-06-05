@@ -14,19 +14,19 @@
 
     <%= form_for(@medical_professional, url: medical_professionals_path(event_type: @event_type))  do |f| %>
 
-      <div class="form form-inputs">
+      <div class="form">
         <div class="form-subtitle">
           <h3>Choisir parmi votre liste</h3>
         </div>
 
           <div class="form-inputs">
 
-            <%= select("medical_professional", "id", current_user.medical_professionals.collect {|p| [p.location_with_doctor, p.id]}.uniq, {include_blank: 'None'}, class: "soflow") %>
+            <%= select("medical_professional", "id", current_user.medical_professionals.collect {|p| [p.location_with_doctor, p.id]}.uniq, {include_blank: 'Choisir votre médecin'}, class: "soflow") %>
 
           </div>
 
         <div class="form-actions">
-          <%= f.submit "Choisir le médecin", class: "submit-button" %>
+          <%= f.submit "Valider", class: "submit-button" %>
         </div>
       </div>
 
@@ -80,9 +80,10 @@
     </div>
 
     <div class="form-actions">
-      <%= f.submit "Valider", class: "submit-button" %>
+      <%= f.submit "Ajouter", class: "submit-button" %>
     </div>
 
   <% end %>
 
+  </div>
 </div>
