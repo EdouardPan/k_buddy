@@ -1,0 +1,13 @@
+    <div class="inline-form">
+      <div class="form-inputs">
+        <%= label_tag "Heure de prise #{i}" %>
+        <br>
+        <%= time_field(:traitement_take_time, "take_time#{i}") %>
+      </div>
+
+      <div class="form-inputs">
+        <%= label_tag 'Quantité' %>
+        <br>
+        <%= text_field(:traitement_quantity, "quantity#{i}") %>
+      </div>
+    </div>
