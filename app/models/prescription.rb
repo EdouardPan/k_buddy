@@ -10,5 +10,6 @@ class Prescription < ApplicationRecord
   validates :end_date, presence: true
 
   accepts_nested_attributes_for :treatments
+  accepts_nested_attributes_for :photos
 
 end

@@ -13,65 +13,29 @@
 <%# end %>
 
 <div class="text-center form">
-  <%= form_tag medical_professional_prescriptions_path do %>
-  <%#= select_tag  %>
-
-  <div class="form-inputs">
-    <%= label_tag 'Médicament' %>
-    <br>
-    <input name="drug_name" type="text" id="search-input" class="soflow" placeholder="Trouver un médicament" />
-  </div>
-
-  <div class="form-inputs">
-    <%= label_tag 'Date de début' %>
-    <br>
-    <%= date_field(:prescription, :start_date) %>
-  </div>
-
-  <div class="form-inputs">
-    <%= label_tag 'Date de fin' %>
-    <br>
-    <%= date_field(:prescription, :end_date) %>
-  </div>
-
-  <div class="form-inputs form-photo">
-    <%= label_tag "Ajouter les pièces jointes" %>
-    <br>
-    <%= file_field :url, multiple: true %>
-  </div>
-
-  <div id="dose">
-    <%= render partial: "shared/form_doses", locals: {i: 1} %>
-  </div>
-
-  <div class="form-actions">
-    <%= submit_tag "Valider", class: "submit-button" %>
-  </div>
-
-  <% end %>
-
-  <hr>
 
   <%= simple_form_for [@medical_professional,@prescription] do |f| %>
+    <%= f.simple_fields_for :photos do |ph| %>
+      <%= ph.input :url, as: :file, multiple: true, label: "Ajouter l'ordonnance" %>
+    <% end %>
     <%#= f.association :drug, input_html: {id: "search-input", class: "soflow", placeholder: "Trouver un médicament"} %>
     <%= f.simple_fields_for :treatments do |t| %>
-      <%= t.association :drug %>
-      <%= f.input :start_date, as: :string, input_html: {class: "datepicker"} %>
-      <%= f.input :end_date, as: :string, input_html: {class: "datepicker"} %>
+      <%= t.input :drug, label: 'Médicament', input_html: { class: "search-input soflow", placeholder: "Trouver un médicament"} %>
+      <%= f.input :start_date, label: 'Date de début', as: :string, input_html: {class: "datepicker"} %>
+      <%= f.input :end_date, label: 'Date de fin', as: :string, input_html: {class: "datepicker"} %>
       <div class="inline-form">
-        <%= t.input :take_time, as: :string, input_html: {class: "datepicker-time"} %>
-        <%= t.input :quantity %>
+        <%= t.input :take_time, label: 'Heure de prise', as: :string, input_html: {class: "datepicker-time"} %>
+        <%= t.input :quantity, label: 'Quantité' %>
       </div>
     <% end %>
-    <div id="AddButton" data-index = "1">
+    <div id="add-dose-0" class="legend">
       <i class="fas fa-plus"></i> Ajouter une dose
     </div>
-
-    <%= f.simple_fields_for :treatments do |t| %>
-      <%= t.association :drug %>
-      <%= t.input :take_time, as: :string, input_html: {class: "datepicker-time"} %>
-      <%= t.input :quantity %>
+    <hr>
+    <%= link_to adddrug_path, remote: true, id: "add-drug" do %>
+        <i class="fas fa-plus"></i> Ajouter un médicament
     <% end %>
+
     <%= f.submit class: 'submit-button' %>
   <% end %>
 

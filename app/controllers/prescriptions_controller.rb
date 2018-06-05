@@ -13,9 +13,13 @@ class PrescriptionsController < ApplicationController
   def new
     @prescription = Prescription.new
     @prescription.treatments.build
+    @prescription.photos.build
     @drugs = Drug.all
     @medical_professional = MedicalProfessional.find(params[:medical_professional_id])
     authorize @prescription
+  end
+
+  def add_drug
   end
 
   def create
