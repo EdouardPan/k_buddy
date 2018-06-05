@@ -12,13 +12,18 @@ class PrescriptionsController < ApplicationController
 
   def new
     @prescription = Prescription.new
+    @prescription.treatments.build
+    @prescription.photos.build
     @drugs = Drug.all
     @medical_professional = MedicalProfessional.find(params[:medical_professional_id])
     authorize @prescription
   end
 
-  def create
+  def add_drug
+  end
 
+  def create
+    raise
     prescription = Prescription.new(
       medical_professional_id: params[:medical_professional_id],
       start_date: params[:prescription][:start_date],
@@ -27,10 +32,22 @@ class PrescriptionsController < ApplicationController
     authorize prescription
 
     if prescription.save
-      # Create the instances of treatement with the info we have.
+
+      # Photos adding
+      unless params[:prescription][:url].nil?
+        params[:prescription][:url].each do |u|
+          new_photo = Photo.new(url: u)
+          new_photo.prescription = @prescription
+          new_photo.save
+        end
+      end
+
+      # Save info for the creation of instances of Treatment
       this_date = prescription.start_date
       duration = (prescription.end_date.to_date - this_date.to_date).to_i
       drug = Drug.find_by(name: params[:drug_name])
+
+      # Treatments creation
       duration.times do
         # each treatement is in a hash iterate
         counter = 1

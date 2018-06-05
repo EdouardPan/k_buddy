@@ -12,9 +12,10 @@ import { closeNav } from '../components/sidenav';
 
 import { sliderSymptoms } from '../components/slider';
 
-
 import { openMenu } from '../components/navmenu';
 import { closeMenu } from '../components/navmenu';
+
+import "../components/flatpickr";
 
 // calendar
 
