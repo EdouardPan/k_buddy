@@ -8,7 +8,8 @@ function hideButton() {
   const button = document.getElementById("taken-button");
   const checkBox = document.getElementById("checkbox-container");
 
-  button.className = "hidden-button";
+  // button.className = "hidden-button";
+  button.remove();
   checkBox.insertAdjacentHTML("beforeend", checkBoxAnimation);
 }
 
