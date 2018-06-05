@@ -1,6 +1,5 @@
 class DashboardController < ApplicationController
 
-
   def today_tasks
 
     @appointments = policy_scope(Appointment)
@@ -14,3 +13,4 @@ class DashboardController < ApplicationController
   end
 
 end
+

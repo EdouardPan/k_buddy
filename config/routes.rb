@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/todaytasks', to: "dashboard#today_tasks"
+
   resources :medical_records
   resources :symptoms
   resources :medical_professionals do
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   resources :prescriptions, except: [:new, :create]
   get '/adddrug', to: "prescriptions#add_drug"
   resources :calendar, only: [:index, :show]
+  resources :wellbeings, only: [:index, :show]
   resources :photos, only: [:destroy]
   resources :profile, only: [:show, :edit, :update]
   resources :treatments, only: [:show, :update, :destroy]
