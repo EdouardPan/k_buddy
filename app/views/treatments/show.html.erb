@@ -5,6 +5,7 @@
 
 <div class="show-icon text-center">
   <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
+  <!-- put edit delete icons here -->
 </div>
 
 <div class="separation-box text-center">
@@ -16,7 +17,8 @@
     <%= link_to "J'ai pris", treatment_path(@treatment), class: "submit-button", id: "taken-button", method: :patch, remote: true %>
     </div>
     <% else %>
-
+    <br>
+      <span><i class="far fa-check-circle checkbox"></i>  Médicament pris</span>
   <% end %>
 </div>
 
@@ -44,4 +46,12 @@
   </div>
 </div>
 
+<div class="edit-delete-box text-center">
+  <%= link_to edit_prescription_path(@prescription) do  %>
+    <%= image_tag ("edit.png"), class: "small-icon" %>
+  <% end %>
+  <%= link_to prescription_path(@prescription), method: :delete, data: {confirm: "Etes-vous certain de vouloir supprimer cette drdonnance ainsi que les prises de médicament associées ?"} do  %>
+    <%= image_tag ("delete.png"), class: "small-icon" %>
+  <% end %>
+</div>
 

@@ -52,7 +52,7 @@
   <%= link_to edit_appointment_path(@appointment) do  %>
     <%= image_tag ("edit.png"), class: "small-icon" %>
   <% end %>
-  <%= link_to appointment_path(@appointment), method: :delete, data: {confirm: "Are you sure?"} do  %>
+  <%= link_to appointment_path(@appointment), method: :delete, data: {confirm: "Etes-vous certain de vouloir supprimer ce rendez-vous ?} do  %>
     <%= image_tag ("delete.png"), class: "small-icon" %>
   <% end %>
 </div>

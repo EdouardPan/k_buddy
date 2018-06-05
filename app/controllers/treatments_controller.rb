@@ -3,6 +3,7 @@ class TreatmentsController < ApplicationController
   def show
     @treatment = Treatment.find(params[:id])
     authorize @treatment
+    @prescription = @treatment.prescription
   end
 
   def update
