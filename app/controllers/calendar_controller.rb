@@ -1,5 +1,7 @@
 class CalendarController < ApplicationController
 
+include ActionView::Helpers::AssetUrlHelper
+
   def index
     @appointments = policy_scope(Appointment)
     @treatments = Treatment.where(user: current_user)
