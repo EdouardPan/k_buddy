@@ -44,28 +44,32 @@
     <%= render partial: "shared/form_doses", locals: {i: 1} %>
   </div>
 
-  <div id="AddButton" data-index = "1">
-    <i class="fas fa-plus"></i> Ajouter une dose
-  </div>
-
   <div class="form-actions">
     <%= submit_tag "Valider", class: "submit-button" %>
   </div>
 
   <% end %>
 
+  <hr>
+
   <%= simple_form_for [@medical_professional,@prescription] do |f| %>
     <%#= f.association :drug, input_html: {id: "search-input", class: "soflow", placeholder: "Trouver un médicament"} %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
     <%= f.simple_fields_for :treatments do |t| %>
       <%= t.association :drug %>
-      <%= t.input :take_time %>
-      <%= t.input :quantity %>
+      <%= f.input :start_date, as: :string, input_html: {class: "datepicker"} %>
+      <%= f.input :end_date, as: :string, input_html: {class: "datepicker"} %>
+      <div class="inline-form">
+        <%= t.input :take_time, as: :string, input_html: {class: "datepicker-time"} %>
+        <%= t.input :quantity %>
+      </div>
     <% end %>
+    <div id="AddButton" data-index = "1">
+      <i class="fas fa-plus"></i> Ajouter une dose
+    </div>
+
     <%= f.simple_fields_for :treatments do |t| %>
       <%= t.association :drug %>
-      <%= t.input :take_time %>
+      <%= t.input :take_time, as: :string, input_html: {class: "datepicker-time"} %>
       <%= t.input :quantity %>
     <% end %>
     <%= f.submit class: 'submit-button' %>
