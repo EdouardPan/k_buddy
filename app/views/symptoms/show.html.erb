@@ -16,7 +16,7 @@
   <br>
   <p>Description:</p>
   <h6>
-    <% if @symptom.description.nil? %>
+    <% if @symptom.description == "" %>
       "Pas de description"
     <% else %>
       <%= @symptom.description %>
