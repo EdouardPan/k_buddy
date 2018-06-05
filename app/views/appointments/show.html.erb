@@ -34,8 +34,8 @@
         <a href="#" class="pop">
           <%= cl_image_tag p.url, width: 150 %>
         </a>
-        <%= link_to photo_path(p), method: :delete, data: {confirm: "Are you sure?"} do %>
-          <%= image_tag ("delete.png"), class: "small-icon delete-photo" %>
+        <%= link_to photo_path(p), method: :delete, data: {confirm: "Etes-vous sûr de bien vouloir effacer ce rendez-vous ?"} do %>
+          <%= image_tag "delete.png", class: "small-icon delete-photo" %>
         <% end %>
       </div>
     <% end %>
@@ -58,7 +58,7 @@
   <%= link_to edit_appointment_path(@appointment) do  %>
     <%= image_tag ("edit.png"), class: "small-icon" %>
   <% end %>
-  <%= link_to appointment_path(@appointment), method: :delete, data: {confirm: "Etes-vous certain de vouloir supprimer ce rendez-vous ?} do  %>
+  <%= link_to appointment_path(@appointment), method: :delete, data: {confirm: "Etes-vous certain de vouloir supprimer ce rendez-vous ?"} do  %>
     <%= image_tag ("delete.png"), class: "small-icon" %>
   <% end %>
 </div>

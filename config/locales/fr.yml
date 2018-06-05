@@ -38,7 +38,7 @@ fr:
     - vendredi
     - samedi
     formats:
-      default: "%A, %d %b %Y"
+      default: "%A %d %b %Y"
       long_formal: "%e %B %Y"
       long: "%e %b %Y"
       short: "%e %b"

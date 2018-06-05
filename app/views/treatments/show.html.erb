@@ -10,7 +10,7 @@
 
 <div class="separation-box text-center">
   <p>Heure de prise</p>
-  <h4><%= @treatment.take_time.to_s(:long) %></h4>
+  <h4><%= l @treatment.take_time, format: :short %></h4>
   <% if @treatment.taken == false %>
     <div id="checkbox-container">
     <br>
