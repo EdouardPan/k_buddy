@@ -1,7 +1,8 @@
 svg {
   width: 100px;
   display: block;
-  margin: 40px auto 0;
+  margin: 0px auto 0;
+
 }
 
 .path {
@@ -28,7 +29,7 @@ p {
   margin: 20px 0 60px;
   font-size: 1.25em;
   &.success {
-    color: #73AF55;
+    color: $light-green;
   }
   &.error {
     color: #D06079;

@@ -1,3 +1,4 @@
+puts "We are seeding, please wait"
 
 Treatment.destroy_all
 Appointment.destroy_all
@@ -19,31 +20,6 @@ end
 
 puts "Loaded drugs database!"
 
-
-
-# Seeds for Appointments
-
-#puts 'Creating Appointments...'
-
-# 20.times do
-#   month = rand(1..12)
-#   day = rand(1..28)
-#   start_time = rand(8..17)
-#   end_time = start_time + rand(1..3)
-#   Appointment.create!(
-#     start_date: DateTime.new(2018,month,day, start_time),
-#     end_date: DateTime.new(2018,month,day, end_time),
-#     category: ["Imagerie", "Médecin", "Kinésithérapie"].sample,
-#     description: "Important",
-#     user_id: User.first,
-#     medical_professional_id: MedicalProfessional.ids.sample
-#   )
-# end
-
-# puts 'Finished!'
-
-
-
 #Seeds for MedicalRecord
 
 puts 'Creating medical records...'
@@ -51,7 +27,7 @@ puts 'Creating medical records...'
     record_date: DateTime.new(2012,9,14,8),
     title: "Pneumothorax",
     category: "Opération",
-    user_id: "1"
+    user_id: User.first.id
   )
   medical_record_1.save!
 
@@ -59,7 +35,7 @@ puts 'Creating medical records...'
     record_date: DateTime.new(2009,10,14,8),
     title: "Eczéma",
     category: "Antécédent Familial",
-    user_id: "1"
+    user_id: User.first.id
   )
   medical_record_2.save!
 
@@ -67,7 +43,7 @@ puts 'Creating medical records...'
     record_date: DateTime.new(2012,11,14,8),
     title: "Examen Prise de Sang 2012",
     category: "Prise de Sang",
-    user_id: "1"
+    user_id: User.first.id
   )
   medical_record_3.save!
 
@@ -75,7 +51,7 @@ puts 'Creating medical records...'
     record_date: DateTime.new(2010,12,14,8),
     title: "Consultation ORL",
     category: "Autre",
-    user_id: "1"
+    user_id: User.first.id
   )
   medical_record_4.save!
 puts 'Finished!'
@@ -180,7 +156,7 @@ puts 'Creating Appointments...'
   day = rand(1..28)
   start_time = rand(8..17)
   end_time = start_time + rand(1..3)
-  Appointment.create!(
+  p = Appointment.new(
     start_date: DateTime.new(2018,month,day, start_time),
     end_date: DateTime.new(2018,month,day, end_time),
     category: ["Imagerie", "Médecin", "Kinésithérapie"].sample,
@@ -188,6 +164,7 @@ puts 'Creating Appointments...'
     user: User.first,
     medical_professional_id: MedicalProfessional.ids.sample
   )
+  p.save
 end
 
 puts 'Finished!'
@@ -228,52 +205,3 @@ puts "Creating Prescription and Treatments"
 end
 
 puts "Finished!"
-
-
-
-
-
-# Old Seeds
-
-# puts 'Creating Drugs ...'
-#   drug_1 = Drug.new(
-#   name: "Doliprane",
-#   category: "Anti Migraine",
-#   description: "Soigne les migraines"
-#   )
-# drug_1.save!
-
-# drug_2 = Drug.new(
-#   name: "Smecta",
-#   category: "Anti Migraine",
-#   description: "Soigne les migraines"
-#   )
-# drug_2.save!
-
-# drug_3 = Drug.new(
-#   name: "Ibuprofene",
-#   category: "Anti Migraine",
-#   description: "Soigne les migraines"
-#   )
-# drug_3.save!
-
-# drug_4 = Drug.new(
-#   name: "Immodium",
-#   category: "Anti Migraine",
-#   description: "Soigne les migraines"
-#   )
-# drug_4.save!
-# puts 'Finished!'
-
-
-# puts 'Creating Drugs ...'
-#  drugs.each do |dr|
-#    d = Drug.new(
-#    name: dr,
-#    category: "Anti Migraine",
-#    description: "Soigne les migraines"
-#    )
-#    d.save!
-#  end
-# puts 'Finished!'
-

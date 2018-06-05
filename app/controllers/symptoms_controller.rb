@@ -17,7 +17,8 @@ class SymptomsController < ApplicationController
       data = {
         title: '',
         start: date_event[0].to_date,
-        iconS: true
+        iconS: true,
+        img_path_S: ActionController::Base.helpers.image_path('symptoms-icon.png')
       }
       @symptoms_js << data
     end
@@ -32,7 +33,8 @@ class SymptomsController < ApplicationController
         title: "#{event.name} - #{event.intensity}/10",
         start: event.start_date.strftime("%Y-%m-%dT%H:%M:%S"),
         end: event.end_date.strftime("%Y-%m-%dT%H:%M:%S"),
-        iconS: true
+        iconS: true,
+        img_path_S: ActionController::Base.helpers.image_path('symptoms-icon.png')
       }
       @symptoms_js << data
     end
