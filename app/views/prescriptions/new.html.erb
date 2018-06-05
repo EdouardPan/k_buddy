@@ -32,8 +32,8 @@
       <i class="fas fa-plus"></i> Ajouter une dose
     </div>
     <hr>
-    <%= link_to adddrug_path, remote: true, id: "add-drug" do %>
-        <i class="fas fa-plus"></i> Ajouter un médicament
+    <%= link_to_add_fields f, :treatments do %>
+      <i class="fas fa-plus"></i> Ajouter un médicament
     <% end %>
 
     <%= f.submit class: 'submit-button' %>

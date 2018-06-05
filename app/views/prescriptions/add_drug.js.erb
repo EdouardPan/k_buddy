@@ -1,5 +1,5 @@
 
 const addButton = document.getElementById('add-drug');
 addButton.addEventListener('click', (event) => {
-  addButton.insertAdjacentHTML('beforeBegin', '<%= render partial: "shared/form_drug" %>')
+  addButton.insertAdjacentHTML('beforeBegin', '<%= render partial: "shared/form_drug", locals: {} %>')
 });
