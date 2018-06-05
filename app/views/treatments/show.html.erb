@@ -12,8 +12,8 @@
   <p>Heure de prise</p>
   <h4><%= @treatment.take_time.to_s(:long) %></h4>
   <% if @treatment.taken == false %>
-  <br>
     <div id="checkbox-container">
+    <br>
     <%= link_to "J'ai pris", treatment_path(@treatment), class: "submit-button", id: "taken-button", method: :patch, remote: true %>
     </div>
     <% else %>
