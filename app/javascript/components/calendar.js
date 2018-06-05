@@ -6,7 +6,6 @@ export function showCalendar() {
   // page is now ready, initialize the calendar...
 
   const listEventsDay = JSON.parse(document.getElementById('calendar').dataset.eventDay);
-  const listEventsWeek = JSON.parse(document.getElementById('calendar').dataset.eventWeek);
   const listEventsMonth = JSON.parse(document.getElementById('calendar').dataset.eventMonth);
 
   $('#calendar').fullCalendar({
@@ -29,17 +28,17 @@ export function showCalendar() {
     events: listEventsMonth,
     eventRender: function(event, element) {
       if (event.iconA){
-        element.find(".fc-title").prepend("<img src='/assets/doctor.png' class='img-calendar'>");
+        element.find(".fc-title").prepend(`<img src='${event.img_path_A}' class='img-calendar'>`);
       }
       if (event.iconT) {
         if (event.taken) {
-          element.find(".fc-title").prepend("<img src='/assets/pills.png' class='img-calendar light-img'>");
+          element.find(".fc-title").prepend(`<img src='${event.img_path_T_taken}' class='img-calendar light-img'>`);
         } else {
-          element.find(".fc-title").prepend("<img src='/assets/treatment-icon.png' class='img-calendar'>");
+          element.find(".fc-title").prepend(`<img src='${event.img_path_T}' class='img-calendar'>`);
         }
       }
       if (event.iconS){
-        element.find(".fc-title").prepend("<img src='/assets/symptoms-icon.png' class='img-calendar'>");
+        element.find(".fc-title").prepend(`<img src='${event.img_path_S}' class='img-calendar'>`);
       }
     },
     viewRender: function(view, element) {
@@ -47,24 +46,10 @@ export function showCalendar() {
         $('#calendar').fullCalendar('removeEvents');
         $('#calendar').fullCalendar('renderEvents', listEventsDay);
       }
-      if (view.type === 'agendaWeek'){
-        $('#calendar').fullCalendar('removeEvents');
-        $('#calendar').fullCalendar('renderEvents', listEventsWeek);
-      }
       if (view.type === 'month'){
         $('#calendar').fullCalendar('removeEvents');
         $('#calendar').fullCalendar('renderEvents', listEventsMonth);
       }
     }
   });
-
 }
-
-
-    // eventClick: function(calEvent, jsEvent, view) {
-    //   $('#calendar').fullCalendar('changeView', 'agendaDay', date);
-    //   if (view.type === 'agendaDay'){
-    //     console.log(calEvent.url);
-    //     window.open(calEvent.url, "_self");
-    //   }
-    // },
