@@ -13,7 +13,7 @@
           <% if mr.is_a?(Appointment) %>
             <%= link_to(appointment_path(mr), class: "link") do %>
               <%= render 'shared/icons', object: mr %>
-              <strong><%= mr.sorting_date.strftime("%I:%M%p")%> - <%= mr.end_date.strftime("%I:%M%p")%></strong> | <em><%= mr.category%></em>
+              <strong><%= l mr.sorting_date%> - <%= l mr.end_date%></strong> | <em><%= mr.category%></em>
             <% end %>
           <% else %>
             <%= link_to(treatment_path(mr), class: "link") do %>
