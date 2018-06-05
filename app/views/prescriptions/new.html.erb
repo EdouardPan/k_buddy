@@ -17,6 +17,12 @@
   <%#= select_tag  %>
 
   <div class="form-inputs">
+    <%= label_tag 'Médicament' %>
+    <br>
+    <input name="drug_name" type="text" id="search-input" class="soflow" placeholder="Trouver un médicament" />
+  </div>
+
+  <div class="form-inputs">
     <%= label_tag 'Date de début' %>
     <br>
     <%= date_field(:prescription, :start_date) %>
@@ -28,34 +34,38 @@
     <%= date_field(:prescription, :end_date) %>
   </div>
 
-  <div class="form-inputs">
-    <%= label_tag 'Médicament' %>
+  <div class="form-inputs form-photo">
+    <%= label_tag "Ajouter les pièces jointes" %>
     <br>
-    <input name="drug_name" type="text" id="search-input" class="soflow" placeholder="Trouver un médicament" />
+    <%= file_field :url, multiple: true %>
   </div>
 
-  <div class="form-inputs">
-    <%= label_tag 'Heure de prise 1' %>
-    <br>
-    <%= time_field(:traitement_take_time, "take_time1") %>
+  <div class="inline-form">
+    <div class="form-inputs">
+      <%= label_tag 'Heure de prise 1' %>
+      <br>
+      <%= time_field(:traitement_take_time, "take_time1") %>
+    </div>
+
+    <div class="form-inputs">
+      <%= label_tag 'Quantité' %>
+      <br>
+      <%= text_field(:traitement_quantity, "quantity1") %>
+    </div>
   </div>
 
-  <div class="form-inputs">
-    <%= label_tag 'Quantité' %>
-    <br>
-    <%= text_field(:traitement_quantity, "quantity1") %>
-  </div>
+  <div class="inline-form">
+    <div class="form-inputs">
+      <%= label_tag 'Heure de prise 2' %>
+      <br>
+      <%= time_field(:traitement_take_time, "take_time2") %>
+    </div>
 
-  <div class="form-inputs">
-    <%= label_tag 'Heure de prise 2' %>
-    <br>
-    <%= time_field(:traitement_take_time, "take_time2") %>
-  </div>
-
-  <div class="form-inputs">
-    <%= label_tag 'Quantité' %>
-    <br>
-    <%= text_field(:traitement_quantity, "quantity2") %>
+    <div class="form-inputs">
+      <%= label_tag 'Quantité' %>
+      <br>
+      <%= text_field(:traitement_quantity, "quantity2") %>
+    </div>
   </div>
 
   <div class="form-actions">
