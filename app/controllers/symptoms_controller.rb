@@ -34,7 +34,8 @@ class SymptomsController < ApplicationController
         start: event.start_date.strftime("%Y-%m-%dT%H:%M:%S"),
         end: event.end_date.strftime("%Y-%m-%dT%H:%M:%S"),
         iconS: true,
-        img_path_S: ActionController::Base.helpers.image_path('symptoms-icon.png')
+        img_path_S: ActionController::Base.helpers.image_path('symptoms-icon.png'),
+        url: symptom_path(event)
       }
       @symptoms_js << data
     end
