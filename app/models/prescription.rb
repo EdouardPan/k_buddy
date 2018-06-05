@@ -1,6 +1,8 @@
 class Prescription < ApplicationRecord
   belongs_to :medical_professional
-  has_many :treatments
+  has_many :treatments, dependent: :destroy
+  # The treatments that depend on the prescription will be deleted.
+  # No need to change the treatment policy.
   has_many :photos, dependent: :destroy
 
 
