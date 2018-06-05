@@ -62,6 +62,7 @@ class PrescriptionsController < ApplicationController
   end
 
   def edit
+    @prescription = Prescription.find(params[:id])
     authorize @prescription
   end
 
@@ -70,7 +71,10 @@ class PrescriptionsController < ApplicationController
   end
 
   def destroy
-    authorize @prescription
+    prescription = Prescription.find(params[:id])
+    authorize prescription
+    prescription.destroy
+    redirect_to calendar_index_path
   end
 
   private
