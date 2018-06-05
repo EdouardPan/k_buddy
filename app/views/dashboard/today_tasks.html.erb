@@ -10,17 +10,22 @@
       <div id="medical-records list-box">
         <% @events_grouped.each do |mr| %>
           <hr>
-          <% if mr.is_a?(Appointment) %>
-            <%= link_to(appointment_path(mr), class: "link") do %>
-              <%= render 'shared/icons', object: mr %>
-              <strong><%= l mr.sorting_date%> - <%= l mr.end_date%></strong> | <em><%= mr.category%></em>
+          <div class="today-task-row">
+            <% if mr.is_a?(Appointment) %>
+              <%= link_to(appointment_path(mr), class: "link") do %>
+                <%= render 'shared/icons', object: mr %>
+                <strong><%= l mr.sorting_date%> - <%= l mr.end_date%></strong> | <em><%= mr.category%></em>
+              <% end %>
+            <% else %>
+              <%= link_to(treatment_path(mr), class: "link") do %>
+                <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
+                <strong><%= l mr.take_time %></strong> | <em><%= mr.drug.name.split.first.chomp(",")%></em>
+                <% if not mr.taken %>
+                  <%= link_to "J'ai pris", treatment_path(mr), class: "submit-button", id: "taken-button", method: :patch, remote: true %>
+                <% end %>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to(treatment_path(mr), class: "link") do %>
-              <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
-              <strong><%= l mr.take_time %></strong> | <em><%= mr.drug.name.split.first.chomp(",")%></em>
-            <% end %>
-          <% end %>
+          </div>
         <% end %>
       </div>
     </div>
