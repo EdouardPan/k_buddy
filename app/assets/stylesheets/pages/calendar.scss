@@ -1,0 +1,54 @@
+.fc-toolbar.fc-header-toolbar{
+  margin-bottom: 0.5em !important;
+}
+
+
+.fc-month-view .fc-event{
+  background-color: transparent !important;
+  border:none;
+  .fc-content{
+  color: $gray;
+  }
+  img{
+    &:first-child{
+      margin-right:4px;
+    }
+  }
+}
+
+.fc-month-view .img-calendar{
+  width: 22px;
+  height: 22px;
+}
+
+.fc-center h2{
+  font-size: 21px;
+  line-height: 1.8;
+}
+
+.fc-today{
+  background-color: $light-blue !important;
+}
+
+.fc-agendaDay-button{
+  margin-left: 0px !important;
+  padding:0px;
+  border-radius:0px;
+}
+
+.fc-agendaDay-view .fc-today{
+  background:none !important;
+}
+
+.fc-agendaDay-view .fc-title{
+  padding-top: 6px !important;
+  img{
+    margin-right: 4px;
+    width: 29px;
+    height: 29px;
+  }
+}
+
+.light-img{
+  opacity: 0.25;
+}

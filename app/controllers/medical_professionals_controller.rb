@@ -17,7 +17,11 @@ class MedicalProfessionalsController < ApplicationController
   end
 
   def create
-    @medical_professional = MedicalProfessional.new(medical_professional_params)
+    if params[:medical_professional][:id]
+      @medical_professional = MedicalProfessional.find(params[:medical_professional][:id])
+    else
+      @medical_professional = MedicalProfessional.new(medical_professional_params)
+    end
     authorize @medical_professional
     if @medical_professional.save
       if params[:event_type] == "appointment"

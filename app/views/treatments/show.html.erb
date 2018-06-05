@@ -1,0 +1,45 @@
+<div class="title-show">
+  <h3 class="text-center">Traitement</h3>
+  <h1 class="text-center category-show"><%= @treatment.drug.name.split.first.chomp(",") %></h1>
+</div>
+
+<div class="show-icon text-center">
+  <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
+</div>
+
+<div class="separation-box text-center">
+  <p>Heure de prise</p>
+  <h4><%= @treatment.take_time.to_s(:long) %></h4>
+  <% if @treatment.taken == false %>
+  <br>
+    <div id="checkbox-container">
+    <%= link_to "J'ai pris", treatment_path(@treatment), class: "submit-button", id: "taken-button", method: :patch, remote: true %>
+    </div>
+  <% end %>
+</div>
+
+<div class="photo-box text-center">
+  <h3>Ordonnance</h3>
+  <% if @treatment.prescription.photos.empty? %>
+    <p>Pas de pièces jointes</p>
+  <% else %>
+    <% @treatment.prescription.photos.each do |p| %>
+      <a href="#" class="pop">
+        <%= cl_image_tag p.url, width: 150 %>
+      </a>
+    <% end %>
+  <% end %>
+
+  <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <img src="" class="imagepreview" style="width: 100%;" >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

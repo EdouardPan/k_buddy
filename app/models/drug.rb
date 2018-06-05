@@ -7,5 +7,6 @@ class Drug < ApplicationRecord
   algoliasearch do
     attribute :name
   end
+
 end
 

@@ -3,7 +3,7 @@
 </div>
 
 <div class="box">
-  <h3>Vos consultations et traitements du jour</h3>
+  <h3>Consultations & Traitements</h3>
   <div class="section-box list-box">
     <div class="row">
       <div id="medical-records list-box">
@@ -15,9 +15,9 @@
               <strong><%= mr.sorting_date.strftime("%I:%M%p")%> - <%= mr.end_date.strftime("%I:%M%p")%></strong> | <em><%= mr.category%></em>
             <% end %>
           <% else %>
-            <%= link_to(prescription_path(mr.prescription), class: "link") do %>
+            <%= link_to(treatment_path(mr), class: "link") do %>
               <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
-              <strong><%= mr.take_time.strftime("%I:%M%p")%></strong> | <em><%= mr.drug.name%></em>
+              <strong><%= mr.take_time.strftime("%I:%M%p")%></strong> | <em><%= mr.drug.name.split.first.chomp(",")%></em>
             <% end %>
           <% end %>
         <% end %>
@@ -25,3 +25,6 @@
     </div>
   </div>
 </div>
+
+
+
