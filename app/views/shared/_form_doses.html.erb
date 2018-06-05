@@ -1,0 +1,9 @@
+<%= f.simple_fields_for :treatments do |t| %>
+  <%= t.association :drug %>
+  <%= f.input :start_date, as: :string, input_html: {class: "datepicker"} %>
+  <%= f.input :end_date, as: :string, input_html: {class: "datepicker"} %>
+  <div class="inline-form">
+    <%= t.input :take_time, as: :string, input_html: {class: "datepicker-time"} %>
+    <%= t.input :quantity %>
+  </div>
+<% end %>

@@ -12,13 +12,18 @@ class PrescriptionsController < ApplicationController
 
   def new
     @prescription = Prescription.new
+    @prescription.treatments.build
+    @prescription.photos.build
     @drugs = Drug.all
     @medical_professional = MedicalProfessional.find(params[:medical_professional_id])
     authorize @prescription
   end
 
-  def create
+  def add_drug
+  end
 
+  def create
+    raise
     prescription = Prescription.new(
       medical_professional_id: params[:medical_professional_id],
       start_date: params[:prescription][:start_date],
@@ -27,15 +32,28 @@ class PrescriptionsController < ApplicationController
     authorize prescription
 
     if prescription.save
-      # Create the instances of treatement with the info we have.
+
+      # Photos adding
+      unless params[:prescription][:url].nil?
+        params[:prescription][:url].each do |u|
+          new_photo = Photo.new(url: u)
+          new_photo.prescription = @prescription
+          new_photo.save
+        end
+      end
+
+      # Save info for the creation of instances of Treatment
       this_date = prescription.start_date
       duration = (prescription.end_date.to_date - this_date.to_date).to_i
       drug = Drug.find_by(name: params[:drug_name])
+
+      # Treatments creation
       duration.times do
         # each treatement is in a hash iterate
         counter = 1
         params[:traitement_take_time].each do |k, v|
           treatment = Treatment.new(
+            taken: false,
             prescription_id: prescription.id,
             drug_id: drug.id,
             take_time: DateTime.new(this_date.year, this_date.month, this_date.day, Time.parse(v).hour, Time.parse(v).min),
@@ -61,6 +79,7 @@ class PrescriptionsController < ApplicationController
   end
 
   def edit
+    @prescription = Prescription.find(params[:id])
     authorize @prescription
   end
 
@@ -69,7 +88,10 @@ class PrescriptionsController < ApplicationController
   end
 
   def destroy
-    authorize @prescription
+    prescription = Prescription.find(params[:id])
+    authorize prescription
+    prescription.destroy
+    redirect_to calendar_index_path
   end
 
   private

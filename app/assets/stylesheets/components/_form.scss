@@ -45,7 +45,7 @@
 }
 
 .form-actions {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .form-links {
@@ -109,3 +109,7 @@
    width: 100%;
 }
 
+.inline-form{
+  display: flex;
+  justify-content: space-between;
+}

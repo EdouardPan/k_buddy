@@ -12,9 +12,10 @@ import { closeNav } from '../components/sidenav';
 
 import { sliderSymptoms } from '../components/slider';
 
-
 import { openMenu } from '../components/navmenu';
 import { closeMenu } from '../components/navmenu';
+
+import "../components/flatpickr";
 
 // calendar
 
@@ -41,4 +42,10 @@ if (document.querySelector('.navbar-kbuddy')){
 // slider
 if (document.querySelector('.slidecontainer')){
   sliderSymptoms();
+}
+
+// algolia autocomplete
+
+if (document.getElementById('search-input')){
+  algoliaAutocomplete();
 }

@@ -1,10 +1,11 @@
 class DashboardController < ApplicationController
 
   def today_tasks
-    @medical_records = MedicalRecord.all
+
     @appointments = policy_scope(Appointment)
-    @appointments = Appointment.where(start_date: Date.today.beginning_of_day..Date.today.end_of_day)
-    @treatments = Treatment.where(take_time: Date.today.beginning_of_day..Date.today.end_of_day)
+    @treatments = policy_scope(Treatment)
+    @appointments = @appointments.where(start_date: Date.today.beginning_of_day..Date.today.end_of_day)
+    @treatments = @treatments.where(take_time: Date.today.beginning_of_day..Date.today.end_of_day)
 
     @events = @appointments + @treatments
 

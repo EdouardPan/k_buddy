@@ -1,11 +1,12 @@
 class CalendarController < ApplicationController
 
+include ActionView::Helpers::AssetUrlHelper
+
   def index
     @appointments = policy_scope(Appointment)
     @treatments = Treatment.where(user: current_user)
 
     @events = @appointments + @treatments
-
 
     # Month
     @events_grouped = @events.group_by do |event|
@@ -22,37 +23,15 @@ class CalendarController < ApplicationController
         start: date_event[0].to_date,
         iconA: a,
         iconT: t,
-        taken: !taken
+        taken: !taken,
+        img_path_A: ActionController::Base.helpers.image_path('doctor.png'),
+        img_path_T: ActionController::Base.helpers.image_path('treatment-icon.png'),
+        img_path_T_taken: ActionController::Base.helpers.image_path('treatment-icon-2.png')
       }
       @events_js << data
     end
 
     @events_month = @events_js
-
-    # Week
-    @events_js = []
-    @events.each do |event|
-      data = nil
-      if event.is_a?(Appointment)
-        data = {
-          title: event.category,
-          start: event.start_date.strftime("%Y-%m-%dT%H:%M:%S"),
-          end: event.end_date.strftime("%Y-%m-%dT%H:%M:%S"),
-          iconA: true
-        }
-        @events_js << data
-      else
-        data = {
-          title: event.drug.name,
-          start: event.take_time.strftime("%Y-%m-%dT%H:%M:%S"),
-          end: (event.take_time + 0.5 / 24).strftime("%Y-%m-%dT%H:%M:%S"),
-          iconT: true
-        }
-        @events_js << data
-      end
-    end
-
-    @events_week = @events_js
 
     # Day
     @events_js = []
@@ -65,7 +44,8 @@ class CalendarController < ApplicationController
           end: event.end_date.strftime("%Y-%m-%dT%H:%M:%S"),
           iconA: true,
           url: appointment_path(event),
-          backgroundColor: '#469AE0'
+          backgroundColor: '#469AE0',
+          img_path_A: ActionController::Base.helpers.image_path('doctor.png')
         }
         @events_js << data
       else
@@ -77,7 +57,9 @@ class CalendarController < ApplicationController
           url: treatment_path(event),
           taken: event.taken,
           backgroundColor: '#32B796',
-          borderColor: '#00A896'
+          borderColor: '#00A896',
+          img_path_T: ActionController::Base.helpers.image_path('treatment-icon.png'),
+          img_path_T_taken: ActionController::Base.helpers.image_path('treatment-icon-2.png')
         }
         @events_js << data
       end

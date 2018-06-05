@@ -4,11 +4,10 @@ import  autocomplete  from 'autocomplete.js';
 // Without '' or {}, it is a module that we are importing.
 
 export function algoliaAutocomplete() {
-  console.log("Hello")
   var client = algoliasearch('7K6EPIOZJD', '43c96c2020a8f0a9229a8ab31cd59e19');
   var index = client.initIndex('Drug');
   console.log(index);
-  autocomplete('#search-input', { hint: false }, [
+  autocomplete('.search-input', { hint: false }, [
     {
       source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
       displayKey: 'name',
@@ -23,5 +22,5 @@ export function algoliaAutocomplete() {
   });
 }
 
-algoliaAutocomplete();
+
 

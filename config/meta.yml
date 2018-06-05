@@ -1,0 +1,5 @@
+meta_product_name: "My K Buddy"
+meta_title: "My K Buddy - Un journal pour soulager votre quotidien"
+meta_description: "My K Buddy est un journal de bord pour aider les patients atteints du cancer dans l'organisation de leur quotidien (calendrier des rendez-vous, du parcours de soin et suivi des symptômes)."
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "@trandgthanh"   # required for Twitter Cards

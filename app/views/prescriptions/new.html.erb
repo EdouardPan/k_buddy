@@ -13,54 +13,30 @@
 <%# end %>
 
 <div class="text-center form">
-  <%= form_tag medical_professional_prescriptions_path do %>
-  <%#= select_tag  %>
 
-  <div class="form-inputs">
-    <%= label_tag 'Date de début' %>
-    <br>
-    <%= date_field(:prescription, :start_date) %>
-  </div>
+  <%= simple_form_for [@medical_professional,@prescription] do |f| %>
+    <%= f.simple_fields_for :photos do |ph| %>
+      <%= ph.input :url, as: :file, multiple: true, label: "Ajouter l'ordonnance" %>
+    <% end %>
+    <%#= f.association :drug, input_html: {id: "search-input", class: "soflow", placeholder: "Trouver un médicament"} %>
+    <%= f.simple_fields_for :treatments do |t| %>
+      <%= t.input :drug, label: 'Médicament', input_html: { class: "search-input soflow", placeholder: "Trouver un médicament"} %>
+      <%= f.input :start_date, label: 'Date de début', as: :string, input_html: {class: "datepicker"} %>
+      <%= f.input :end_date, label: 'Date de fin', as: :string, input_html: {class: "datepicker"} %>
+      <div class="inline-form">
+        <%= t.input :take_time, label: 'Heure de prise', as: :string, input_html: {class: "datepicker-time"} %>
+        <%= t.input :quantity, label: 'Quantité' %>
+      </div>
+    <% end %>
+    <div id="add-dose-0" class="legend">
+      <i class="fas fa-plus"></i> Ajouter une dose
+    </div>
+    <hr>
+    <%= link_to adddrug_path, remote: true, id: "add-drug" do %>
+        <i class="fas fa-plus"></i> Ajouter un médicament
+    <% end %>
 
-  <div class="form-inputs">
-    <%= label_tag 'Date de fin' %>
-    <br>
-    <%= date_field(:prescription, :end_date) %>
-  </div>
-
-  <div class="form-inputs">
-    <%= label_tag 'Médicament' %>
-    <br>
-    <input name="drug_name" type="text" id="search-input" class="soflow" placeholder="Trouver un médicament" />
-  </div>
-
-  <div class="form-inputs">
-    <%= label_tag 'Heure de prise 1' %>
-    <br>
-    <%= time_field(:traitement_take_time, "take_time1") %>
-  </div>
-
-  <div class="form-inputs">
-    <%= label_tag 'Quantité' %>
-    <br>
-    <%= text_field(:traitement_quantity, "quantity1") %>
-  </div>
-
-  <div class="form-inputs">
-    <%= label_tag 'Heure de prise 2' %>
-    <br>
-    <%= time_field(:traitement_take_time, "take_time2") %>
-  </div>
-
-  <div class="form-inputs">
-    <%= label_tag 'Quantité' %>
-    <br>
-    <%= text_field(:traitement_quantity, "quantity2") %>
-  </div>
-
-  <div class="form-actions">
-  <%= submit_tag "Valider", class: "submit-button" %>
-  </div>
-
+    <%= f.submit class: 'submit-button' %>
   <% end %>
+
 </div>

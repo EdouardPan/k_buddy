@@ -17,7 +17,8 @@ class SymptomsController < ApplicationController
       data = {
         title: '',
         start: date_event[0].to_date,
-        iconS: true
+        iconS: true,
+        img_path_S: ActionController::Base.helpers.image_path('symptoms-icon.png')
       }
       @symptoms_js << data
     end
@@ -32,7 +33,9 @@ class SymptomsController < ApplicationController
         title: "#{event.name} - #{event.intensity}/10",
         start: event.start_date.strftime("%Y-%m-%dT%H:%M:%S"),
         end: event.end_date.strftime("%Y-%m-%dT%H:%M:%S"),
-        iconS: true
+        iconS: true,
+        img_path_S: ActionController::Base.helpers.image_path('symptoms-icon.png'),
+        url: symptom_path(event)
       }
       @symptoms_js << data
     end
@@ -54,7 +57,7 @@ class SymptomsController < ApplicationController
     authorize @symptom
     @symptom.user = current_user
     if @symptom.save
-      redirect_to symptom_path(@symptom)
+      redirect_to symptoms_path
     else
       render :new
     end
@@ -66,14 +69,17 @@ class SymptomsController < ApplicationController
 
   def update
     authorize @symptom
+    if @symptom.update(symptom_params)
+      redirect_to symptom_path(@symptom)
+    else
+      render :edit
+    end
   end
 
   def destroy
     authorize @symptom
-  end
-
-  def search
-
+    @symptom.destroy
+    redirect_to symptoms_path
   end
 
 private
