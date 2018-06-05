@@ -20,12 +20,14 @@
               <%= link_to(treatment_path(mr), class: "link") do %>
                 <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
                 <strong><%= l mr.take_time %></strong> | <em><%= mr.drug.name.split.first.chomp(",")%></em>
-                <% if not mr.taken %>
+              <% end %>
+                <% if mr.taken %>
+                   <i class="far fa-check-circle checkbox"></i>
+                <% else %>
                   <div id="checkbox-container" class="anim-checkbox">
                     <%= link_to "J'ai pris", treatment_path(mr), class: "submit-button", id: "taken-button", method: :patch, remote: true %>
                   </div>
                 <% end %>
-              <% end %>
             <% end %>
           </div>
         <% end %>
