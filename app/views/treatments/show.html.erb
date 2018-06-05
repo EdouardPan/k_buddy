@@ -5,6 +5,7 @@
 
 <div class="show-icon text-center">
   <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
+  <!-- put edit delete icons here -->
 </div>
 
 <div class="separation-box text-center">
@@ -16,7 +17,8 @@
     <%= link_to "J'ai pris", treatment_path(@treatment), class: "submit-button", id: "taken-button", method: :patch, remote: true %>
     </div>
     <% else %>
-
+    <br>
+      <span><i class="far fa-check-circle checkbox"></i>  Médicament pris</span>
   <% end %>
 </div>
 
