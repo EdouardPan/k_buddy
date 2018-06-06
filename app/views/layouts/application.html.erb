@@ -37,7 +37,13 @@
   <body>
     <div class="mobile-wrapper">
       <div class="mobile-screen-container <%= 'center-box' unless current_page?(root_path) %>">
-        <%= render 'shared/sidenav' %>
+
+        <% if user_signed_in? %>
+          <%= render 'shared/sidenav' %>
+        <% else %>
+          <%= image_tag("logo.png", id: "logo", class: "back-to-home") %>
+        <% end %>
+
         <%= yield %>
       </div>
       <% unless current_page?(root_path) || !user_signed_in? %>
