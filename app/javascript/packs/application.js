@@ -10,6 +10,7 @@ import { algoliaAutocomplete } from '../components/autocomplete';
 import { openNav } from '../components/sidenav';
 import { closeNav } from '../components/sidenav';
 
+
 import { sliderSymptoms } from '../components/slider';
 
 import { openMenu } from '../components/navmenu';
@@ -46,6 +47,6 @@ if (document.querySelector('.slidecontainer')){
 
 // algolia autocomplete
 
-if (document.getElementById('search-input')){
+if (document.querySelector('.search-input')){
   algoliaAutocomplete();
 }
