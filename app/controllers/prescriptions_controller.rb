@@ -42,7 +42,6 @@ class PrescriptionsController < ApplicationController
           new_photo.save
         end
       end
-      binding.pry
 
       # Save info for the creation of instances of Treatment
       this_date = prescription.start_date
