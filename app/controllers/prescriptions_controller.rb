@@ -23,7 +23,6 @@ class PrescriptionsController < ApplicationController
   end
 
   def create
-    raise
     prescription = Prescription.new(
       medical_professional_id: params[:medical_professional_id],
       start_date: params[:prescription][:start_date],
