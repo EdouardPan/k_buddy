@@ -9,7 +9,7 @@
   <div class="form-inputs">
     <%= label_tag 'Médicament' %>
     <br>
-    <input name="drug_name" type="text" class="search-input" placeholder="Trouver un médicament" />
+    <input name="drug_name" type="text" class="search-input form-control" placeholder="Trouver un médicament" />
   </div>
 
   <div class="form-inputs">
@@ -21,7 +21,7 @@
   <div class="form-inputs">
     <%= label_tag 'Date de fin' %>
     <br>
-    <%= date_field(:prescription, :end_date) %>
+    <%= date_field(:prescription, :end_date, { class: 'datepicker' }) %>
   </div>
 
   <div class="form-inputs form-photo">
@@ -34,13 +34,13 @@
     <div class="form-inputs">
       <%= label_tag 'Heure de prise' %>
       <br>
-      <%= time_field_tag "doses[1][take_time]" %>
+      <%= time_field_tag "doses[1][take_time]", '12:00', class: 'form-control datepicker-time' %>
     </div>
 
     <div class="form-inputs">
       <%= label_tag 'Quantité' %>
       <br>
-      <%= text_field_tag "doses[1][quantity]" %>
+      <%= text_field_tag "doses[1][quantity]", '',  class: 'form-control' %>
     </div>
   </div>
 

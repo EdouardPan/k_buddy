@@ -1,9 +1,9 @@
   <div class="inline-form">
     <div class="form-inputs">
-      <%= time_field_tag "doses[CHANGE_ME][take_time]" %>
+      <%= time_field_tag "doses[CHANGE_ME][take_time]", '12:00', class: 'form-control datepicker-time flatpickr-input input' %>
     </div>
 
     <div class="form-inputs">
-      <%= text_field_tag "doses[CHANGE_ME][quantity]" %>
+      <%= text_field_tag "doses[CHANGE_ME][quantity]", '', class: 'form-control' %>
     </div>
   </div>

@@ -8,11 +8,11 @@ if (document.querySelector(".datepicker")){
     locale: French
   });
 }
-
 if (document.querySelector(".datepicker-time")){
   flatpickr(".datepicker-time", {
     noCalendar: true,
     enableTime: true,
-    altInput: true
+    altInput: true,
+    time_24hr: true
   });
 }
