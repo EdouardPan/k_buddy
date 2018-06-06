@@ -9,38 +9,38 @@
   <div class="form-inputs">
     <%= label_tag 'Médicament' %>
     <br>
-    <input name="drug_name" type="text" id="search-input" class="soflow" placeholder="Trouver un médicament" />
+    <input name="drug_name" type="text" class="search-input form-control" placeholder="Trouver un médicament" />
   </div>
 
   <div class="form-inputs">
     <%= label_tag 'Date de début' %>
     <br>
-    <%= date_field(:prescription, :start_date, { class: 'datepicker' }) %>
+    <%= date_field(:prescription, :start_date, { class: 'datepicker form-control' }) %>
   </div>
 
   <div class="form-inputs">
     <%= label_tag 'Date de fin' %>
     <br>
-    <%= date_field(:prescription, :end_date) %>
+    <%= date_field(:prescription, :end_date, { class: 'datepicker form-control' }) %>
   </div>
 
   <div class="form-inputs form-photo">
     <%= label_tag "Ajouter les pièces jointes" %>
     <br>
-    <%= file_field_tag "url", multiple: true %>
+    <%= file_field_tag "photo[url][]", multiple: true %>
   </div>
 
   <div class="inline-form">
     <div class="form-inputs">
       <%= label_tag 'Heure de prise' %>
       <br>
-      <%= time_field_tag "doses[1][take_time]" %>
+      <%= time_field_tag "doses[1][take_time]", '12:00', class: 'form-control datepicker-time' %>
     </div>
 
     <div class="form-inputs">
       <%= label_tag 'Quantité' %>
       <br>
-      <%= text_field_tag "doses[1][quantity]" %>
+      <%= text_field_tag "doses[1][quantity]", '',  class: 'form-control' %>
     </div>
   </div>
 

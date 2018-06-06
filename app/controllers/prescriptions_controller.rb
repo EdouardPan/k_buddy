@@ -35,13 +35,14 @@ class PrescriptionsController < ApplicationController
     if prescription.save
 
       # Photos adding
-      # unless params[:url].nil?
-      #   params[:url].each do |u|
-      #     new_photo = Photo.new(url: u)
-      #     new_photo.prescription = @prescription
-      #     new_photo.save
-      #   end
-      # end
+      unless params[:photo][:url].nil?
+        params[:photo][:url].each do |u|
+          new_photo = Photo.new(url: u)
+          new_photo.prescription = prescription
+          new_photo.save
+        end
+      end
+      binding.pry
 
       # Save info for the creation of instances of Treatment
       this_date = prescription.start_date
@@ -103,8 +104,10 @@ class PrescriptionsController < ApplicationController
     params.require(:prescription).permit(
       :start_date,
       :end_date,
-      :photos
     )
-    # how to add multiple params?
+  end
+
+  def photo_params
+    params.require(:photo).permit(:url)
   end
 end
