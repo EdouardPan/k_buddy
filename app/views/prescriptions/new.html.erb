@@ -15,19 +15,19 @@
   <div class="form-inputs">
     <%= label_tag 'Date de début' %>
     <br>
-    <%= date_field(:prescription, :start_date, { class: 'datepicker' }) %>
+    <%= date_field(:prescription, :start_date, { class: 'datepicker form-control' }) %>
   </div>
 
   <div class="form-inputs">
     <%= label_tag 'Date de fin' %>
     <br>
-    <%= date_field(:prescription, :end_date, { class: 'datepicker' }) %>
+    <%= date_field(:prescription, :end_date, { class: 'datepicker form-control' }) %>
   </div>
 
   <div class="form-inputs form-photo">
     <%= label_tag "Ajouter les pièces jointes" %>
     <br>
-    <%= file_field_tag "url", multiple: true %>
+    <%= file_field_tag "photo[url][]", multiple: true %>
   </div>
 
   <div class="inline-form">
