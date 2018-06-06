@@ -1,10 +1,12 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css"; // Note this is important!
+import { French } from "flatpickr/dist/l10n/fr.js";
 
 
 if (document.querySelector(".datepicker")){
   flatpickr(".datepicker", {
-    altInput: true
+    altInput: true,
+    locale: French
   });
 }
 
