@@ -46,6 +46,6 @@ if (document.querySelector('.slidecontainer')){
 
 // algolia autocomplete
 
-if (document.getElementById('search-input')){
+if (document.querySelector('.search-input')){
   algoliaAutocomplete();
 }
