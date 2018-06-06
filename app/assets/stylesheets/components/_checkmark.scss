@@ -1,4 +1,4 @@
-#checkbox-container svg {
+.checkbox-container svg {
   width: 100px;
   display: block;
   margin: 0px auto 0;
@@ -23,7 +23,7 @@
 }
 
 
-#checkbox-container p {
+.checkbox-container p {
   text-align: center;
   margin: 20px 0 60px;
   font-size: 1.25em;
@@ -35,7 +35,7 @@
   }
 }
 
-#checkbox-container {
+.checkbox-container {
     @-webkit-keyframes dash {
     0% {
       stroke-dashoffset: 1000;

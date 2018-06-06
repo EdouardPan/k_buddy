@@ -35,3 +35,10 @@
 .hidden-button {
   visibility: hidden;
 }
+
+.mini-button {
+  border-radius: 30px;
+  background: $dark-green;
+  color: white;
+  padding: 5px 10px;
+}
