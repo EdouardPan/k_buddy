@@ -1,0 +1,17 @@
+
+function addForm(){
+  const addButton = document.getElementById('add-dose');
+  const idx = parseInt(document.getElementById('add-dose').dataset.idx);
+  const new_idx = idx + 1;
+
+  console.log(new_idx);
+
+  let doseForm = "<%= j render 'shared/form_doses' %>";
+  doseForm = doseForm.replace(/CHANGE_ME/g, new_idx);
+
+  addButton.insertAdjacentHTML('beforeBegin', doseForm);
+
+  addButton.dataset.idx = new_idx;
+}
+
+addForm();

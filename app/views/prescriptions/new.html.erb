@@ -2,41 +2,54 @@
   <h2>Créer une nouvelle ordonnance</h2>
 </div>
 
-<%#= simple_form_for [@medical_professional, @prescription] do |f| %>
-  <!-- Needs a space for this nesting to work-->
-  <%#= f.label "Date du début" %>
-  <%#= f.input_field :start_date, as: :date, html5: true %>
-  <!-- Need to say that it is a date -->
-  <%#= f.label "Date de fin" %>
-  <%#= f.input_field :end_date, as: :date, html5: true %>
-  <%#= f.submit "Valider", class: "submit-button" %>
-<%# end %>
-
 <div class="text-center form">
+  <%= form_tag medical_professional_prescriptions_path, multipart: true do %>
+  <%#= select_tag  %>
 
-  <%= simple_form_for [@medical_professional,@prescription] do |f| %>
-    <%= f.simple_fields_for :photos do |ph| %>
-      <%= ph.input :url, as: :file, multiple: true, label: "Ajouter l'ordonnance" %>
-    <% end %>
-    <%#= f.association :drug, input_html: {id: "search-input", class: "soflow", placeholder: "Trouver un médicament"} %>
-    <%= f.simple_fields_for :treatments do |t| %>
-      <%= t.input :drug, label: 'Médicament', input_html: { class: "search-input soflow", placeholder: "Trouver un médicament"} %>
-      <%= f.input :start_date, label: 'Date de début', as: :string, input_html: {class: "datepicker"} %>
-      <%= f.input :end_date, label: 'Date de fin', as: :string, input_html: {class: "datepicker"} %>
-      <div class="inline-form">
-        <%= t.input :take_time, label: 'Heure de prise', as: :string, input_html: {class: "datepicker-time"} %>
-        <%= t.input :quantity, label: 'Quantité' %>
-      </div>
-    <% end %>
-    <div id="add-dose-0" class="legend">
-      <i class="fas fa-plus"></i> Ajouter une dose
+  <div class="form-inputs">
+    <%= label_tag 'Médicament' %>
+    <br>
+    <input name="drug_name" type="text" id="search-input" class="soflow" placeholder="Trouver un médicament" />
+  </div>
+
+  <div class="form-inputs">
+    <%= label_tag 'Date de début' %>
+    <br>
+    <%= date_field(:prescription, :start_date) %>
+  </div>
+
+  <div class="form-inputs">
+    <%= label_tag 'Date de fin' %>
+    <br>
+    <%= date_field(:prescription, :end_date) %>
+  </div>
+
+  <div class="form-inputs form-photo">
+    <%= label_tag "Ajouter les pièces jointes" %>
+    <br>
+    <%= file_field_tag "url", multiple: true %>
+  </div>
+
+  <div class="inline-form">
+    <div class="form-inputs">
+      <%= label_tag 'Heure de prise' %>
+      <br>
+      <%= time_field_tag "doses[1][take_time]" %>
     </div>
-    <hr>
-    <%= link_to_add_fields f, :treatments do %>
-      <i class="fas fa-plus"></i> Ajouter un médicament
-    <% end %>
 
-    <%= f.submit class: 'submit-button' %>
+    <div class="form-inputs">
+      <%= label_tag 'Quantité' %>
+      <br>
+      <%= text_field_tag "doses[1][quantity]" %>
+    </div>
+  </div>
+
+  <%= link_to adddose_path, remote: true, id: "add-dose", class: "legend", data: {idx: 1} do %>
+    <i class="fas fa-plus"></i> Ajouter une dose
   <% end %>
 
+  <div class="form-actions">
+  <%= submit_tag "Valider", class: "submit-button" %>
+  </div>
+  <% end %>
 </div>

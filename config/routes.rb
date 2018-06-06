@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   resources :appointments, except: [:new, :create]
   resources :prescriptions, except: [:new, :create]
-  get '/adddrug', to: "prescriptions#add_drug"
+  get '/adddose', to: "prescriptions#add_dose"
   resources :calendar, only: [:index, :show]
   resources :treatments, only: [:show, :update, :destroy]
 end
