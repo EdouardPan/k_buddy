@@ -1,10 +1,18 @@
 <div id="mySidenav" class="sidenav">
   <a href="#" class="closebtn">&times;</a>
   <% if user_signed_in? %>
-    <%= link_to "Aujourd'hui", todaytasks_path %>
-    <%= link_to "Mon profil", profile_path(current_user) %>
-    <%= link_to "Mes agents médicaux", medical_professionals_path %>
-    <%= link_to "Déconnexion", destroy_user_session_path, method: :delete %>
+    <%= link_to todaytasks_path do %>
+      <i class="far fa-calendar"></i> Aujourd'hui
+    <% end %>
+    <%= link_to profile_path(current_user) do %>
+      <i class="fas fa-user"></i> Mon profil
+    <% end %>
+    <%= link_to medical_professionals_path do %>
+      <i class="fas fa-user-md"></i> Mes agents médicaux
+    <% end %>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fas fa-sign-out-alt"></i> Déconnexion
+    <% end %>
   <% end %>
 </div>
 

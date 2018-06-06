@@ -27,9 +27,7 @@
 
 // Shared
 
-.title-box {
-  margin-top: 0px;
-}
+
 
 .category-box {
   margin-top: 25px;
@@ -150,4 +148,34 @@
 .today-task-row {
   display: flex;
   justify-content: space-between;
+}
+
+// TODAY
+
+.today-box {
+  margin-top: 40px;
+  h3 {
+    color: $light-green;
+  }
+}
+
+.title-box {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  h1 {
+    margin-bottom: 0px;
+    color: $dark-blue;
+  }
+  h2 {
+  margin-top: 10px;
+  color: $dark-blue;
+  }
+}
+
+.list-card {
+  display: flex;
+}
+
+.list-item {
+  justify-content: space-around;
 }
