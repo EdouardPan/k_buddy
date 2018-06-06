@@ -1,10 +1,14 @@
-<div class="title-show">
-  <h3 class="text-center">Consultation</h3>
-  <h1 class="text-center category-show"><%= @appointment.category.upcase %></h1>
-  <h6 class="text-center subtitle-show"><%= @appointment.medical_professional.location_name %> / <%= @appointment.medical_professional.doctor %></h6>
+<div class="title-show text-center">
+  <h3>Consultation</h3>
+  <div class="category-show">
+    <h1><%= @appointment.category.upcase %></h1>
+  </div>
+  <div class="subtitle-show">
+    <h6><%= @appointment.medical_professional.location_name %> / <%= @appointment.medical_professional.doctor %></h6>
+  </div>
 </div>
 
-<div class="show-icon text-center">
+<div class="text-center">
   <%= render 'shared/icons', object: @appointment %>
 </div>
 
@@ -16,13 +20,12 @@
   <h4><%= l @appointment.end_date, format: :short %></h4>
   <br>
   <p>Notes:</p>
-  <h6>
     <% if @appointment.description == "" %>
-      "Pas de description"
+      <h6>Pas de description</h6>
+
     <% else %>
-      <%= @appointment.description %>
+      <h6><%= @appointment.description %></h6>
     <% end %>
-  </h6>
 </div>
 
 <div class="photo-box text-center">

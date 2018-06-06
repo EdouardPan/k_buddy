@@ -1,13 +1,20 @@
-<h1>Ma liste d'agents médicaux</h1>
+<div class="title-box">
+  <h1>Ma liste d'agents médicaux</h1>
+</div>
 
+<div class="section-box">
+  <div id="list-box">
 
-<% @medical_professionals.each do |mp| %>
-  <%= link_to(medical_professional_path(mp), class: "link") do %>
-    <hr>
-    <% if mp.doctor == "" %>
-      <em><%= mp.location_name %></em>
-    <% else %>
-      <em><%= mp.location_name %> • <%= mp.doctor %></em>
+    <% @medical_professionals.each do |mp| %>
+      <%= link_to(medical_professional_path(mp), class: "link") do %>
+        <hr>
+        <% if mp.doctor == "" %>
+          <em><%= mp.location_name %></em>
+        <% else %>
+          <em><%= mp.location_name %> • <%= mp.doctor %></em>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
-<% end %>
+
+  </div>
+</div>
