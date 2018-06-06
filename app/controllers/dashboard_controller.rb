@@ -11,6 +11,5 @@ class DashboardController < ApplicationController
 
     @events_grouped = @events.sort_by { |event| event.sorting_date }
   end
-
 end
 
