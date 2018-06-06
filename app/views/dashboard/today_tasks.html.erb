@@ -1,20 +1,22 @@
 <div class="title-box">
-  <h1><%= l Date.today %></h1>
-  <!-- translate into french  -->
+  <h1>Aujourd'hui,</h1>
+  <h2><%= l Date.today %></h2>
 </div>
 
-<div class="box">
+
+
+<div class="today-box">
   <h3>Consultations & Traitements</h3>
   <div class="section-box list-box">
     <div class="row">
-      <div id="medical-records list-box">
+      <div id="list-box">
         <% @events_grouped.each do |mr| %>
           <hr>
           <div class="today-task-row">
             <% if mr.is_a?(Appointment) %>
               <%= link_to(appointment_path(mr), class: "link") do %>
                 <%= render 'shared/icons', object: mr %>
-                <strong><%= l mr.sorting_date%> - <%= l mr.end_date%></strong> | <em><%= mr.category%></em>
+                  <strong><%= l mr.sorting_date%> - <%= l mr.end_date%></strong> | <em><%= mr.category%></em>
               <% end %>
             <% else %>
               <%= link_to(treatment_path(mr), class: "link") do %>

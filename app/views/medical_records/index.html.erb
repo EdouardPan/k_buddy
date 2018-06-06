@@ -13,8 +13,8 @@
 </div>
 
 <div class="section-box">
-  <div class="row">
-    <div id="medical-records list-box">
+
+    <div id="list-box">
       <% @medical_records.each do |mr| %>
         <hr>
         <%= link_to(medical_record_path(mr), class: "link") do %>
@@ -22,7 +22,7 @@
         <% end %>
       <% end %>
     </div>
-  </div>
+
 </div>
 
 
