@@ -24,7 +24,7 @@
                 <% if mr.taken %>
                    <i class="far fa-check-circle checkbox"></i>
                 <% else %>
-                  <div id="checkbox-container" class="anim-checkbox">
+                  <div id="checkbox-container-<%= mr.id %>" class="anim-checkbox checkbox-container">
                     <%= link_to "Pris", treatment_path(mr), class: "mini-button taken-button", method: :patch, remote: true %>
                   </div>
                 <% end %>

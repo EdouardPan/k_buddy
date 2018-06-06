@@ -12,9 +12,9 @@
   <p>Heure de prise</p>
   <h4><%= l @treatment.take_time, format: :short %></h4>
   <% if @treatment.taken == false %>
-    <div id="checkbox-container">
+    <div id="checkbox-container-<%= @treatment.id %>" class="checkbox-container">
     <br>
-    <%= link_to "J'ai pris", treatment_path(@treatment), class: "submit-button", id: "taken-button", method: :patch, remote: true %>
+    <%= link_to "J'ai pris", treatment_path(@treatment), class: "submit-button taken-button", method: :patch, remote: true %>
     </div>
     <% else %>
     <br>
