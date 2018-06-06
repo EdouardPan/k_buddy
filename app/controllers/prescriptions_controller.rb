@@ -19,11 +19,12 @@ class PrescriptionsController < ApplicationController
     authorize @prescription
   end
 
-  def add_drug
+  def add_dose
+    @prescription = Prescription.new
+    authorize @prescription
   end
 
   def create
-    raise
     prescription = Prescription.new(
       medical_professional_id: params[:medical_professional_id],
       start_date: params[:prescription][:start_date],
@@ -34,30 +35,32 @@ class PrescriptionsController < ApplicationController
     if prescription.save
 
       # Photos adding
-      unless params[:prescription][:url].nil?
-        params[:prescription][:url].each do |u|
-          new_photo = Photo.new(url: u)
-          new_photo.prescription = @prescription
-          new_photo.save
-        end
-      end
+      # unless params[:url].nil?
+      #   params[:url].each do |u|
+      #     new_photo = Photo.new(url: u)
+      #     new_photo.prescription = @prescription
+      #     new_photo.save
+      #   end
+      # end
 
       # Save info for the creation of instances of Treatment
       this_date = prescription.start_date
-      duration = (prescription.end_date.to_date - this_date.to_date).to_i
+      duration = (prescription.end_date.to_date - this_date.to_date + 1).to_i
       drug = Drug.find_by(name: params[:drug_name])
 
       # Treatments creation
       duration.times do
         # each treatement is in a hash iterate
         counter = 1
-        params[:traitement_take_time].each do |k, v|
+        params[:doses].keys.each do |dose_key|
+          new_take_time = params[:doses][dose_key]["take_time"]
+          new_quantity = params[:doses][dose_key]["quantity"]
           treatment = Treatment.new(
             taken: false,
             prescription_id: prescription.id,
             drug_id: drug.id,
-            take_time: DateTime.new(this_date.year, this_date.month, this_date.day, Time.parse(v).hour, Time.parse(v).min),
-            quantity: params[:traitement_quantity]["quantity#{counter}"],
+            take_time: DateTime.new(this_date.year, this_date.month, this_date.day, Time.parse(new_take_time).hour, Time.parse(new_take_time).min),
+            quantity: new_quantity,
             user_id: current_user.id)
           unless treatment.save
             render '/prescriptions/new'
@@ -97,7 +100,11 @@ class PrescriptionsController < ApplicationController
   private
 
   def prescription_params
-    params.require(:prescription).permit(:start_date, :end_date, :photos)
+    params.require(:prescription).permit(
+      :start_date,
+      :end_date,
+      :photos
+    )
     # how to add multiple params?
   end
 end
