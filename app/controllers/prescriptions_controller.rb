@@ -25,7 +25,6 @@ class PrescriptionsController < ApplicationController
   end
 
   def create
-    raise
     prescription = Prescription.new(
       medical_professional_id: params[:medical_professional_id],
       start_date: params[:prescription][:start_date],
@@ -36,12 +35,14 @@ class PrescriptionsController < ApplicationController
     if prescription.save
 
       # Photos adding
-
-      new_photo = Photo.new(photo_params)
-      new_photo.prescription = prescription
-      new_photo.save
+      unless params[:photo][:url].nil?
+        params[:photo][:url].each do |u|
+          new_photo = Photo.new(url: u)
+          new_photo.prescription = prescription
+          new_photo.save
+        end
+      end
       binding.pry
-
 
       # Save info for the creation of instances of Treatment
       this_date = prescription.start_date
