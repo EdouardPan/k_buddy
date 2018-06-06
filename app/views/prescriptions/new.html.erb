@@ -20,7 +20,7 @@
     <% end %>
     <%#= f.association :drug, input_html: {id: "search-input", class: "soflow", placeholder: "Trouver un médicament"} %>
     <%= f.simple_fields_for :treatments do |t| %>
-      <%= t.input :drug, label: 'Médicament', input_html: { class: "search-input soflow", placeholder: "Trouver un médicament"} %>
+      <%= t.input :drug, label: 'Médicament', input_html: { class: "search-input", placeholder: "Trouver un médicament"} %>
       <%= f.input :start_date, label: 'Date de début', as: :string, input_html: {class: "datepicker"} %>
       <%= f.input :end_date, label: 'Date de fin', as: :string, input_html: {class: "datepicker"} %>
       <div class="inline-form">
