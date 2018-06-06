@@ -82,7 +82,7 @@ puts 'Creating Medical Professionals...'
 
   puts 'Creating Medical Professionals...'
   medical_professionals_3 = MedicalProfessional.new(
-    location_name: "Hôpital Ambroise Paré",
+    location_name: "Hôpital Curie",
     address: "9 avenue Charles-de-Gaulle",
     phone: "0808080808",
     specialty: "Cardiologie",
