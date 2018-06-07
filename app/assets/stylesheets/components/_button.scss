@@ -41,4 +41,10 @@
   background: $dark-green;
   color: white;
   padding: 5px 10px;
+  display: inline-block;
+  width: 64px;
+  text-decoration: none !important;
+  &:hover{
+    color:white;
+  }
 }

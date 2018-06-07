@@ -2,7 +2,7 @@ class MedicalRecordsController < ApplicationController
   before_action :set_medical_records, only: [:show, :edit, :update, :destroy]
 
   def index
-    @medical_records = policy_scope(MedicalRecord)
+    @medical_records = policy_scope(MedicalRecord).sort { |a,b| b.record_date <=> a.record_date }
 
     if params[:query].present?
       @medical_records = @medical_records.search(params[:query])

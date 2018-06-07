@@ -15,13 +15,13 @@
   <div class="form-inputs">
     <%= label_tag 'Date de début' %>
     <br>
-    <%= date_field(:prescription, :start_date, { class: 'datepicker form-control' }) %>
+    <%= date_field(:prescription, :start_date, { class: 'datepicker form-control soflow form-height' }) %>
   </div>
 
   <div class="form-inputs">
     <%= label_tag 'Date de fin' %>
     <br>
-    <%= date_field(:prescription, :end_date, { class: 'datepicker form-control' }) %>
+    <%= date_field(:prescription, :end_date, { class: 'datepicker form-control soflow form-height' }) %>
   </div>
 
   <div class="form-inputs form-photo">
@@ -34,7 +34,7 @@
     <div class="form-inputs">
       <%= label_tag 'Heure de prise' %>
       <br>
-      <%= time_field_tag "doses[1][take_time]", '12:00', class: 'form-control datepicker-time' %>
+      <%= time_field_tag "doses[1][take_time]", '12:00', class: 'form-control datepicker-time soflow form-height' %>
     </div>
 
     <div class="form-inputs">

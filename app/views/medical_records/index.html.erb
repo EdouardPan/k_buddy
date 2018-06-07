@@ -15,7 +15,7 @@
 <div class="section-box">
 
     <div id="list-box">
-      <% @medical_records.sort { |a,b| b.record_date <=> a.record_date }.each do |mr| %>
+      <% @medical_records.each do |mr| %>
         <hr>
         <%= link_to(medical_record_path(mr), class: "link") do %>
           <%= render 'shared/icons', object: mr %> <strong><%= l mr.record_date, format: :long %></strong> | <em><%= mr.title.capitalize %></em>

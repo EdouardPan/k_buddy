@@ -52,7 +52,7 @@ include ActionView::Helpers::AssetUrlHelper
         data = {
           title: "#{event.drug.name} - #{event.quantity}",
           start: event.take_time.strftime("%Y-%m-%dT%H:%M:%S"),
-          end: (event.take_time + 0.5 / 24).strftime("%Y-%m-%dT%H:%M:%S"),
+          end: (event.take_time + 1.hour).strftime("%Y-%m-%dT%H:%M:%S"),
           iconT: true,
           url: treatment_path(event),
           taken: event.taken,

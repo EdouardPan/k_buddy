@@ -8,13 +8,13 @@
     <div class="form-inputs">
       <%= f.label "Jour & Heure de début" %>
       <br>
-      <%= f.input :start_date, as: :datetime, html5: true, label: false %>
+      <%= f.input :start_date, as: :datetime, html5: true, label: false, input_html: { class: 'soflow form-height' } %>
     </div>
 
     <div class="form-inputs">
       <%= f.label "Jour & Heure de fin" %>
       <br>
-      <%= f.input :end_date, as: :datetime, html5: true, label: false %>
+      <%= f.input :end_date, as: :datetime, html5: true, label: false, input_html: { class: 'soflow form-height' } %>
     </div>
 
     <div class="form-inputs">
@@ -23,16 +23,16 @@
       <%= f.input :name, collection: [ "Altérations du goût", "Anémie", "Ascite", "Bouche sèche ou douleureuse", "Chute des cheveux", "Chute des cils et sourcils", "Constipation", "Cystite", "Défaillance cardiaque", "Déglutition douleureuse", "Dents", "Diarrhée", "Divers", "Douleurs", "Estomac", "Fatigue", "Hémorragies (déficit de plaquettes sanguines)", "Stomatite (inflammation de la muqueuse buccale)", "Intolérance au lactose", "Leucopénie", "Lymphoedème", "Manque d'appétit", "Migraine", "Mucosités", "Nausées", "Nerfs", "Ongles", "Perte de poids non souhaitées", "Prise de poids non souhaitée", "Sexualité", "Stomies", "Syndrome main-pied", "Thrombose veineuse profonde", "Vessie", "Vomissement" ], input_html: { class: 'soflow' }, label: false %>
     </div>
 
-    <div class="form-inputs">
-      <%= f.label "Intensité" %>
-      <br>
-      <%= f.input :intensity, collection: (1..10).to_a, label: false%>
+    <div class="form-inputs slidecontainer">
+        <%= f.label "Intensité" %>
+        <%= f.input :intensity, input_html: {type: "range", min: "1", max: "10", class: "slider", id: "intensityRange"}, label: false %>
+      <p style="color: $gray;"><span id="intensityDemo"></span></p>
     </div>
 
     <div class="form-inputs">
       <%= f.label "Notes" %>
       <br>
-      <%= f.input :description, label: false %>
+      <%= f.input :description, label: false, input_html: { class: 'bloc-note' } %>
     </div>
 
     <div class="form-actions">

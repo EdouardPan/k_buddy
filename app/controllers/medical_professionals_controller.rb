@@ -1,7 +1,7 @@
 class MedicalProfessionalsController < ApplicationController
 
   def index
-    @medical_professionals = policy_scope(MedicalProfessional)
+    @medical_professionals = policy_scope(MedicalProfessional).sort_by{ |medical_professional| medical_professional.location_name }
   end
 
   def show

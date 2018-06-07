@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
     @appointments = @appointments.where(start_date: Date.today.beginning_of_day..Date.today.end_of_day)
     @treatments = @treatments.where(take_time: Date.today.beginning_of_day..Date.today.end_of_day)
 
-    @events = @appointments + @treatments
+    @events = @treatments + @appointments
 
     @events_grouped = @events.sort_by { |event| event.sorting_date }
   end
