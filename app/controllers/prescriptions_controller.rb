@@ -35,7 +35,7 @@ class PrescriptionsController < ApplicationController
     if prescription.save
 
       # Photos adding
-      unless params[:photo][:url].nil?
+      unless params[:photo].nil?
         params[:photo][:url].each do |u|
           new_photo = Photo.new(url: u)
           new_photo.prescription = prescription
