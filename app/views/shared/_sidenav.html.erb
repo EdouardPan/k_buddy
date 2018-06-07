@@ -1,11 +1,11 @@
 <div id="mySidenav" class="sidenav">
   <a href="#" class="closebtn">&times;</a>
   <% if user_signed_in? %>
-    <%= link_to todaytasks_path do %>
-      <i class="far fa-calendar"></i> Aujourd'hui
-    <% end %>
     <%= link_to profile_path(current_user) do %>
       <i class="fas fa-user"></i> Mon profil
+    <% end %>
+    <%= link_to wellbeings_path do %>
+      <i class="fas fa-heart"></i> Blog de bien-être
     <% end %>
     <%= link_to medical_professionals_path do %>
       <i class="fas fa-user-md"></i> Mes agents médicaux
