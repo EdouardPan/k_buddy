@@ -64,6 +64,7 @@ class PrescriptionsController < ApplicationController
             user_id: current_user.id)
           unless treatment.save
             render '/prescriptions/new'
+            return
             # There is still an error here. It does not render if the treatments are not created.
           end
           counter += 1
