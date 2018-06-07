@@ -13,23 +13,23 @@
         <% @events_grouped.each do |mr| %>
           <hr>
           <div class="today-task-row">
-            <% if mr.is_a?(Appointment) %>
-              <%= link_to(appointment_path(mr), class: "link") do %>
-                <%= render 'shared/icons', object: mr %>
-                  <strong><%= l mr.sorting_date%> - <%= l mr.end_date%></strong> | <em><%= mr.category%></em>
-              <% end %>
-            <% else %>
+            <% if mr.is_a?(Treatment) %>
               <%= link_to(treatment_path(mr), class: "link") do %>
                 <%= image_tag ("treatment-icon.png"), class: "list-icon" %>
                 <strong><%= l mr.take_time %></strong> | <em><%= mr.drug.name.split.first.chomp(",")%></em>
               <% end %>
-                <% if mr.taken %>
-                   <i class="far fa-check-circle checkbox"></i>
-                <% else %>
-                  <div id="checkbox-container-<%= mr.id %>" class="anim-checkbox checkbox-container">
-                    <%= link_to "Pris", treatment_path(mr), class: "mini-button taken-button", method: :patch, remote: true %>
-                  </div>
-                <% end %>
+              <% if mr.taken %>
+                 <i class="far fa-check-circle checkbox"></i>
+              <% else %>
+                <div id="checkbox-container-<%= mr.id %>" class="anim-checkbox checkbox-container">
+                  <%= link_to "Pris", treatment_path(mr), class: "mini-button taken-button", method: :patch, remote: true %>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to(appointment_path(mr), class: "link") do %>
+                <%= render 'shared/icons', object: mr %>
+                <strong><%= l mr.sorting_date%> - <%= l mr.end_date%></strong> | <em><%= mr.category%></em>
+              <% end %>
             <% end %>
           </div>
         <% end %>
