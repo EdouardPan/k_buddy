@@ -26,7 +26,7 @@
           </div>
 
         <div class="form-actions">
-          <%= f.submit "Valider", class: "submit-button" %>
+          <%= f.submit "Valider", class: "submit-button", name: "existing_doctor" %>
         </div>
       </div>
 
@@ -80,7 +80,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.submit "Ajouter", class: "submit-button" %>
+      <%= f.submit "Ajouter", class: "submit-button", name: "new_doctor" %>
     </div>
 
   <% end %>

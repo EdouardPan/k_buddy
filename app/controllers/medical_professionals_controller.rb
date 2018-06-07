@@ -17,22 +17,38 @@ class MedicalProfessionalsController < ApplicationController
   end
 
   def create
-    if params[:medical_professional][:id]
-      @medical_professional = MedicalProfessional.find(params[:medical_professional][:id])
+
+
+    # check form origin
+
+    if params[:existing_doctor]
+      if params[:medical_professional][:id] != ""
+        @medical_professional = MedicalProfessional.find(params[:medical_professional][:id])
+      else params[:medical_professional][:id] == ""
+        @event_type = params[:event_type]
+        @medical_professionals = policy_scope(MedicalProfessional)
+        @medical_professional = MedicalProfessional.new
+        authorize @medical_professional
+        render :new
+        return
+      end
+      authorize @medical_professional
+      # second form here
     else
       @medical_professional = MedicalProfessional.new(medical_professional_params)
+      authorize @medical_professional
     end
-    authorize @medical_professional
-    if @medical_professional.save
-      if params[:event_type] == "appointment"
-        redirect_to new_medical_professional_appointment_path(@medical_professional)
+      if @medical_professional.save
+        if params[:event_type] == "appointment"
+          redirect_to new_medical_professional_appointment_path(@medical_professional)
+        else
+          redirect_to new_medical_professional_prescription_path(@medical_professional)
+        end
       else
-        redirect_to new_medical_professional_prescription_path(@medical_professional)
+        render :new
       end
-    else
-      render :new
     end
-  end
+
 
   def edit
     @medical_professional = MedicalProfessional.find(params[:id])
