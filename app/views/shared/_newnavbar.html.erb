@@ -1,14 +1,14 @@
 <div class="navbar-kbuddy">
-  <%= link_to image_tag("medical-record-icon.png", class: "navbar-icons"), medical_records_path %>
-  <%= link_to image_tag("treatment-icon.png", class: "navbar-icons"), calendar_index_path %>
+  <%= link_to image_tag("today-icon.png", class: "navbar-icons #{request.fullpath == todaytasks_path ? 'active' : 'inactive'}"), todaytasks_path %>
+  <%= link_to image_tag("medical-record-icon.png", class: "navbar-icons #{request.fullpath == medical_records_path ? 'active' : 'inactive'}"), medical_records_path %>
 
   <span id="opennavmenu">
     <div class="white-circle"></div>
     <%= image_tag("plus.png", id: "navbar-plus-icon")%>
   </span>
 
-  <%= link_to image_tag("symptoms-icon.png", class: "navbar-icons"), symptoms_path %>
-  <%= link_to image_tag("recommendation-icon.png", class: "navbar-icons"), wellbeings_path %>
+  <%= link_to image_tag("calendar-icon.png", class: "navbar-icons #{request.fullpath == calendar_index_path ? 'active' : 'inactive'}"), calendar_index_path %>
+  <%= link_to image_tag("symptoms-icon.png", class: "navbar-icons #{request.fullpath == symptoms_path ? 'active' : 'inactive'}"), symptoms_path %>
 </div>
 
 
