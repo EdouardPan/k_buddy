@@ -40,10 +40,12 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     authorize @appointment
     if @appointment.update(appointment_params)
-      params[:appointment][:url].each do |u|
-        new_photo = Photo.new(url: u)
-        new_photo.appointment = @appointment
-        new_photo.save
+      unless params[:appointment][:url].nil?
+        params[:appointment][:url].each do |u|
+          new_photo = Photo.new(url: u)
+          new_photo.appointment = @appointment
+          new_photo.save
+        end
       end
       redirect_to appointment_path(@appointment)
     else
